@@ -1,0 +1,20 @@
+<?php
+include 'ccxt.php';
+//var_dump (\ccxt\Exchange::$exchanges); // print a list of all available exchange classes
+$liquiObj   = new \ccxt\liqui();
+$marketArray = $liquiObj->load_markets();
+$dataArray = $marketArray['LTC/BTC'];
+$pricision = $dataArray['precision'];
+$limits    = $dataArray['limits'];
+$info      = $dataArray['info'];
+
+
+
+print_r($info);
+
+echo $info['min_price'];
+die;
+
+?>
+
+
