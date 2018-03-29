@@ -40,6 +40,9 @@ $tickersHitBtcDCT	= 	$liquiObj->fetch_ticker($dataArray[5]);
 //print_r($tickersLiqui);
 //print_r($tickersHitBtc);
 ?>
+
+
+<!--CSSSSS-->
 <!DOCTYPE html>
 <html>
 <head>
