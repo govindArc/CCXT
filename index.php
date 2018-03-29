@@ -48,9 +48,9 @@ $tickersHitBtcDCT	= 	$liquiObj->fetch_ticker($dataArray[5]);
 	<script type="text/javascript" href="/css/bootstrap.css"> </script>
 	<script type="text/javascript" href="/css/bootstrap.min.css"> </script>
 
-	<link href='./css/core.css' media='screen' rel='stylesheet' type='text/css'>
-    <link href='./css/fonts.css' media='screen' rel='stylesheet' type='text/css'>
-    <link href='./css/responsive.css' media='screen' rel='stylesheet' type='text/css'>
+	<link href='/css/core.css' media='screen' rel='stylesheet' type='text/css'>
+    <link href='/css/fonts.css' media='screen' rel='stylesheet' type='text/css'>
+    <link href='/css/responsive.css' media='screen' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="/js/app.js"></script>
