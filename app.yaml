@@ -2,13 +2,11 @@ runtime: php55
 api_version: 1
 
 handlers:
-- url: /.*
-  script: index.php
-
 - url: /css
   static_dir: css
 
 - url: /js
   static_dir: js
 
-  
+- url: /.*
+  script: index.php
