@@ -4,4 +4,6 @@ api_version: 1
 handlers:
 - url: /.*
   script: index.php
-
+  
+- url: /css
+  static_dir: css

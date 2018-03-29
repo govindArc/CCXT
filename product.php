@@ -590,7 +590,6 @@ class ControllerProductProduct extends Controller {
 
 			if ($product_info['tag']) {
 				$tags = explode(',', $product_info['tag']);
-
 				foreach ($tags as $tag) {
 					$data['tags'][] = array(
 						'tag'  => trim($tag),
