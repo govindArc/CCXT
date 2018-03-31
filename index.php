@@ -63,8 +63,6 @@
 		<div class="container">
 				<h2 align="center">Token Spreads</h2>
 				<h4 align="center">crypto Spread Monitoring And Alerts</h4>
-			
-
 		
 		<div class="col-xs-12">	
 				<h1><i class="material-icons">Top</i>Top Spreads</h1>
@@ -341,8 +339,8 @@
 									 <th class="mobile-d-all">Last Price (exchage A)</th> 
 									 <th class="mobile-d-all">Last Price (exchage B)</th> 
 									 <th class="mobile-d-all">Spread %</th>
-									 <th class="mobile-d-all">Spread Voloume%</th>
-									 <th class="mobile-d-all">Assets</th>
+									 <th class="mobile-d-all">Spread(1000 USDT)</th>
+									 <th class="mobile-d-all">Spread(2000 USDT)</th>
 								</tr>	
 
 
@@ -506,8 +504,8 @@
 									 <th class="mobile-d-all">Last Price (exchage A)</th> 
 									 <th class="mobile-d-all">Last Price (exchage B)</th> 
 									 <th class="mobile-d-all">Spread %</th>
-									 <th class="mobile-d-all">Spread Voloume%</th>
-									 <th class="mobile-d-all">Assets</th>
+									 <th class="mobile-d-all">Spread(1000 USDT)</th>
+									 <th class="mobile-d-all">Spread(2000 USDT)</th>
 								</tr>
 
 
@@ -612,8 +610,8 @@
 									 <th class="mobile-d-all">Last Price (exchage A)</th> 
 									 <th class="mobile-d-all">Last Price (exchage B)</th> 
 									 <th class="mobile-d-all">Spread %</th>
-									 <th class="mobile-d-all">Spread Voloume%</th>
-									 <th class="mobile-d-all">Assets</th>
+									 <th class="mobile-d-all">Spread(1000 USDT)</th>
+									 <th class="mobile-d-all">Spread(2000 USDT)</th>
 								</tr>
 
 								<tr>
