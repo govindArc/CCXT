@@ -28,20 +28,12 @@ $tidexObj   	= new \ccxt\tidex();    // BTC/USDT
 $cryptopiaObj 	= new \ccxt\cryptopia();  // BTC/USDT  
 $exmoObj   		= new \ccxt\exmo();    		// BTC/USDT  
 $bittrexObj  	= new \ccxt\bittrex(); 	// BTC/USDT  
-
-
 $higherExchange = 0;
 $lowerExchange  = 999999999999;
 $higherCurrency = '';
 $lowerCurrency  = '';
-
-
 $highBidAsk 	= 0; 
 $highAskExchange = ''; 
-
-
-
-
 
 
 

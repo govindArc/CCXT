@@ -16,17 +16,19 @@
     <link href='/css/fonts.css' media='screen' rel='stylesheet' type='text/css'>
     <link href='/css/responsive.css' media='screen' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-
-
-
-
     <script src="/js/app.js"></script>
-	 
-
-
 	<script type="text/javascript" language="javascript">  
+		
+
+		$(window).load(function() {
+
+			document.getElementById("userDate").innerHTML = Date();
+			setInterval(function(){
+				location.reload();
+			 }, 15000);
+		});  	
+
 		/*
 		$(window).load(function() {
 		 // executes when complete page is fully loaded, including all frames, objects and images
@@ -68,14 +70,19 @@
 				<h1><i class="material-icons">Top</i>Top Spreads</h1>
 		</div>
 
-		<div class="col-md-12">			
-
-
+		<div class="col-md-12">	
 				<div class="col-md-4">
 				    <table id="latest-btc">
 				       <tr>
 				         <th colspan="2">Latest BTC/USDT Price Spreads</th>
+				         
 				       </tr>
+
+				       <tr>
+				         <th colspan="2"><p id="userDate"></p></th>
+				       </tr>
+
+				       
 				       <tr>
 				            <td>kucoin</td>
 				            <td><?php echo getLastPriceOfExchage('kucoin','BTC/USDT');?></td>
@@ -107,18 +114,18 @@
 				  </div>
 
 				  <div class="col-md-4">
-
 				  			<table id="latest-spread-price">
 						        <tr>
 						          <th colspan="2">High Price Spread</th>
 						        </tr>
+						        <tr>
+						          <th colspan="2"><p id="userDate"></p></th>
+						      	</tr>
 						      		<tr>      
 						      			<td class="latest-feature data-price-max"> 
 						      				<span class="latest-exchange">Low Exchange: <strong><?php echo $lowerCurrency;?></strong>
-
 						      				<br>High Exchange: <strong><?php echo $higherCurrency; ?></strong></span>      
 						      			</td>
-
 						      		</tr>
 						    </table>
 
@@ -131,6 +138,10 @@
 						        <tr>
 						          <th colspan="2">High Bid Ask Spread</th>
 						        </tr>
+
+						        <tr>
+						          <th colspan="2"><p id="userDate"></p></th>
+						      	</tr>
 						      		<tr>      
 						      			<td class="latest-feature data-price-max"> 
 						      				<span class="latest-exchange">
@@ -169,7 +180,14 @@
 									 <th>&nbsp;</th> 
 									 <th>&nbsp;</th>
 									 <th>&nbsp;</th>
+									 <th>&nbsp;</th>
+									 <th>&nbsp;</th>
+
 								</tr>
+								<tr> 
+										<th colspan="10"><p id="userDate" style="text-align: center;"></p></th>
+								</tr>
+
 								<tr>       
 									 <th>Currency Pair</th> 
 									 <th class="mobile-d-all">Exchage A</th> 
@@ -179,6 +197,9 @@
 									 <th class="mobile-d-all">Spread %</th>
 									 <th class="mobile-d-all">Spread(1000 USDT)</th>
 									 <th class="mobile-d-all">Spread(2000 USDT)</th>
+									 <th class="mobile-d-all">Spread(3000 USDT)</th>
+									 <th class="mobile-d-all">Spread(4000 USDT)</th>
+									 <th class="mobile-d-all">Spread(5000 USDT)</th>
 								</tr>
 
 <!--liqui-->
@@ -192,8 +213,13 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','LTC/BTC'),getLastPriceOfExchage('hitbtc','LTC/BTC')); ?>
 									 </td> 
-									 <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 
 								</tr>
 
 
@@ -224,8 +250,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','LTC/BTC'),getLastPriceOfExchage('binance','LTC/BTC')); ?>
 									 </td> 
-									 <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
 								</tr>
 
 <!--HITBTC-->
@@ -253,8 +282,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','LTC/BTC'),getLastPriceOfExchage('binance','LTC/BTC')); ?>
 									 </td> 
-									  <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
 								</tr>
 
 
@@ -267,8 +299,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','LTC/BTC'),getLastPriceOfExchage('okax','LTC/BTC')); ?>
 									 </td> 
-									  <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
 								</tr>
 
 
@@ -284,9 +319,13 @@
 									 <td><?php echo  getLastPriceOfExchage('liqui','LTC/BTC');?></td> 
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('okax','LTC/BTC'),getLastPriceOfExchage('liqui','LTC/BTC')); ?>
-									 </td> 
-									 <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+									 </td>
+
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
 								</tr>
 
 
@@ -299,8 +338,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('okax','LTC/BTC'),getLastPriceOfExchage('binance','LTC/BTC')); ?>
 									 </td> 
-									 <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
 								</tr>
 
 
@@ -315,8 +357,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('okax','LTC/BTC'),getLastPriceOfExchage('hitbtc','LTC/BTC')); ?>
 									 </td> 
-									  <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
 								</tr>
 
 
@@ -331,7 +376,14 @@
 									 <th>&nbsp;</th> 
 									 <th>&nbsp;</th>
 									 <th>&nbsp;</th>
+									 <th>&nbsp;</th>
+									 <th>&nbsp;</th>
 								</tr>
+								<tr> 
+										<th colspan="10"><p id="userDate" style="text-align: center;"></p></th>
+								</tr>
+
+
 								<tr>       
 									 <th>Currency Pair</th> 
 									 <th class="mobile-d-all">Exchage A</th> 
@@ -341,7 +393,11 @@
 									 <th class="mobile-d-all">Spread %</th>
 									 <th class="mobile-d-all">Spread(1000 USDT)</th>
 									 <th class="mobile-d-all">Spread(2000 USDT)</th>
-								</tr>	
+									 <th class="mobile-d-all">Spread(3000 USDT)</th>
+									 <th class="mobile-d-all">Spread(4000 USDT)</th>
+									 <th class="mobile-d-all">Spread(5000 USDT)</th>
+								</tr>
+
 
 
 								<tr>
@@ -353,8 +409,12 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','DASH/BTC'),getLastPriceOfExchage('hitbtc','DASH/BTC')); ?>
 									 </td> 
-									 <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
 								</tr>
 
 
@@ -368,8 +428,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','DASH/BTC'),getLastPriceOfExchage('okax','DASH/BTC')); ?>
 									 </td> 
-									 <td>Currency Pair</td> 
-									 <td>Currency Pair</td> 
+									 	<td>&nbsp;</td> 
+										 <td>&nbsp;</td> 
+										 <td>&nbsp;</td> 
+										 <td>&nbsp;</td> 
+										 <td>&nbsp;</td>  
 								</tr>
 
 
@@ -385,8 +448,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','DASH/BTC'),getLastPriceOfExchage('binance','DASH/BTC')); ?>
 									 </td> 
-									 <td>Currency Pair</td> 
-									 <td>Currency Pair</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td>  
 								</tr>
 
 <!--HITBTC-->
@@ -400,8 +466,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','DASH/BTC'),getLastPriceOfExchage('liqui','DASH/BTC')); ?>
 									 </td> 
-									  <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td>  
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td>  
 								</tr>
 
 
@@ -414,8 +483,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','DASH/BTC'),getLastPriceOfExchage('binance','DASH/BTC')); ?>
 									 </td> 
-									  <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+									  <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td>  
 								</tr>
 
 
@@ -428,8 +500,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','DASH/BTC'),getLastPriceOfExchage('okax','DASH/BTC')); ?>
 									 </td> 
-									  <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td>  
+									  <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td>  
 								</tr>
 
 
@@ -446,8 +521,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('okax','DASH/BTC'),getLastPriceOfExchage('liqui','DASH/BTC')); ?>
 									 </td> 
-									 <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td>  
 								</tr>
 
 
@@ -460,8 +538,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('okax','DASH/BTC'),getLastPriceOfExchage('binance','DASH/BTC')); ?>
 									 </td> 
-									  <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+									  <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td>  
 								</tr>
 
 
@@ -476,8 +557,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('okax','DASH/BTC'),getLastPriceOfExchage('hitbtc','DASH/BTC')); ?>
 									 </td> 
-									  <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+									  <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td>  
 								</tr>
 
 
@@ -496,6 +580,11 @@
 									 <th>&nbsp;</th> 
 									 <th>&nbsp;</th>
 									 <th>&nbsp;</th>
+									 <th>&nbsp;</th>
+									 <th>&nbsp;</th>
+								</tr>
+								<tr> 
+										<th colspan="10"><p id="userDate" style="text-align: center;"></p></th>
 								</tr>
 								<tr>       
 									 <th>Currency Pair</th> 
@@ -506,6 +595,9 @@
 									 <th class="mobile-d-all">Spread %</th>
 									 <th class="mobile-d-all">Spread(1000 USDT)</th>
 									 <th class="mobile-d-all">Spread(2000 USDT)</th>
+									 <th class="mobile-d-all">Spread(3000 USDT)</th>
+									 <th class="mobile-d-all">Spread(4000 USDT)</th>
+									 <th class="mobile-d-all">Spread(5000 USDT)</th>
 								</tr>
 
 
@@ -519,8 +611,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','1ST/BTC'),getLastPriceOfExchage('hitbtc','1ST/BTC')); ?>
 									 </td> 
-									 <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
 								</tr>
 
 
@@ -535,8 +630,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','1ST/BTC'),getLastPriceOfExchage('liqui','1ST/BTC')); ?>
 									 </td> 
-									  <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+									  	<td>&nbsp;</td> 
+										<td>&nbsp;</td> 
+										<td>&nbsp;</td> 
+										<td>&nbsp;</td> 
+										<td>&nbsp;</td>  
 								</tr>
 
 
@@ -550,6 +648,11 @@
 									 <th>&nbsp;</th> 
 									 <th>&nbsp;</th>
 									 <th>&nbsp;</th>
+									 <th>&nbsp;</th>
+									 <th>&nbsp;</th>
+								</tr>
+								<tr> 
+										<th colspan="10"><p id="userDate" style="text-align: center;"></p></th>
 								</tr>
 								<tr>       
 									 <th>Currency Pair</th> 
@@ -560,6 +663,9 @@
 									 <th class="mobile-d-all">Spread %</th>
 									 <th class="mobile-d-all">Spread(1000 USDT)</th>
 									 <th class="mobile-d-all">Spread(2000 USDT)</th>
+									 <th class="mobile-d-all">Spread(3000 USDT)</th>
+									 <th class="mobile-d-all">Spread(4000 USDT)</th>
+									 <th class="mobile-d-all">Spread(5000 USDT)</th>
 								</tr>	
 
 
@@ -571,9 +677,13 @@
 									 <td><?php echo  getLastPriceOfExchage('hitbtc','1ST/ETH');?></td> 
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','1ST/ETH'),getLastPriceOfExchage('hitbtc','1ST/ETH')); ?>
-									 </td> 
-									 <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+									 </td>
+
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
 								</tr>
 
 
@@ -586,9 +696,13 @@
 									 
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','1ST/ETH'),getLastPriceOfExchage('liqui','1ST/ETH')); ?>
-									 </td> 
-									<td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td>
+									 </td>
+
+									<td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
 								</tr>
 
 
@@ -602,6 +716,11 @@
 									 <th>&nbsp;</th> 
 									 <th>&nbsp;</th>
 									 <th>&nbsp;</th>
+									 <th>&nbsp;</th>
+									 <th>&nbsp;</th>
+								</tr>
+								<tr> 
+										<th colspan="10"><p id="userDate" style="text-align: center;"></p></th>
 								</tr>
 								<tr>       
 									 <th>Currency Pair</th> 
@@ -612,6 +731,9 @@
 									 <th class="mobile-d-all">Spread %</th>
 									 <th class="mobile-d-all">Spread(1000 USDT)</th>
 									 <th class="mobile-d-all">Spread(2000 USDT)</th>
+									 <th class="mobile-d-all">Spread(3000 USDT)</th>
+									 <th class="mobile-d-all">Spread(4000 USDT)</th>
+									 <th class="mobile-d-all">Spread(5000 USDT)</th>
 								</tr>
 
 								<tr>
@@ -623,8 +745,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','STEEM/BTC'),getLastPriceOfExchage('hitbtc','STEEM/BTC')); ?>
 									 </td> 
-									 <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td>  
 								</tr>
 
 								<tr>
@@ -636,8 +761,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','STEEM/BTC'),getLastPriceOfExchage('binance','STEEM/BTC')); ?>
 									 </td> 
-									<td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td>
+									<td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td>  
 								</tr>
 
 
@@ -653,8 +781,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','STEEM/BTC'),getLastPriceOfExchage('liqui','STEEM/BTC')); ?>
 									 </td> 
-									 <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td>
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td>  
 								</tr>
 
 								<tr>
@@ -668,8 +799,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','STEEM/BTC'),getLastPriceOfExchage('binance','STEEM/BTC')); ?>
 									 </td> 
-									 <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td>  
 								</tr>
 
 
@@ -684,8 +818,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('binance','STEEM/BTC'),getLastPriceOfExchage('liqui','STEEM/BTC')); ?>
 									 </td> 
-									<td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+									<td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td>  
 								</tr>
 
 								<tr>
@@ -700,8 +837,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('binance','STEEM/BTC'),getLastPriceOfExchage('hitbtc','STEEM/BTC')); ?>
 									 </td> 
-									<td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td>
+									  <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td>  
 								</tr>
 <!--STEEM/BTC-->
 				</table>
