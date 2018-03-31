@@ -16,12 +16,12 @@
     <link href='/css/fonts.css' media='screen' rel='stylesheet' type='text/css'>
     <link href='/css/responsive.css' media='screen' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="/js/jquery-1.9.1.min"></script>
     <script src="/js/app.js"></script>
 	<script type="text/javascript" language="javascript">  
 		
 
-		jQuery(window).load(function() {
+		$(window).load(function() {
 
 			document.getElementById("userDate").innerHTML = Date();
 			setInterval(function(){
