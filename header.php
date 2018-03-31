@@ -36,6 +36,14 @@ $higherCurrency = '';
 $lowerCurrency  = '';
 
 
+$highBidAsk 	= 0; 
+$highAskExchange = ''; 
+
+
+
+
+
+
 
 
 function setHigherLower($Tickers,$currency){
@@ -43,7 +51,19 @@ function setHigherLower($Tickers,$currency){
 		global $lowerExchange;
 		global $higherCurrency;
 		global $lowerCurrency;
+
+		global $highBidAsk;
+		global $highAskExchange;
+
+
+			 
+		$askRate = number_format($Tickers['ask'], 10, '.', '');
 		$Tickers = number_format($Tickers['last'], 10, '.', '');
+
+		
+
+		
+
 		if($higherExchange < $Tickers){
 			$higherExchange = $Tickers; 
 			$higherCurrency = $currency;
@@ -52,6 +72,14 @@ function setHigherLower($Tickers,$currency){
 			$lowerExchange 	= $Tickers; 
 			$lowerCurrency 	= $currency;
 		}
+
+		if($highBidAsk < $askRate){
+			$highBidAsk = $askRate; 
+			$highAskExchange = $currency;
+		}
+
+
+
 }
 
 
