@@ -190,10 +190,10 @@
 
 								<tr>       
 									 <th>Currency Pair</th> 
-									 <th class="mobile-d-all">Exchage A</th> 
-									 <th class="mobile-d-all">Exchage B</th> 
-									 <th class="mobile-d-all">Last Price (exchage A)</th> 
-									 <th class="mobile-d-all">Last Price (exchage B)</th> 
+									 <th class="mobile-d-all">Exchange A</th> 
+									 <th class="mobile-d-all">Exchange B</th> 
+									 <th class="mobile-d-all">Last Price (Exchange A)</th> 
+									 <th class="mobile-d-all">Last Price (Exchange B)</th> 
 									 <th class="mobile-d-all">Spread %</th>
 									 <th class="mobile-d-all">Spread(1000 USDT)</th>
 									 <th class="mobile-d-all">Spread(2000 USDT)</th>
