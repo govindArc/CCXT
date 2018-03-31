@@ -21,7 +21,7 @@
 	<script type="text/javascript" language="javascript">  
 		
 
-		$(window).load(function() {
+		jQuery(window).load(function() {
 
 			document.getElementById("userDate").innerHTML = Date();
 			setInterval(function(){
@@ -233,8 +233,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','LTC/BTC'),getLastPriceOfExchage('okax','LTC/BTC')); ?>
 									 </td> 
-									  <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
 								</tr>
 
 
@@ -268,8 +271,11 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','LTC/BTC'),getLastPriceOfExchage('liqui','LTC/BTC')); ?>
 									 </td> 
-									  <td>Spread(1000 USDT)</td> 
-									 <td>Spread(2000 USDT)</td> 
+									  <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td> 
+									 <td>&nbsp;</td>  
 								</tr>
 
 
