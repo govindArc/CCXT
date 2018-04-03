@@ -22,11 +22,10 @@
 		
 
 		$(window).load(function() {
-
 			document.getElementById("userDate").innerHTML = Date();
 			setInterval(function(){
 				location.reload();
-			 }, 15000);
+			 }, 60000);
 		});  	
 
 		/*
