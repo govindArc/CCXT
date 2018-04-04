@@ -26,7 +26,9 @@
 		
 
 		$(window).load(function() {
+
 			$('.userDate').innerHTML = Date();
+
 			setInterval(function(){
 				location.reload();
 			 }, 60000);
@@ -59,7 +61,6 @@
 				    <table id="datatables" class="table table-striped table-bordered" >
 				       <tr>
 				         <th colspan="2">Latest BTC/USDT Price Spreads</th>
-				         
 				       </tr>
 
 				       <tr>
@@ -120,18 +121,18 @@
 
 				  			<table id="datatables" class="table table-striped table-bordered" >
 						        <tr>
-						          <th colspan="2">High Bid Ask Spread</th>
+						          <th>High Bid Ask Spread</th>
 						        </tr>
 
 						        <tr>
-						          <th colspan="2"><p id="userDate" class="userDate"></p></th>
+						          <th><p id="userDate" class="userDate"></p></th>
 						      	</tr>
-						      		<tr>      
-						      			<td class="latest-feature data-price-max"> 
+						      	<tr>      
+						      			<td  class="latest-feature data-price-max"> 
 						      				<span class="latest-exchange">
 						      				High Exchange: <strong><?php echo $highAskExchange; ?></strong>
 						      				</span>      
-						      			</td>
+						      	</td>
 
 						      		</tr>
 						    </table>
@@ -164,10 +165,10 @@
 									 <th>&nbsp;</th>
 									 <th>&nbsp;</th>
 									 <th>&nbsp;</th>
-
+									 <th>&nbsp;</th>
 								</tr>
 								<tr> 
-										<th colspan="10"><p id="userDate" class="userDate" style="text-align: center;"></p></th>
+										<th colspan="11"><p id="userDate" class="userDate" style="text-align: center;"></p></th>
 								</tr>
 
 								<tr>       
@@ -365,9 +366,10 @@
 									 <th>&nbsp;</th>
 									 <th>&nbsp;</th>
 									 <th>&nbsp;</th>
+									 <th>&nbsp;</th>
 								</tr>
 								<tr> 
-										<th colspan="10"><p id="userDate" class="userDate" style="text-align: center;"></p></th>
+										<th colspan="11"><p id="userDate" class="userDate" style="text-align: center;"></p></th>
 								</tr>
 
 
@@ -569,9 +571,10 @@
 									 <th>&nbsp;</th>
 									 <th>&nbsp;</th>
 									 <th>&nbsp;</th>
+									 <th>&nbsp;</th>
 								</tr>
 								<tr> 
-										<th colspan="10"><p id="userDate" class="userDate" style="text-align: center;"></p></th>
+										<th colspan="11"><p id="userDate" class="userDate" style="text-align: center;"></p></th>
 								</tr>
 								<tr>       
 									 <th>Currency Pair</th> 
@@ -637,9 +640,10 @@
 									 <th>&nbsp;</th>
 									 <th>&nbsp;</th>
 									 <th>&nbsp;</th>
+									 <th>&nbsp;</th>
 								</tr>
 								<tr> 
-										<th colspan="10"><p id="userDate" class="userDate" style="text-align: center;"></p></th>
+										<th colspan="11"><p id="userDate" class="userDate" style="text-align: center;"></p></th>
 								</tr>
 								<tr>       
 									 <th>Currency Pair</th> 
@@ -705,9 +709,10 @@
 									 <th>&nbsp;</th>
 									 <th>&nbsp;</th>
 									 <th>&nbsp;</th>
+									 <th>&nbsp;</th>
 								</tr>
 								<tr> 
-										<th colspan="10"><p id="userDate" class="userDate" style="text-align: center;"></p></th>
+										<th colspan="11"><p id="userDate" class="userDate" style="text-align: center;"></p></th>
 								</tr>
 								<tr>       
 									 <th>Currency Pair</th> 
