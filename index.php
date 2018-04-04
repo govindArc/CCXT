@@ -16,45 +16,26 @@
     <link href='/css/fonts.css' media='screen' rel='stylesheet' type='text/css'>
     <link href='/css/responsive.css' media='screen' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='/css/jquery.dataTables.min.css' media='screen' rel='stylesheet' type='text/css' >
     <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/dataTables.bootstrap.min.js"></script>
     <script src="/js/app.js"></script>
+
 	<script type="text/javascript" language="javascript">  
 		
 
 		$(window).load(function() {
-			document.getElementById("userDate").innerHTML = Date();
+			$('.userDate').innerHTML = Date();
 			setInterval(function(){
 				location.reload();
 			 }, 60000);
-		});  	
+		});  
 
-		/*
-		$(window).load(function() {
-		 // executes when complete page is fully loaded, including all frames, objects and images
-		  $.ajax({  
-	             type:"POST",
-	             data: {requiest: "success",},  
-	             url:"higherexchange.php",  
-	             success:function(data){  
-	                alert(data);  
-	             }  
-     		});
+
+		$(document).ready(function(){
+			$('#datatables').DataTable();		
 		});
-		 $(window).load(function(){
-		 	$.ajax({  
-		             type:"POST",  
-		             data: {requiest: "success",},  
-		             url:"higherexchange.php",  
-		             success:function(data){  
-		              	var finaldata = $.parseJSON(data);	
-
-		              	alert('lowerExchange Data '+finaldata.lowerExchange);
-
-		                
-		             }  
-		     });
-		 });  
-*/
 </script>   
 
 
@@ -71,14 +52,14 @@
 
 		<div class="col-md-12">	
 				<div class="col-md-4">
-				    <table id="latest-btc">
+				    <table id="datatables" class="table table-striped table-bordered" >
 				       <tr>
 				         <th colspan="2">Latest BTC/USDT Price Spreads</th>
 				         
 				       </tr>
 
 				       <tr>
-				         <th colspan="2"><p id="userDate"></p></th>
+				         <th colspan="2"><p id="userDate" class="userDate"></p></th>
 				       </tr>
 
 				       
@@ -113,12 +94,12 @@
 				  </div>
 
 				  <div class="col-md-4">
-				  			<table id="latest-spread-price">
+				  			<table id="datatables" class="table table-striped table-bordered" >
 						        <tr>
 						          <th colspan="2">High Price Spread</th>
 						        </tr>
 						        <tr>
-						          <th colspan="2"><p id="userDate"></p></th>
+						          <th colspan="2"><p id="userDate" class="userDate"></p></th>
 						      	</tr>
 						      		<tr>      
 						      			<td class="latest-feature data-price-max"> 
@@ -133,13 +114,13 @@
 
 				  <div class="col-md-4">
 
-				  			<table id="latest-spread-price">
+				  			<table id="datatables" class="table table-striped table-bordered" >
 						        <tr>
 						          <th colspan="2">High Bid Ask Spread</th>
 						        </tr>
 
 						        <tr>
-						          <th colspan="2"><p id="userDate"></p></th>
+						          <th colspan="2"><p id="userDate" class="userDate"></p></th>
 						      	</tr>
 						      		<tr>      
 						      			<td class="latest-feature data-price-max"> 
@@ -165,10 +146,8 @@
 			<div class="col-xs-12">	
 				<h1><i class="material-icons">tune</i> Exchange Spreads</h1>
 			</div>
-
-
 		 	
-				<table class="table responsive">
+				<table id="datatables" class="table table-striped table-bordered" >
 
 								<tr>       
 									 <th><?php echo 'LTC/BTC';?></th> 
@@ -184,7 +163,7 @@
 
 								</tr>
 								<tr> 
-										<th colspan="10"><p id="userDate" style="text-align: center;"></p></th>
+										<th colspan="10"><p id="userDate" class="userDate" style="text-align: center;"></p></th>
 								</tr>
 
 								<tr>       
@@ -212,7 +191,6 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','LTC/BTC'),getLastPriceOfExchage('hitbtc','LTC/BTC')); ?>
 									 </td> 
-
 									 <td>&nbsp;</td> 
 									 <td>&nbsp;</td> 
 									 <td>&nbsp;</td> 
@@ -385,7 +363,7 @@
 									 <th>&nbsp;</th>
 								</tr>
 								<tr> 
-										<th colspan="10"><p id="userDate" style="text-align: center;"></p></th>
+										<th colspan="10"><p id="userDate" class="userDate" style="text-align: center;"></p></th>
 								</tr>
 
 
@@ -589,7 +567,7 @@
 									 <th>&nbsp;</th>
 								</tr>
 								<tr> 
-										<th colspan="10"><p id="userDate" style="text-align: center;"></p></th>
+										<th colspan="10"><p id="userDate" class="userDate" style="text-align: center;"></p></th>
 								</tr>
 								<tr>       
 									 <th>Currency Pair</th> 
@@ -657,7 +635,7 @@
 									 <th>&nbsp;</th>
 								</tr>
 								<tr> 
-										<th colspan="10"><p id="userDate" style="text-align: center;"></p></th>
+										<th colspan="10"><p id="userDate" class="userDate" style="text-align: center;"></p></th>
 								</tr>
 								<tr>       
 									 <th>Currency Pair</th> 
@@ -725,7 +703,7 @@
 									 <th>&nbsp;</th>
 								</tr>
 								<tr> 
-										<th colspan="10"><p id="userDate" style="text-align: center;"></p></th>
+										<th colspan="10"><p id="userDate" class="userDate" style="text-align: center;"></p></th>
 								</tr>
 								<tr>       
 									 <th>Currency Pair</th> 

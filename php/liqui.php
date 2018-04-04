@@ -7,6 +7,7 @@ namespace ccxt;
 
 class liqui extends Exchange {
 
+
     public function describe () {
         return array_replace_recursive (parent::describe (), array (
             'id' => 'liqui',
@@ -360,6 +361,9 @@ class liqui extends Exchange {
         $response = $this->publicGetTradesPair (array_merge ($request, $params));
         return $this->parse_trades($response[$market['id']], $market, $since, $limit);
     }
+
+
+    
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
         if ($type === 'market')

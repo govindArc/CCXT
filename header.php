@@ -1,6 +1,13 @@
 
 <?php
 /*(\ccxt\Exchange::$exchanges); */
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+
+
+
+
 include 'ccxt.php';
 $huobiObj   	= new \ccxt\huobi(); // BTC/CNY , LTC/CNY
 $okexObj   		= new \ccxt\okex(); // DASH/BTC ,LTC/BTC
@@ -9,20 +16,17 @@ $hitbtcObj  	= new \ccxt\hitbtc(); // 1ST/BTC 1ST/ETH LTC/BTC DASH/BTC STEEM/BTC
 $binanceObj   	= new \ccxt\binance(); // LTC/BTC STEEM/BTC DASH/BTC
 /*top spreads*/
 //BTC/USD
+
+
 //$poloniexObj   	= new \ccxt\poloniex();  not free
 //$biboxObj   	= new \ccxt\bibox();   not free
-$kucoinObj   	= new \ccxt\kucoin();   // BTC/USDT
-$zbObj   		= new \ccxt\zb();           // BTC/USDT
-$gateioObj   	= new \ccxt\gateio();   // BTC/USDT  
-$tidexObj   	= new \ccxt\tidex();    // BTC/USDT  
-$cryptopiaObj 	= new \ccxt\cryptopia();  // BTC/USDT  
-$exmoObj   		= new \ccxt\exmo();    		// BTC/USDT  
-$bittrexObj  	= new \ccxt\bittrex(); 	// BTC/USDT  
-/*highest pair USD*/ 
 
 
 $kucoinObj   	= new \ccxt\kucoin();   // BTC/USDT
 $zbObj   		= new \ccxt\zb();           // BTC/USDT
+
+
+
 $gateioObj   	= new \ccxt\gateio();   // BTC/USDT  
 $tidexObj   	= new \ccxt\tidex();    // BTC/USDT  
 $cryptopiaObj 	= new \ccxt\cryptopia();  // BTC/USDT  
@@ -35,10 +39,80 @@ $lowerCurrency  = '';
 $highBidAsk 	= 0; 
 $highAskExchange = ''; 
 
+function getSingleUsdt($exchnage,$exchangePair){
+			global  $huobiObj;    
+			global  $okexObj;  	 
+			global  $liquiObj;    
+			global  $hitbtcObj; 	 
+			global  $binanceObj;    
+			global  $kucoinObj;    
+			global  $zbObj;   	 
+			global  $gateioObj;    
+			global  $tidexObj;    
+			global  $cryptopiaObj; 
+			global  $exmoObj;   	 
+			global  $bittrexObj; 
+
+			if($exchnage == 'huobi'){
+
+				$finalData = $huobiObj->create_market_sell_order ($exchangePair, 1);
+
+
+			}elseif($exchnage == 'okex'){
+
+				$finalData = $okexObj->create_market_sell_order ($exchangePair, 1);
+
+
+			}elseif($exchnage == 'liqui'){
+
+				$finalData = $liquiObj->create_market_sell_order ($exchangePair, 1);
+
+
+			}elseif($exchnage == 'hitbtc'){
+
+				$finalData = $hitbtcObj->create_market_sell_order ($exchangePair, 1);
+
+
+			}elseif($exchnage == 'binance'){
+
+				$finalData = $binanceObj->create_market_sell_order ($exchangePair, 1);
+
+			}elseif($exchnage == 'kucoin'){
+
+				$finalData = $kucoinObj->create_market_sell_order ($exchangePair, 1);
+
+			}elseif($exchnage == 'zb'){	
+				$finalData = $zbObj->create_market_sell_order ($exchangePair, 1);
+
+
+			}elseif($exchnage == 'gateio'){		
+
+				$finalData = $gateioObj->create_market_sell_order ($exchangePair, 1);	
+
+			}elseif($exchnage == 'tidex'){				
+				$finalData = $tidexObj->create_market_sell_order ($exchangePair, 1);	
+
+			}elseif($exchnage == 'cryptopia'){	
+
+				$finalData = $cryptopiaObj->create_market_sell_order ($exchangePair, 1);
+
+			}elseif($exchnage == 'exmo'){	
+
+				$finalData = $exmoObj->create_market_sell_order ($exchangePair, 1);	
+
+			}else{
+				
+				$finalData = $bittrexObj->create_market_sell_order ($exchangePair, 1);		
+			}
+
+			 return $finalData;				
+}
+
 
 
 
 function setHigherLower($Tickers,$currency){
+		
 		global $higherExchange;
 		global $lowerExchange;
 		global $higherCurrency;
@@ -46,15 +120,9 @@ function setHigherLower($Tickers,$currency){
 
 		global $highBidAsk;
 		global $highAskExchange;
-
-
 			 
 		$askRate = number_format($Tickers['ask'], 10, '.', '');
 		$Tickers = number_format($Tickers['last'], 10, '.', '');
-
-		
-
-		
 
 		if($higherExchange < $Tickers){
 			$higherExchange = $Tickers; 
@@ -69,23 +137,26 @@ function setHigherLower($Tickers,$currency){
 			$highBidAsk = $askRate; 
 			$highAskExchange = $currency;
 		}
-
-
-
 }
 
 
 
-function getSpreadPercentage($exchnageAprice,$exchnageBprice){
-		$spreaVolume	= ($exchnageAprice / 100 * ($exchnageAprice - $exchnageBprice));
-		$spreaVolume = number_format($spreaVolume, 10, '.', '');
-		return $spreaVolume; 
+function getSpreadPercentage($ExchangeOne,$ExchangeTwo){
+		$assets      = 10000;
+		$totalCoins  =  ($assets / $ExchangeOne)-0.003;
+		$totalCoinsB = ($totalCoins * $ExchangeTwo)-0.003;
+		$profit 	 =	 $totalCoinsB - $assets;
+		return ($profit /  $assets);
 }
 
 
 
 
 
+
+ 
+
+ 
 
 function getLastPriceOfExchage($exchange,$pair){
 		
@@ -97,7 +168,8 @@ function getLastPriceOfExchage($exchange,$pair){
 		global $bitmexObj;
 		
 
-		/*highest pair USDT*/
+		//highest pair USDT
+
 		global $kucoinObj;
 		global $bittrexObj;
 		global $gateioObj;
@@ -164,12 +236,17 @@ function getLastPriceOfExchage($exchange,$pair){
 			$Tickers = $binanceObj->fetch_ticker($pair);
 		}
 
+
+
+
+
+
 		$lastPrice = number_format($Tickers['last'], 10, '.', '');
+
+
+
 		return $lastPrice;
 }
-
-
-
 
  
 
