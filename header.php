@@ -39,6 +39,9 @@ $lowerCurrency  = '';
 $highBidAsk 	= 0; 
 $highAskExchange = ''; 
 
+
+
+
 function getSingleUsdt($exchnage,$exchangePair){
 			global  $huobiObj;    
 			global  $okexObj;  	 

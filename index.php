@@ -34,7 +34,11 @@
 
 
 		$(document).ready(function(){
-			$('#datatables').DataTable();		
+			 $('#datatables').DataTable( {
+			        "paging":   false,
+			        "ordering": true,
+			    });
+			//"ordering": false,		
 		});
 </script>   
 
