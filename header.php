@@ -1,6 +1,9 @@
 
 <?php
 /*(\ccxt\Exchange::$exchanges); */
+
+ini_set('max_execution_time', 300);
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -27,29 +30,14 @@ $higherCurrency = '';
 $lowerCurrency  = '';
 $highBidAsk 	= 0; 
 $highAskExchange = '';
+ //$binanceObj->
 
-
- 
-
-
-
-
-
- 
 
 
 function calculateUSDT($exchnageA,$exchnageB,$exchangePair){
-
-
 		$orderBookAExchange =  getOrderBook($exchnageA,$exchangePair);
 		$orderBookBExchange =  getOrderBook($exchnageB,$exchangePair);
-
-
-
 		if(count($orderBookAExchange)>0 && count($orderBookBExchange)>0){
-
-
-
 				$BuyArray = $orderBookAExchange['bids'];
 				$SellArray = $orderBookBExchange['asks'];
 				$buyerArray 	=   array();
@@ -111,23 +99,14 @@ function calculateUSDT($exchnageA,$exchnageB,$exchangePair){
 
 				return  array();
 		} 
-
 		
-
-		
-
-
-		
-
-
-
-		//$exchnageA
-		//$exchangePair
 }
 
 
 function getOrderBook($exchnage,$exchangePair){
+
 		$limit = '5';
+
 		global  $huobiObj;    
 		global  $okexObj;  	 
 		global  $liquiObj;    
@@ -149,9 +128,7 @@ function getOrderBook($exchnage,$exchangePair){
 		}elseif($exchnage == 'liqui'){
 			$finalData = $liquiObj->fetch_order_book($exchangePair, $limit);
 		}elseif($exchnage == 'hitbtc'){
-			
 			$finalData = $hitbtcObj->fetch_order_book($exchangePair, $limit);
-
 		}elseif($exchnage == 'binance'){
 			$finalData = $binanceObj->fetch_order_book($exchangePair, $limit);
 		}elseif($exchnage == 'kucoin'){
@@ -171,86 +148,12 @@ function getOrderBook($exchnage,$exchangePair){
 		}
 
 		return $finalData;
-}
-
- 
-
-
-
-function getSingleUsdt($exchnage,$exchangePair){
-			global  $huobiObj;    
-			global  $okexObj;  	 
-			global  $liquiObj;    
-			global  $hitbtcObj; 	 
-			global  $binanceObj;    
-			global  $kucoinObj;    
-			global  $zbObj;   	 
-			global  $gateioObj;    
-			global  $tidexObj;    
-			global  $cryptopiaObj; 
-			global  $exmoObj;   	 
-			global  $bittrexObj; 
-
-			if($exchnage == 'huobi'){
-
-				$finalData = $huobiObj->create_market_sell_order ($exchangePair, 1);
-
-
-			}elseif($exchnage == 'okex'){
-
-				$finalData = $okexObj->create_market_sell_order ($exchangePair, 1);
-
-
-			}elseif($exchnage == 'liqui'){
-
-				$finalData = $liquiObj->create_market_sell_order ($exchangePair, 1);
-
-
-			}elseif($exchnage == 'hitbtc'){
-
-				$finalData = $hitbtcObj->create_market_sell_order ($exchangePair, 1);
-
-
-			}elseif($exchnage == 'binance'){
-
-				$finalData = $binanceObj->create_market_sell_order ($exchangePair, 1);
-
-			}elseif($exchnage == 'kucoin'){
-
-				$finalData = $kucoinObj->create_market_sell_order ($exchangePair, 1);
-
-			}elseif($exchnage == 'zb'){	
-				$finalData = $zbObj->create_market_sell_order ($exchangePair, 1);
-
-
-			}elseif($exchnage == 'gateio'){		
-
-				$finalData = $gateioObj->create_market_sell_order ($exchangePair, 1);	
-
-			}elseif($exchnage == 'tidex'){				
-				$finalData = $tidexObj->create_market_sell_order ($exchangePair, 1);	
-
-			}elseif($exchnage == 'cryptopia'){	
-
-				$finalData = $cryptopiaObj->create_market_sell_order ($exchangePair, 1);
-
-			}elseif($exchnage == 'exmo'){	
-
-				$finalData = $exmoObj->create_market_sell_order ($exchangePair, 1);	
-
-			}else{
-				
-				$finalData = $bittrexObj->create_market_sell_order ($exchangePair, 1);		
-			}
-
-			 return $finalData;				
-}
+} 
 
 
 
 
 function setHigherLower($Tickers,$currency){
-		
 		global $higherExchange;
 		global $lowerExchange;
 		global $higherCurrency;
@@ -297,17 +200,13 @@ function getSpreadPercentage($ExchangeOne,$ExchangeTwo){
  
 
 function getLastPriceOfExchage($exchange,$pair){
-		
 		global $huobiObj;
 		global $okexObj;
 		global $liquiObj;
 		global $hitbtcObj;
 		global $binanceObj;
 		global $bitmexObj;
-		
-
 		//highest pair USDT
-
 		global $kucoinObj;
 		global $bittrexObj;
 		global $gateioObj;
@@ -315,12 +214,6 @@ function getLastPriceOfExchage($exchange,$pair){
 		global $cryptopiaObj;
 		global $zbObj;
 		global $exmoObj;
-
-
-
-
-
-
 
 		if($exchange == 'huobi'){
 			$Tickers = $huobiObj->fetch_ticker($pair);
