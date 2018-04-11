@@ -194,20 +194,47 @@
 									 		echo getSpreadPercentage(getLastPriceOfExchage('liqui','LTC/BTC'),getLastPriceOfExchage('hitbtc','LTC/BTC'));
 									 	?>
 									 </td> 
-									 <td><?php 
-									 				echo calculateUSDT('liqui','hitbtc','LTC/BTC','1000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('liqui','hitbtc','LTC/BTC','2000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('liqui','hitbtc','LTC/BTC','3000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('liqui','hitbtc','LTC/BTC','4000');
-									 ?></td> 
-									 <td><?php   echo calculateUSDT('liqui','hitbtc','LTC/BTC','5000');
-									 ?></td> 
+
+									 <?php
+									 	$LIQUILTC1 = calculateUSDT('liqui','hitbtc','LTC/BTC');
+									 ?>
+									 <td><?php
+									 		if(count($LIQUILTC1)>0){
+									 			echo $LIQUILTC1[0];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+
+									 <td><?php
+									 		if(count($LIQUILTC1)>0){
+									 			echo $LIQUILTC1[1];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+
+									 <td><?php
+									 		if(count($LIQUILTC1)>0){
+									 			echo $LIQUILTC1[2];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC1)>0){
+									 			echo $LIQUILTC1[3];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC1)>0){
+									 			echo $LIQUILTC1[4];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
 									 
 								</tr>
 
@@ -222,22 +249,51 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','LTC/BTC'),getLastPriceOfExchage('okax','LTC/BTC')); ?>
 									 </td> 
-									 <td>
-									 	<?php  echo calculateUSDT('liqui','okax','LTC/BTC','1000'); ?>
-									 	
-									 </td> 
-									 <td><?php 
-									 			echo calculateUSDT('liqui','okax','LTC/BTC','2000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('liqui','okax','LTC/BTC','3000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('liqui','okax','LTC/BTC','4000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('liqui','okax','LTC/BTC','5000');
-									 ?></td> 
+									  
+
+									 <?php
+									 	$LIQUILTC2 = calculateUSDT('liqui','okax','LTC/BTC');
+									 ?>
+
+									 <td><?php
+									 		if(count($LIQUILTC2)>0){
+									 			echo $LIQUILTC2[0];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+
+									 <td><?php
+									 		if(count($LIQUILTC2)>0){
+									 			echo $LIQUILTC2[1];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+
+									 <td><?php
+									 		if(count($LIQUILTC2)>0){
+									 			echo $LIQUILTC2[2];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC2)>0){
+									 			echo $LIQUILTC2[3];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC2)>0){
+									 			echo $LIQUILTC2[4];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+
+
 								</tr>
 
 
@@ -253,23 +309,50 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','LTC/BTC'),getLastPriceOfExchage('binance','LTC/BTC')); ?>
 									 </td> 
-									 <td><?php 
-									 			echo calculateUSDT('liqui','binance','LTC/BTC','1000');
-									 ?></td> 
+									 
+									 <?php
+									 	$LIQUILTC3 = calculateUSDT('liqui','binance','LTC/BTC');
+									 ?>
+									 
+									 <td><?php
+									 		if(count($LIQUILTC3)>0){
+									 			echo $LIQUILTC3[0];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+
+									 <td><?php
+									 		if(count($LIQUILTC3)>0){
+									 			echo $LIQUILTC3[1];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+
+									 <td><?php
+									 		if(count($LIQUILTC3)>0){
+									 			echo $LIQUILTC3[2];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC3)>0){
+									 			echo $LIQUILTC3[3];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC3)>0){
+									 			echo $LIQUILTC3[4];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
 
 
-									 <td><?php 
-									 			echo calculateUSDT('liqui','binance','LTC/BTC','2000');
-									 ?></td>  
-									 <td><?php 
-									 			echo calculateUSDT('liqui','binance','LTC/BTC','3000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('liqui','binance','LTC/BTC','4000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('liqui','binance','LTC/BTC','5000');
-									 ?></td> 
 								</tr>
 
 <!--HITBTC-->
@@ -284,25 +367,49 @@
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','LTC/BTC'),getLastPriceOfExchage('liqui','LTC/BTC')); ?>
 									 </td> 
 									 
-									  <td><?php 
-									 			echo calculateUSDT('hitbtc','liqui','LTC/BTC','1000');
+									 
+									 
+									<?php
+									  	$LIQUILTC4 = array();
+									 	$LIQUILTC4 = calculateUSDT('hitbtc','liqui','LTC/BTC');
+									?>
+									 
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[0];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
 
-									 
-									  <td><?php 
-									 			echo calculateUSDT('hitbtc','liqui','LTC/BTC','2000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[1];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 
-									  <td><?php 
-									 			echo calculateUSDT('hitbtc','liqui','LTC/BTC','3000');
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[2];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 
-									  <td><?php 
-									 			echo calculateUSDT('hitbtc','liqui','LTC/BTC','4000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[3];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 
-									  <td><?php 
-									 			echo calculateUSDT('hitbtc','liqui','LTC/BTC','5000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[4];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
 								</tr>
 
@@ -316,22 +423,49 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','LTC/BTC'),getLastPriceOfExchage('binance','LTC/BTC')); ?>
 									 </td> 
+ 
 
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','binance','LTC/BTC','1000');
-									 ?></td> 
+									 <?php
+									  	$LIQUILTC4 = array();
+									 	$LIQUILTC4 = calculateUSDT('hitbtc','binance','LTC/BTC');
+									?>
+									 
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[0];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
 
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','binance','LTC/BTC','2000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[1];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','binance','LTC/BTC','3000');
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[2];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','binance','LTC/BTC','4000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[3];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','binance','LTC/BTC','5000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[4];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
 								</tr>
 
@@ -345,20 +479,48 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','LTC/BTC'),getLastPriceOfExchage('okax','LTC/BTC')); ?>
 									 </td> 
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','okax','LTC/BTC','1000');
+									
+									 <?php
+									  	$LIQUILTC4 = array();
+									 	$LIQUILTC4 = calculateUSDT('hitbtc','okax','LTC/BTC');
+									?>
+									 
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[0];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','okax','LTC/BTC','2000');
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[1];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','okax','LTC/BTC','3000');
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[2];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','okax','LTC/BTC','4000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[3];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','okax','LTC/BTC','5000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[4];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
 								</tr>
 
@@ -377,20 +539,50 @@
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('okax','LTC/BTC'),getLastPriceOfExchage('liqui','LTC/BTC')); ?>
 									 </td>
 
-									 <td><?php 
-									 			echo calculateUSDT('okax','liqui','LTC/BTC','1000');
+									
+
+
+									 <?php
+									  	$LIQUILTC4 = array();
+									 	$LIQUILTC4 = calculateUSDT('okax','liqui','LTC/BTC');
+									 ?>
+									 
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[0];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('okax','liqui','LTC/BTC','2000');
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[1];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('okax','liqui','LTC/BTC','3000');
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[2];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('okax','liqui','LTC/BTC','4000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[3];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('okax','liqui','LTC/BTC','5000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[4];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
 
 								</tr>
@@ -406,25 +598,50 @@
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('okax','LTC/BTC'),getLastPriceOfExchage('binance','LTC/BTC')); ?>
 									 </td> 
 
-									<td><?php 
-									 			echo calculateUSDT('okax','binance','LTC/BTC','1000');
-									 ?></td>
+									
 
 									 
-									<td><?php 
-									 			echo calculateUSDT('okax','binance','LTC/BTC','2000');
-									 ?></td>
+									 <?php
+									  	$LIQUILTC4 = array();
+									 	$LIQUILTC4 = calculateUSDT('okax','binance','LTC/BTC');
+									 ?>
 									 
-									<td><?php 
-									 			echo calculateUSDT('okax','binance','LTC/BTC','3000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[0];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 
-									<td><?php 
-									 			echo calculateUSDT('okax','binance','LTC/BTC','4000');
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[1];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 
-									<td><?php 
-									 			echo calculateUSDT('okax','binance','LTC/BTC','5000');
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[2];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[3];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[4];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
 								</tr>
 
@@ -441,21 +658,49 @@
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('okax','LTC/BTC'),getLastPriceOfExchage('hitbtc','LTC/BTC')); ?>
 									 </td> 
 
-									 <td><?php 
-									 			echo calculateUSDT('okax','hitbtc','LTC/BTC','1000');
+									
+
+									<?php
+									  	$LIQUILTC4 = array();
+									 	$LIQUILTC4 = calculateUSDT('okax','hitbtc','LTC/BTC');
+									 ?>
+									 
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[0];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
 
-									 <td><?php 
-									 			echo calculateUSDT('okax','hitbtc','LTC/BTC','2000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[1];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('okax','hitbtc','LTC/BTC','3000');
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[2];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('okax','hitbtc','LTC/BTC','4000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[3];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('okax','hitbtc','LTC/BTC','5000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[4];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
 								</tr>
 
@@ -506,21 +751,49 @@
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','DASH/BTC'),getLastPriceOfExchage('hitbtc','DASH/BTC')); ?>
 									 </td> 
 
-									 <td><?php 
-									 			echo calculateUSDT('liqui','hitbtc','DASH/BTC','1000');
+									 
+
+									 <?php
+									  	$LIQUILTC4 = array();
+									 	$LIQUILTC4 = calculateUSDT('liqui','hitbtc','DASH/BTC');
+									 ?>
+									 
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[0];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
 
-									 <td><?php 
-									 			echo calculateUSDT('liqui','hitbtc','DASH/BTC','2000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[1];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('liqui','hitbtc','DASH/BTC','3000');
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[2];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('liqui','hitbtc','DASH/BTC','4000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[3];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('liqui','hitbtc','DASH/BTC','5000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[4];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
 								</tr>
 
@@ -536,22 +809,50 @@
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','DASH/BTC'),getLastPriceOfExchage('okax','DASH/BTC')); ?>
 									 </td>
 
-									 	<td><?php 
-									 			echo calculateUSDT('liqui','okax','DASH/BTC','1000');
-									 	?></td>
+									 	
 
-										 <td><?php 
-									 			echo calculateUSDT('liqui','okax','DASH/BTC','2000');
-									 	?></td>
-										 <td><?php 
-									 			echo calculateUSDT('liqui','okax','DASH/BTC','4000');
-									 	?></td>
-										 <td><?php 
-									 			echo calculateUSDT('liqui','okax','DASH/BTC','4000');
-									 	?></td>
-										 <td><?php 
-									 			echo calculateUSDT('liqui','okax','DASH/BTC','5000');
-									 	?></td>
+										  <?php
+									  	$LIQUILTC4 = array();
+									 	$LIQUILTC4 = calculateUSDT('liqui','okax','DASH/BTC');
+									 ?>
+									 
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[0];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[1];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[2];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[3];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[4];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
 								</tr>
 
 
@@ -567,22 +868,49 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','DASH/BTC'),getLastPriceOfExchage('binance','DASH/BTC')); ?>
 									 </td> 
-									 <td><?php 
-									 			echo calculateUSDT('liqui','binance','DASH/BTC','1000');
-									 ?></td> 
+									
+									 <?php
+									  	$LIQUILTC4 = array();
+									 	$LIQUILTC4 = calculateUSDT('liqui','binance','DASH/BTC');
+									 ?>
+									 
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[0];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
 
-									 <td><?php 
-									 			echo calculateUSDT('liqui','binance','DASH/BTC','2000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('liqui','binance','DASH/BTC','3000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('liqui','binance','DASH/BTC','4000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('liqui','binance','DASH/BTC','5000');
-									 ?></td> 
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[1];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[2];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[3];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[4];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
 								</tr>
 
 <!--HITBTC-->
@@ -597,22 +925,50 @@
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','DASH/BTC'),getLastPriceOfExchage('liqui','DASH/BTC')); ?>
 									 </td> 
 									
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','liqui','DASH/BTC','1000');
-									 ?></td> 
+									
 
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','liqui','DASH/BTC','2000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','liqui','DASH/BTC','3000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','liqui','DASH/BTC','4000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','liqui','DASH/BTC','5000');
-									 ?></td> 
+									 <?php
+									  	$LIQUILTC4 = array();
+									 	$LIQUILTC4 = calculateUSDT('hitbtc','liqui','DASH/BTC');
+									 ?>
+									 
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[0];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[1];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[2];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[3];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[4];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
 								</tr>
 
 
@@ -626,21 +982,47 @@
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','DASH/BTC'),getLastPriceOfExchage('binance','DASH/BTC')); ?>
 									 </td>
 
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','binance','DASH/BTC','1000');
+									 <?php
+									  	$LIQUILTC4 = array();
+									 	$LIQUILTC4 = calculateUSDT('hitbtc','binance','DASH/BTC');
+									 ?>
+									 
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[0];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
 
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','binance','DASH/BTC','2000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[1];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','binance','DASH/BTC','3000');
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[2];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','binance','DASH/BTC','4000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[3];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','binance','DASH/BTC','4000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[4];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
 								</tr>
 
@@ -654,26 +1036,48 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','DASH/BTC'),getLastPriceOfExchage('okax','DASH/BTC')); ?>
 									 </td> 
-
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','okax','DASH/BTC','1000');
+									 
+									 <?php
+									  	$LIQUILTC4 = array();
+									 	$LIQUILTC4 = calculateUSDT('hitbtc','okax','DASH/BTC');
+									 ?>
+									 
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[0];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
 
-									 
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','okax','DASH/BTC','2000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[1];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','okax','DASH/BTC','3000');
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[2];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','okax','DASH/BTC','4000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[3];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 
-									 <td><?php 
-									 			echo calculateUSDT('hitbtc','okax','DASH/BTC','5000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[4];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
 								</tr>
 
@@ -692,24 +1096,49 @@
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('okax','DASH/BTC'),getLastPriceOfExchage('liqui','DASH/BTC')); ?>
 									 </td> 
 
-									 <td><?php 
-									 			echo calculateUSDT('okax','liqui','DASH/BTC','1000');
-									 ?></td>
 									 
-									 <td><?php 
-									 			echo calculateUSDT('okax','liqui','DASH/BTC','2000');
-									 ?></td>
 									 
-									 <td><?php 
-									 			echo calculateUSDT('okax','liqui','DASH/BTC','3000');
-									 ?></td>
+									  <?php
+									  	$LIQUILTC4 = array();
+									 	$LIQUILTC4 = calculateUSDT('okax','liqui','DASH/BTC');
+									 ?>
 									 
-									 <td><?php 
-									 			echo calculateUSDT('okax','liqui','DASH/BTC','4000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[0];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 
-									 <td><?php 
-									 			echo calculateUSDT('okax','liqui','DASH/BTC','5000');
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[1];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[2];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[3];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[4];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
 								</tr>
 
@@ -722,23 +1151,50 @@
 									 <td><?php echo  getLastPriceOfExchage('binance','DASH/BTC');?></td> 
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('okax','DASH/BTC'),getLastPriceOfExchage('binance','DASH/BTC')); ?>
-									 </td> 
-									  
-									 <td><?php 
-									 			echo calculateUSDT('okax','binance','DASH/BTC','1000');
+									 </td>
+									
+									 
+									  <?php
+									  	$LIQUILTC4 = array();
+									 	$LIQUILTC4 = calculateUSDT('okax','binance','DASH/BTC');
+									 ?>
+									 
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[0];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
 
-									 <td><?php 
-									 			echo calculateUSDT('okax','binance','DASH/BTC','2000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('okax','binance','DASH/BTC','3000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[1];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('okax','binance','DASH/BTC','4000');
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[2];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
-									 <td><?php 
-									 			echo calculateUSDT('okax','binance','DASH/BTC','5000');
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[3];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[4];
+									 		}else{
+									 			echo 'not found';
+									 		}
 									 ?></td>
 								</tr>
 
@@ -755,21 +1211,49 @@
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('okax','DASH/BTC'),getLastPriceOfExchage('hitbtc','DASH/BTC')); ?>
 									 </td> 
 
-									  <td><?php 
-									 			echo calculateUSDT('okax','hitbtc','DASH/BTC','1000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('okax','hitbtc','DASH/BTC','2000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('okax','hitbtc','DASH/BTC','3000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('okax','hitbtc','DASH/BTC','4000');
-									 ?></td> 
-									 <td><?php 
-									 			echo calculateUSDT('okax','hitbtc','DASH/BTC','5000');
-									 ?></td> 
+									 
+									   <?php
+									  	$LIQUILTC4 = array();
+									 	$LIQUILTC4 = calculateUSDT('okax','hitbtc','DASH/BTC');
+									 ?>
+									 
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[0];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[1];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[2];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[3];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
+									 <td><?php
+									 		if(count($LIQUILTC4)>0){
+									 			echo $LIQUILTC4[4];
+									 		}else{
+									 			echo 'not found';
+									 		}
+									 ?></td>
 								</tr>
 
 

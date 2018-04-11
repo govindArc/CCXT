@@ -38,7 +38,7 @@ $highAskExchange = '';
  
 
 
-function calculateUSDT($exchnageA,$exchnageB,$exchangePair,$USDTvalue){
+function calculateUSDT($exchnageA,$exchnageB,$exchangePair){
 
 
 		$orderBookAExchange =  getOrderBook($exchnageA,$exchangePair);
@@ -47,6 +47,8 @@ function calculateUSDT($exchnageA,$exchnageB,$exchangePair,$USDTvalue){
 
 
 		if(count($orderBookAExchange)>0 && count($orderBookBExchange)>0){
+
+
 
 				$BuyArray = $orderBookAExchange['bids'];
 				$SellArray = $orderBookBExchange['asks'];
@@ -60,33 +62,57 @@ function calculateUSDT($exchnageA,$exchnageB,$exchangePair,$USDTvalue){
 				foreach ($SellArray as $value) {
 							array_push($sellerArray,($value[0] * $value[1]));
 				} 	
+
+
 				//991  calculation
-				$USDTV1  =  $USDTvalue-$sellerArray[0];
 
-				/// btc value price and volume pair
-				$pair 	 =	$SellArray[0];
-				$volume  = 	$pair[0]; // valume
-				$pair[1]; // price
-				$volume2 = $USDTV1/$SellArray[1][1]; // price [1]
-				$sum 	 = $volume2 + $SellArray[0][0];
-				//price after deduct taker fee
-				$priceAfterTakerFee = $sum - 0.003;
-				///sahi
-				//	$priceAfterTakerFee - buy zero volume  // 0 for volume and 1 
-				$secondBTC 	= $priceAfterTakerFee - $BuyArray[0][0];
-				$thirdBTC 	= $secondBTC - $BuyArray[1][0];
-				$USDTthree  = $thirdBTC * $BuyArray[2][1];
-				$sumBuyer 	= $USDTthree+$buyerArray[0]+$buyerArray[1];
-				//price after deduct taker fee
-				$buyDeductFee = $sumBuyer * 0.003;
-				$buyPriceAfterFee = $sumBuyer - $buyDeductFee;
-				 
-				return ($buyPriceAfterFee / $USDTvalue)*100;
+				$arraySpreadPercent = array();
+				$USDTvalue = 0;
 
+				for ($i=0;$i<5;$i++){
+						
+						if($i == 0){
+							$USDTvalue = 1000;
+						}else if($i == 1){
+							$USDTvalue = 2000;
+						}else if($i == 2){
+							$USDTvalue = 3000;
+						}else if($i == 3){
+							$USDTvalue = 4000;
+						}else if($i == 4){
+							$USDTvalue = 5000;
+						} 
+
+						$USDTV1  =  $USDTvalue-$sellerArray[0];
+						/// btc value price and volume pair
+						$pair 	 =	$SellArray[0];
+						$volume  = 	$pair[0]; // valume
+						$pair[1]; // price
+						$volume2 = $USDTV1/$SellArray[1][1]; // price [1]
+						$sum 	 = $volume2 + $SellArray[0][0];
+						//price after deduct taker fee
+						$priceAfterTakerFee = $sum - 0.003;
+						///sahi
+						//	$priceAfterTakerFee - buy zero volume  // 0 for volume and 1 
+						$secondBTC 	= $priceAfterTakerFee - $BuyArray[0][0];
+						$thirdBTC 	= $secondBTC - $BuyArray[1][0];
+						$USDTthree  = $thirdBTC * $BuyArray[2][1];
+						$sumBuyer 	= $USDTthree+$buyerArray[0]+$buyerArray[1];
+						//price after deduct taker fee
+						$buyDeductFee = $sumBuyer * 0.003;
+						$buyPriceAfterFee = $sumBuyer - $buyDeductFee;
+
+						$finalPercent = ($buyPriceAfterFee / $USDTvalue)*100;
+						array_push($arraySpreadPercent, $finalPercent);
+				}
+
+				return  $arraySpreadPercent;		
 		}else{
 
-				return "not founds";	
-		}
+				return  array();
+		} 
+
+		
 
 		
 
