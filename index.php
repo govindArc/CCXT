@@ -21,14 +21,11 @@
     <script src="/js/jquery.dataTables.min.js"></script>
     <script src="/js/dataTables.bootstrap.min.js"></script>
     <script src="/js/app.js"></script>
-
 	<script type="text/javascript" language="javascript">  
 		
 
 		$(window).load(function() {
-
 			$('.userDate').innerHTML = Date();
-
 			setInterval(function(){
 				location.reload();
 			 }, 60000);
@@ -184,7 +181,6 @@
 									 <th class="mobile-d-all">Spread(4000 USDT)</th>
 									 <th class="mobile-d-all">Spread(5000 USDT)</th>
 								</tr>
-
 <!--liqui-->
 
 								 <tr>
@@ -194,13 +190,24 @@
 									 <td><?php echo  getLastPriceOfExchage('liqui','LTC/BTC');?></td>
 									 <td><?php echo  getLastPriceOfExchage('hitbtc','LTC/BTC');?></td> 
 									 <td>
-									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','LTC/BTC'),getLastPriceOfExchage('hitbtc','LTC/BTC')); ?>
+									 	<?php 
+									 		echo getSpreadPercentage(getLastPriceOfExchage('liqui','LTC/BTC'),getLastPriceOfExchage('hitbtc','LTC/BTC'));
+									 	?>
 									 </td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
+									 <td><?php 
+									 				echo calculateUSDT('liqui','hitbtc','LTC/BTC','1000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('liqui','hitbtc','LTC/BTC','2000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('liqui','hitbtc','LTC/BTC','3000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('liqui','hitbtc','LTC/BTC','4000');
+									 ?></td> 
+									 <td><?php   echo calculateUSDT('liqui','hitbtc','LTC/BTC','5000');
+									 ?></td> 
 									 
 								</tr>
 
@@ -215,11 +222,22 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','LTC/BTC'),getLastPriceOfExchage('okax','LTC/BTC')); ?>
 									 </td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
+									 <td>
+									 	<?php  echo calculateUSDT('liqui','okax','LTC/BTC','1000'); ?>
+									 	
+									 </td> 
+									 <td><?php 
+									 			echo calculateUSDT('liqui','okax','LTC/BTC','2000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('liqui','okax','LTC/BTC','3000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('liqui','okax','LTC/BTC','4000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('liqui','okax','LTC/BTC','5000');
+									 ?></td> 
 								</tr>
 
 
@@ -235,11 +253,23 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','LTC/BTC'),getLastPriceOfExchage('binance','LTC/BTC')); ?>
 									 </td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
+									 <td><?php 
+									 			echo calculateUSDT('liqui','binance','LTC/BTC','1000');
+									 ?></td> 
+
+
+									 <td><?php 
+									 			echo calculateUSDT('liqui','binance','LTC/BTC','2000');
+									 ?></td>  
+									 <td><?php 
+									 			echo calculateUSDT('liqui','binance','LTC/BTC','3000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('liqui','binance','LTC/BTC','4000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('liqui','binance','LTC/BTC','5000');
+									 ?></td> 
 								</tr>
 
 <!--HITBTC-->
@@ -253,11 +283,27 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','LTC/BTC'),getLastPriceOfExchage('liqui','LTC/BTC')); ?>
 									 </td> 
-									  <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td>  
+									 
+									  <td><?php 
+									 			echo calculateUSDT('hitbtc','liqui','LTC/BTC','1000');
+									 ?></td>
+
+									 
+									  <td><?php 
+									 			echo calculateUSDT('hitbtc','liqui','LTC/BTC','2000');
+									 ?></td>
+									 
+									  <td><?php 
+									 			echo calculateUSDT('hitbtc','liqui','LTC/BTC','3000');
+									 ?></td>
+									 
+									  <td><?php 
+									 			echo calculateUSDT('hitbtc','liqui','LTC/BTC','4000');
+									 ?></td>
+									 
+									  <td><?php 
+									 			echo calculateUSDT('hitbtc','liqui','LTC/BTC','5000');
+									 ?></td>
 								</tr>
 
 
@@ -270,11 +316,23 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','LTC/BTC'),getLastPriceOfExchage('binance','LTC/BTC')); ?>
 									 </td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
+
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','binance','LTC/BTC','1000');
+									 ?></td> 
+
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','binance','LTC/BTC','2000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','binance','LTC/BTC','3000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','binance','LTC/BTC','4000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','binance','LTC/BTC','5000');
+									 ?></td>
 								</tr>
 
 
@@ -287,11 +345,21 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','LTC/BTC'),getLastPriceOfExchage('okax','LTC/BTC')); ?>
 									 </td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','okax','LTC/BTC','1000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','okax','LTC/BTC','2000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','okax','LTC/BTC','3000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','okax','LTC/BTC','4000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','okax','LTC/BTC','5000');
+									 ?></td>
 								</tr>
 
 
@@ -309,11 +377,22 @@
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('okax','LTC/BTC'),getLastPriceOfExchage('liqui','LTC/BTC')); ?>
 									 </td>
 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
+									 <td><?php 
+									 			echo calculateUSDT('okax','liqui','LTC/BTC','1000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('okax','liqui','LTC/BTC','2000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('okax','liqui','LTC/BTC','3000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('okax','liqui','LTC/BTC','4000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('okax','liqui','LTC/BTC','5000');
+									 ?></td>
+
 								</tr>
 
 
@@ -326,11 +405,27 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('okax','LTC/BTC'),getLastPriceOfExchage('binance','LTC/BTC')); ?>
 									 </td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
+
+									<td><?php 
+									 			echo calculateUSDT('okax','binance','LTC/BTC','1000');
+									 ?></td>
+
+									 
+									<td><?php 
+									 			echo calculateUSDT('okax','binance','LTC/BTC','2000');
+									 ?></td>
+									 
+									<td><?php 
+									 			echo calculateUSDT('okax','binance','LTC/BTC','3000');
+									 ?></td>
+									 
+									<td><?php 
+									 			echo calculateUSDT('okax','binance','LTC/BTC','4000');
+									 ?></td>
+									 
+									<td><?php 
+									 			echo calculateUSDT('okax','binance','LTC/BTC','5000');
+									 ?></td>
 								</tr>
 
 
@@ -345,11 +440,23 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('okax','LTC/BTC'),getLastPriceOfExchage('hitbtc','LTC/BTC')); ?>
 									 </td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
+
+									 <td><?php 
+									 			echo calculateUSDT('okax','hitbtc','LTC/BTC','1000');
+									 ?></td>
+
+									 <td><?php 
+									 			echo calculateUSDT('okax','hitbtc','LTC/BTC','2000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('okax','hitbtc','LTC/BTC','3000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('okax','hitbtc','LTC/BTC','4000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('okax','hitbtc','LTC/BTC','5000');
+									 ?></td>
 								</tr>
 
 
@@ -399,11 +506,22 @@
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','DASH/BTC'),getLastPriceOfExchage('hitbtc','DASH/BTC')); ?>
 									 </td> 
 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
+									 <td><?php 
+									 			echo calculateUSDT('liqui','hitbtc','DASH/BTC','1000');
+									 ?></td>
+
+									 <td><?php 
+									 			echo calculateUSDT('liqui','hitbtc','DASH/BTC','2000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('liqui','hitbtc','DASH/BTC','3000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('liqui','hitbtc','DASH/BTC','4000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('liqui','hitbtc','DASH/BTC','5000');
+									 ?></td>
 								</tr>
 
 
@@ -416,12 +534,24 @@
 									 <td><?php echo  getLastPriceOfExchage('okax','DASH/BTC');?></td> 
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','DASH/BTC'),getLastPriceOfExchage('okax','DASH/BTC')); ?>
-									 </td> 
-									 	<td>&nbsp;</td> 
-										 <td>&nbsp;</td> 
-										 <td>&nbsp;</td> 
-										 <td>&nbsp;</td> 
-										 <td>&nbsp;</td>  
+									 </td>
+
+									 	<td><?php 
+									 			echo calculateUSDT('liqui','okax','DASH/BTC','1000');
+									 	?></td>
+
+										 <td><?php 
+									 			echo calculateUSDT('liqui','okax','DASH/BTC','2000');
+									 	?></td>
+										 <td><?php 
+									 			echo calculateUSDT('liqui','okax','DASH/BTC','4000');
+									 	?></td>
+										 <td><?php 
+									 			echo calculateUSDT('liqui','okax','DASH/BTC','4000');
+									 	?></td>
+										 <td><?php 
+									 			echo calculateUSDT('liqui','okax','DASH/BTC','5000');
+									 	?></td>
 								</tr>
 
 
@@ -437,11 +567,22 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','DASH/BTC'),getLastPriceOfExchage('binance','DASH/BTC')); ?>
 									 </td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td>  
+									 <td><?php 
+									 			echo calculateUSDT('liqui','binance','DASH/BTC','1000');
+									 ?></td> 
+
+									 <td><?php 
+									 			echo calculateUSDT('liqui','binance','DASH/BTC','2000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('liqui','binance','DASH/BTC','3000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('liqui','binance','DASH/BTC','4000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('liqui','binance','DASH/BTC','5000');
+									 ?></td> 
 								</tr>
 
 <!--HITBTC-->
@@ -455,11 +596,23 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','DASH/BTC'),getLastPriceOfExchage('liqui','DASH/BTC')); ?>
 									 </td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td>  
+									
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','liqui','DASH/BTC','1000');
+									 ?></td> 
+
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','liqui','DASH/BTC','2000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','liqui','DASH/BTC','3000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','liqui','DASH/BTC','4000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','liqui','DASH/BTC','5000');
+									 ?></td> 
 								</tr>
 
 
@@ -471,12 +624,24 @@
 									 <td><?php echo  getLastPriceOfExchage('binance','DASH/BTC');?></td> 
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','DASH/BTC'),getLastPriceOfExchage('binance','DASH/BTC')); ?>
-									 </td> 
-									  <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td>  
+									 </td>
+
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','binance','DASH/BTC','1000');
+									 ?></td>
+
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','binance','DASH/BTC','2000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','binance','DASH/BTC','3000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','binance','DASH/BTC','4000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','binance','DASH/BTC','4000');
+									 ?></td>
 								</tr>
 
 
@@ -489,11 +654,27 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','DASH/BTC'),getLastPriceOfExchage('okax','DASH/BTC')); ?>
 									 </td> 
-									  <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td>  
+
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','okax','DASH/BTC','1000');
+									 ?></td>
+
+									 
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','okax','DASH/BTC','2000');
+									 ?></td>
+									 
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','okax','DASH/BTC','3000');
+									 ?></td>
+									 
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','okax','DASH/BTC','4000');
+									 ?></td>
+									 
+									 <td><?php 
+									 			echo calculateUSDT('hitbtc','okax','DASH/BTC','5000');
+									 ?></td>
 								</tr>
 
 
@@ -510,11 +691,26 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('okax','DASH/BTC'),getLastPriceOfExchage('liqui','DASH/BTC')); ?>
 									 </td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td>  
+
+									 <td><?php 
+									 			echo calculateUSDT('okax','liqui','DASH/BTC','1000');
+									 ?></td>
+									 
+									 <td><?php 
+									 			echo calculateUSDT('okax','liqui','DASH/BTC','2000');
+									 ?></td>
+									 
+									 <td><?php 
+									 			echo calculateUSDT('okax','liqui','DASH/BTC','3000');
+									 ?></td>
+									 
+									 <td><?php 
+									 			echo calculateUSDT('okax','liqui','DASH/BTC','4000');
+									 ?></td>
+									 
+									 <td><?php 
+									 			echo calculateUSDT('okax','liqui','DASH/BTC','5000');
+									 ?></td>
 								</tr>
 
 
@@ -527,11 +723,23 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('okax','DASH/BTC'),getLastPriceOfExchage('binance','DASH/BTC')); ?>
 									 </td> 
-									  <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td>  
+									  
+									 <td><?php 
+									 			echo calculateUSDT('okax','binance','DASH/BTC','1000');
+									 ?></td>
+
+									 <td><?php 
+									 			echo calculateUSDT('okax','binance','DASH/BTC','2000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('okax','binance','DASH/BTC','3000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('okax','binance','DASH/BTC','4000');
+									 ?></td>
+									 <td><?php 
+									 			echo calculateUSDT('okax','binance','DASH/BTC','5000');
+									 ?></td>
 								</tr>
 
 
@@ -546,11 +754,22 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('okax','DASH/BTC'),getLastPriceOfExchage('hitbtc','DASH/BTC')); ?>
 									 </td> 
-									  <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td>  
+
+									  <td><?php 
+									 			echo calculateUSDT('okax','hitbtc','DASH/BTC','1000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('okax','hitbtc','DASH/BTC','2000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('okax','hitbtc','DASH/BTC','3000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('okax','hitbtc','DASH/BTC','4000');
+									 ?></td> 
+									 <td><?php 
+									 			echo calculateUSDT('okax','hitbtc','DASH/BTC','5000');
+									 ?></td> 
 								</tr>
 
 
@@ -600,12 +819,17 @@
 									 <td><?php echo  getLastPriceOfExchage('hitbtc','1ST/BTC');?></td> 
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','1ST/BTC'),getLastPriceOfExchage('hitbtc','1ST/BTC')); ?>
-									 </td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
+									 </td>
+
+									 <td>1000 USDT</td>
+									 <td>2000 USDT</td>
+									 <td>3000 USDT</td>
+									 <td>4000 USDT</td>
+									 <td>5000 USDT</td>
+
+
+
+									  
 								</tr>
 
 
@@ -620,11 +844,12 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','1ST/BTC'),getLastPriceOfExchage('liqui','1ST/BTC')); ?>
 									 </td> 
-									  	<td>&nbsp;</td> 
-										<td>&nbsp;</td> 
-										<td>&nbsp;</td> 
-										<td>&nbsp;</td> 
-										<td>&nbsp;</td>  
+									  	
+									  	<td>1000 USDT</td>
+									 <td>2000 USDT</td>
+									 <td>3000 USDT</td>
+									 <td>4000 USDT</td>
+									 <td>5000 USDT</td> 
 								</tr>
 
 
@@ -670,11 +895,12 @@
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','1ST/ETH'),getLastPriceOfExchage('hitbtc','1ST/ETH')); ?>
 									 </td>
 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
+
+									<td>1000 USDT</td>
+									 <td>2000 USDT</td>
+									 <td>3000 USDT</td>
+									 <td>4000 USDT</td>
+									 <td>5000 USDT</td>
 								</tr>
 
 
@@ -689,11 +915,11 @@
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','1ST/ETH'),getLastPriceOfExchage('liqui','1ST/ETH')); ?>
 									 </td>
 
-									<td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
+									<td>1000 USDT</td>
+									 <td>2000 USDT</td>
+									 <td>3000 USDT</td>
+									 <td>4000 USDT</td>
+									 <td>5000 USDT</td>
 								</tr>
 
 
@@ -737,11 +963,12 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','STEEM/BTC'),getLastPriceOfExchage('hitbtc','STEEM/BTC')); ?>
 									 </td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td>  
+
+									<td>1000 USDT</td>
+									 <td>2000 USDT</td>
+									 <td>3000 USDT</td>
+									 <td>4000 USDT</td>
+									 <td>5000 USDT</td>
 								</tr>
 
 								<tr>
@@ -753,11 +980,12 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('liqui','STEEM/BTC'),getLastPriceOfExchage('binance','STEEM/BTC')); ?>
 									 </td> 
-									<td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td>  
+
+									<td>1000 USDT</td>
+									 <td>2000 USDT</td>
+									 <td>3000 USDT</td>
+									 <td>4000 USDT</td>
+									 <td>5000 USDT</td>
 								</tr>
 
 
@@ -773,11 +1001,12 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','STEEM/BTC'),getLastPriceOfExchage('liqui','STEEM/BTC')); ?>
 									 </td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td>  
+
+									 <td>1000 USDT</td>
+									 <td>2000 USDT</td>
+									 <td>3000 USDT</td>
+									 <td>4000 USDT</td>
+									 <td>5000 USDT</td>
 								</tr>
 
 								<tr>
@@ -791,11 +1020,13 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('hitbtc','STEEM/BTC'),getLastPriceOfExchage('binance','STEEM/BTC')); ?>
 									 </td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td>  
+
+
+									 <td>1000 USDT</td>
+									 <td>2000 USDT</td>
+									 <td>3000 USDT</td>
+									 <td>4000 USDT</td>
+									 <td>5000 USDT</td>
 								</tr>
 
 
@@ -810,11 +1041,15 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('binance','STEEM/BTC'),getLastPriceOfExchage('liqui','STEEM/BTC')); ?>
 									 </td> 
-									<td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td>  
+
+									 <td>1000 USDT</td>
+									 <td>2000 USDT</td>
+									 <td>3000 USDT</td>
+									 <td>4000 USDT</td>
+									 <td>5000 USDT</td>
+
+
+
 								</tr>
 
 								<tr>
@@ -829,11 +1064,12 @@
 									 <td>
 									 	<?php echo getSpreadPercentage(getLastPriceOfExchage('binance','STEEM/BTC'),getLastPriceOfExchage('hitbtc','STEEM/BTC')); ?>
 									 </td> 
-									  <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td> 
-									 <td>&nbsp;</td>  
+
+									  <td>1000 USDT</td>
+									 <td>2000 USDT</td>
+									 <td>3000 USDT</td>
+									 <td>4000 USDT</td>
+									 <td>5000 USDT</td>
 								</tr>
 <!--STEEM/BTC-->
 				</table>

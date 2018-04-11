@@ -4,10 +4,6 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-
-
-
-
 include 'ccxt.php';
 $huobiObj   	= new \ccxt\huobi(); // BTC/CNY , LTC/CNY
 $okexObj   		= new \ccxt\okex(); // DASH/BTC ,LTC/BTC
@@ -16,17 +12,10 @@ $hitbtcObj  	= new \ccxt\hitbtc(); // 1ST/BTC 1ST/ETH LTC/BTC DASH/BTC STEEM/BTC
 $binanceObj   	= new \ccxt\binance(); // LTC/BTC STEEM/BTC DASH/BTC
 /*top spreads*/
 //BTC/USD
-
-
 //$poloniexObj   	= new \ccxt\poloniex();  not free
 //$biboxObj   	= new \ccxt\bibox();   not free
-
-
 $kucoinObj   	= new \ccxt\kucoin();   // BTC/USDT
-$zbObj   		= new \ccxt\zb();           // BTC/USDT
-
-
-
+$zbObj   		= new \ccxt\zb();           // BTC/USDTx
 $gateioObj   	= new \ccxt\gateio();   // BTC/USDT  
 $tidexObj   	= new \ccxt\tidex();    // BTC/USDT  
 $cryptopiaObj 	= new \ccxt\cryptopia();  // BTC/USDT  
@@ -37,8 +26,128 @@ $lowerExchange  = 999999999999;
 $higherCurrency = '';
 $lowerCurrency  = '';
 $highBidAsk 	= 0; 
-$highAskExchange = ''; 
+$highAskExchange = '';
 
+
+ 
+
+
+
+
+
+ 
+
+
+function calculateUSDT($exchnageA,$exchnageB,$exchangePair,$USDTvalue){
+
+
+		$orderBookAExchange =  getOrderBook($exchnageA,$exchangePair);
+		$orderBookBExchange =  getOrderBook($exchnageB,$exchangePair);
+
+
+
+		if(count($orderBookAExchange)>0 && count($orderBookBExchange)>0){
+
+				$BuyArray = $orderBookAExchange['bids'];
+				$SellArray = $orderBookBExchange['asks'];
+				$buyerArray 	=   array();
+				$sellerArray  	=   array();
+
+				foreach ($BuyArray as $value) {
+							array_push($buyerArray,($value[0] * $value[1]));
+				} 
+
+				foreach ($SellArray as $value) {
+							array_push($sellerArray,($value[0] * $value[1]));
+				} 	
+				//991  calculation
+				$USDTV1  =  $USDTvalue-$sellerArray[0];
+
+				/// btc value price and volume pair
+				$pair 	 =	$SellArray[0];
+				$volume  = 	$pair[0]; // valume
+				$pair[1]; // price
+				$volume2 = $USDTV1/$SellArray[1][1]; // price [1]
+				$sum 	 = $volume2 + $SellArray[0][0];
+				//price after deduct taker fee
+				$priceAfterTakerFee = $sum - 0.003;
+				///sahi
+				//	$priceAfterTakerFee - buy zero volume  // 0 for volume and 1 
+				$secondBTC 	= $priceAfterTakerFee - $BuyArray[0][0];
+				$thirdBTC 	= $secondBTC - $BuyArray[1][0];
+				$USDTthree  = $thirdBTC * $BuyArray[2][1];
+				$sumBuyer 	= $USDTthree+$buyerArray[0]+$buyerArray[1];
+				//price after deduct taker fee
+				$buyDeductFee = $sumBuyer * 0.003;
+				$buyPriceAfterFee = $sumBuyer - $buyDeductFee;
+				 
+				return ($buyPriceAfterFee / $USDTvalue)*100;
+
+		}else{
+
+				return "not founds";	
+		}
+
+		
+
+
+		
+
+
+
+		//$exchnageA
+		//$exchangePair
+}
+
+
+function getOrderBook($exchnage,$exchangePair){
+		$limit = '5';
+		global  $huobiObj;    
+		global  $okexObj;  	 
+		global  $liquiObj;    
+		global  $hitbtcObj; 	 
+		global  $binanceObj;    
+		global  $kucoinObj;    
+		global  $zbObj;   	 
+		global  $gateioObj;    
+		global  $tidexObj;    
+		global  $cryptopiaObj; 
+		global  $exmoObj;   	 
+		global  $bittrexObj; 
+
+
+		if($exchnage == 'huobi'){
+			$finalData = $huobiObj->fetch_order_book($exchangePair, $limit);
+		}elseif($exchnage == 'okex'){
+			$finalData = $okexObj->fetch_order_book($exchangePair, $limit);
+		}elseif($exchnage == 'liqui'){
+			$finalData = $liquiObj->fetch_order_book($exchangePair, $limit);
+		}elseif($exchnage == 'hitbtc'){
+			
+			$finalData = $hitbtcObj->fetch_order_book($exchangePair, $limit);
+
+		}elseif($exchnage == 'binance'){
+			$finalData = $binanceObj->fetch_order_book($exchangePair, $limit);
+		}elseif($exchnage == 'kucoin'){
+			$finalData = $kucoinObj->fetch_order_book($exchangePair, $limit);
+		}elseif($exchnage == 'zb'){	
+			$finalData = $zbObj->fetch_order_book($exchangePair, $limit);
+		}elseif($exchnage == 'gateio'){		
+			$finalData = $gateioObj->fetch_order_book($exchangePair, $limit);
+		}elseif($exchnage == 'tidex'){		
+			$finalData = $tidexObj->fetch_order_book($exchangePair, $limit);
+		}elseif($exchnage == 'cryptopia'){	
+			$finalData = $cryptopiaObj->fetch_order_book($exchangePair, $limit);
+		}elseif($exchnage == 'exmo'){	
+			$finalData = $exmoObj->fetch_order_book($exchangePair, $limit);
+		}else{
+			$finalData = $bittrexObj->fetch_order_book($exchangePair, $limit);
+		}
+
+		return $finalData;
+}
+
+ 
 
 
 
