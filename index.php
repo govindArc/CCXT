@@ -98,7 +98,7 @@
 
 
 
-					echo json_encode(array("higherExchange"=>$higherExchange,"higherExchange"=>$higherCurrency,"lowerExchange"=>$lowerExchange,"lowerCurrency"=>$lowerCurrency,"highBidAsk"=>$highBidAsk,"highAskExchange"=>$highAskExchange,"html"=>$html));
+					echo json_encode(array("higherExchange"=>$higherExchange,"higherCurrency"=>$higherCurrency,"lowerExchange"=>$lowerExchange,"lowerCurrency"=>$lowerCurrency,"highBidAsk"=>$highBidAsk,"highAskExchange"=>$highAskExchange,"html"=>$html));
 
 					die;
 
@@ -140,7 +140,42 @@
 			    url: "index.php",
 			    data: "DATA=AJAX",
 			    success: function (data) {
-			        alert(data);
+			         var myObj = JSON.parse(data);
+
+			         var higherExchange 	=  myObj.higherExchange;
+			         var higherExchange 	=  myObj.higherCurrency;
+			         
+
+			         var lowerExchange		=  myObj.lowerExchange;
+			         var lowerCurrency 		=  myObj.lowerCurrency;
+
+			         
+			         var highBidAsk 		=  myObj.highBidAsk;
+			         var highAskExchange 	=  myObj.highAskExchange;
+
+
+
+			         var tableHtml 			=  myObj.html;
+
+			        $("#higerUsdt > tbody").html("");
+			        $("#higerUsdt > tbody").html(tableHtml);
+
+
+			       	
+			        
+
+
+			         
+
+
+			         
+
+
+ 
+
+					//higherExchange:"kucoin"
+					//lowerExchange:"7611.8532677800"
+
 			    }
 			});
 		});
@@ -158,7 +193,7 @@
 
 		<div class="col-md-12">	
 				<div class="col-md-4">
-				    <table id="datatables" class="table table-striped table-bordered" >
+				    <table id="higerUsdt" class="table table-striped table-bordered" >
 				       
 
 
@@ -177,8 +212,9 @@
 						      	</tr>
 						      		<tr>      
 						      			<td class="latest-feature data-price-max"> 
-						      				<span class="latest-exchange">Low Exchange: <strong><?php echo $lowerCurrency;?></strong>
-						      				<br>High Exchange: <strong><?php echo $higherCurrency; ?></strong></span>      
+						      				<span class="latest-exchange">
+						      					Low Exchange: <strong id="lowerExchangeCurrency"></strong>
+						      				<br>High Exchange: <strong id="highExchangeCurrency"></strong></span>      
 						      			</td>
 						      		</tr>
 						    </table>
