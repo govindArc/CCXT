@@ -42,11 +42,16 @@ $bittrexObj  	= new \ccxt\bittrex(); 	// BTC/USDT
 						$Tickers 		= $cryptopiaObj->fetch_ticker($pair);	
 						$currencySymbol = "cryptopia";	
 
-					}else if($i==5){
-					//	$Tickers 		= $exmoObj->fetch_ticker($pair);	
-						$Tickers 		= $cryptopiaObj->fetch_ticker($pair);	
+					}
+
+					/*	
+					else if($i==5){
+						$Tickers 		= $exmoObj->fetch_ticker($pair);	
 						$currencySymbol = "exmo";
-					}else{
+					}
+					*/
+
+					else{
 
 						$Tickers 		= $bittrexObj->fetch_ticker($pair);	
 						$currencySymbol = "bittrex";

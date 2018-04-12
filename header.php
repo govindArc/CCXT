@@ -145,10 +145,15 @@ function getOrderBook($exchnage,$exchangePair){
 			$finalData = $tidexObj->fetch_order_book($exchangePair, $limit);
 		}elseif($exchnage == 'cryptopia'){	
 			$finalData = $cryptopiaObj->fetch_order_book($exchangePair, $limit);
-		}elseif($exchnage == 'exmo'){	
-		//	$finalData = $exmoObj->fetch_order_book($exchangePair, $limit);
+		}
+
+
+		/*
+		elseif($exchnage == 'exmo'){	
 			$finalData = $bittrexObj->fetch_order_book($exchangePair, $limit);	
-		}else{
+		}*/
+
+		else{
 			$finalData = $bittrexObj->fetch_order_book($exchangePair, $limit);
 		}
 
@@ -257,14 +262,14 @@ function getLastPriceOfExchage($exchange,$pair){
 			$Tickers = $zbObj->fetch_ticker($pair);
 			setHigherLower($Tickers,'zb');
 		}
+		
+		/*
 		else if($exchange == 'exmo'){
-
-			$Tickers = $zbObj->fetch_ticker($pair);
-			setHigherLower($Tickers,'zb');
-			
-		//	$Tickers = $exmoObj->fetch_ticker($pair);
-		//	setHigherLower($Tickers,'exmo');
+			$Tickers = $exmoObj->fetch_ticker($pair);
+			setHigherLower($Tickers,'exmo');
 		}
+		*/
+
 		else{
 			$Tickers = $binanceObj->fetch_ticker($pair);
 		}
