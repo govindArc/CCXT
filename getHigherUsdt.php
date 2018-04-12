@@ -15,7 +15,9 @@ $bittrexObj  	= new \ccxt\bittrex(); 	// BTC/USDT
 
 	//if($_POST){
 			$pair	 = "BTC/USDT";
-			$html 	 = "";
+			$html 	 = "<tr>
+				         <th colspan="2">Latest BTC/USDT Price Spreads</th>
+				       </tr>";
 			$allPiceArray = array();	
 			for($i=0;$i<7;$i++){
 

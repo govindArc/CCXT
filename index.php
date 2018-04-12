@@ -23,8 +23,9 @@
 			$('.userDate').innerHTML = Date();
 			setInterval(function(){
 				location.reload();
-			 }, 60000);
+			 }, 120000);
 		});  
+		
 		$(document).ready(function(){
 			 $('#datatables').DataTable( {
 			        "paging":   false,
@@ -33,6 +34,7 @@
 			//"ordering": false,
 			$.ajax({
 			    type: "POST",
+			    dataType: "json",
 			    url: "getHigherUsdt.php",
 			    data: {
 			        data: "send"
@@ -57,13 +59,10 @@
 		<div class="col-md-12">	
 				<div class="col-md-4">
 				    <table id="datatables" class="table table-striped table-bordered" >
-				       <tr>
-				         <th colspan="2">Latest BTC/USDT Price Spreads</th>
-				       </tr>
+				       
 
-				       <tr>
-				         <th colspan="2"><p id="userDate" class="userDate"></p></th>
-				       </tr>
+
+				        
 				       
 				    </table>
 				  </div>
