@@ -64,34 +64,7 @@
 				       <tr>
 				         <th colspan="2"><p id="userDate" class="userDate"></p></th>
 				       </tr>
-				       <tr>
-				            <td>kucoin</td>
-				            <td><?php echo getLastPriceOfExchage('kucoin','BTC/USDT');?></td>
-				       </tr>
-
-				       <tr>          
-				      		<td>bittrex</td> 
-				      		<td><?php echo getLastPriceOfExchage('bittrex','BTC/USDT');?></td>
-				       </tr>
-				       <tr> 
-				      		<td>gateio</td>  
-				      		<td><?php echo getLastPriceOfExchage('gateio','BTC/USDT');?></td>
-				       </tr>
-				       <tr>          
-				      		<td>tidex</td>
-				      		<td><?php echo getLastPriceOfExchage('tidex','BTC/USDT');?></td>
-				       </tr>
-				       <tr>  <td>cryptopia</td>
-				             <td><?php echo getLastPriceOfExchage('cryptopia','BTC/USDT');?></td>
-				        </tr>
-				        <tr>  
-				        	  <td>zb</td>
-				        	  <td><?php echo getLastPriceOfExchage('zb','BTC/USDT');?></td>
-				        </tr>
-				        <tr>   
-				        		<td>exmo</td>
-				        		<td><?php echo getLastPriceOfExchage('exmo','BTC/USDT');?></td>
-				        </tr>
+				       
 				    </table>
 				  </div>
 
