@@ -95,10 +95,7 @@
 							}
 					}
 
-
-
-
-					echo json_encode("higherExchange"=>$higherExchange,"higherCurrency"=>$higherCurrency,"lowerExchange"=>$lowerExchange,"lowerCurrency"=>$lowerCurrency,"highBidAsk"=>$highBidAsk,"highAskExchange"=>$highAskExchange,"html"=>$html);
+					echo json_encode(array("higherExchange"=>$higherExchange,"higherCurrency"=>$higherCurrency,"lowerExchange"=>$lowerExchange,"lowerCurrency"=>$lowerCurrency,"highBidAsk"=>$highBidAsk,"highAskExchange"=>$highAskExchange,"html"=>$html));
 
 					die;
 
@@ -140,41 +137,32 @@
 			    url: "index.php",
 			    data: "DATA=AJAX",
 			    success: function (data) {
-			         var myObj = JSON.parse(data);
-
+			    	
+			         var myObj = data;
 			         var higherExchange 	=  myObj.higherExchange;
-			         var higherExchange 	=  myObj.higherCurrency;
-			         
-
+			         var higherCurrency 	=  myObj.higherCurrency;
 			         var lowerExchange		=  myObj.lowerExchange;
 			         var lowerCurrency 		=  myObj.lowerCurrency;
-
-			         
 			         var highBidAsk 		=  myObj.highBidAsk;
 			         var highAskExchange 	=  myObj.highAskExchange;
-
-
-
-			         var tableHtml 			=  myObj.html;
-
+					 var tableHtml 			=  myObj.html;
+					 
 			        $("#higerUsdt > tbody").html("");
 			        $("#higerUsdt > tbody").html(tableHtml);
 
+			        $("#lowerExchangeCurrency").html("");	
+			        $("#highExchangeCurrency").html("");	
 
-			       	
-			        
+			        $("#lowerExchangeCurrency").html(lowerCurrency);	
+			        $("#highExchangeCurrency").html(higherCurrency);	
 
+			        $("#higherBidCurrency").html("");	
+			        $("#higherBidPrice").html("");
 
-			         
+			        $("#higherBidCurrency").html(highAskExchange);	
+			        $("#higherBidPrice").html(highBidAsk);
 
-
-			         
-
-
- 
-
-					//higherExchange:"kucoin"
-					//lowerExchange:"7611.8532677800"
+	
 
 			    }
 			});
@@ -193,12 +181,9 @@
 
 		<div class="col-md-12">	
 				<div class="col-md-4">
-				    <table id="higerUsdt" class="table table-striped table-bordered" >
-				       
-
-
-				        
-				       
+				    <table id="higerUsdt" class="table table-striped table-bordered">
+				       	<tbody>
+  						</tbody>
 				    </table>
 				  </div>
 
@@ -222,6 +207,8 @@
 				  </div>
 
 
+
+
 				  <div class="col-md-4">
 
 				  			<table id="datatables" class="table table-striped table-bordered" >
@@ -233,9 +220,12 @@
 						          <th><p id="userDate" class="userDate"></p></th>
 						      	</tr>
 						      	<tr>      
+						      		
 						      			<td  class="latest-feature data-price-max"> 
 						      				<span class="latest-exchange">
-						      				High Exchange: <strong><?php echo $highAskExchange; ?></strong>
+						      				High Exchange: <strong id="higherBidCurrency"></strong>
+						      				<br>
+						      				High Exchange Bid Ask: <strong id="higherBidPrice"></strong>
 						      				</span>      
 						      	</td>
 
