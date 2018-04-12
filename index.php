@@ -1,7 +1,6 @@
 <?php
 	include 'header.php';
-	
-	if(isset($_GET["DATA"])){
+	if(isset($_POST["DATA"])){
 			$pair	 = "BTC/USDT";
 			$html 	 = "<tr>
 				         <th colspan='2'>Latest BTC/USDT Price Spreads</th>
