@@ -1,11 +1,10 @@
 <?php
 	include 'header.php';
-
-
+	
 	if(isset($_GET["DATA"])){
 			$pair	 = "BTC/USDT";
 			$html 	 = "<tr>
-				         <th colspan="2">Latest BTC/USDT Price Spreads</th>
+				         <th colspan='2'>Latest BTC/USDT Price Spreads</th>
 				       </tr>";
 			$allPiceArray = array();	
 			for($i=0;$i<7;$i++){
@@ -101,6 +100,9 @@
 
 
 					echo json_encode(array("higherExchange"=>$higherExchange,"higherExchange"=>$higherCurrency,"lowerExchange"=>$lowerExchange,"lowerCurrency"=>$lowerCurrency,"highBidAsk"=>$highBidAsk,"highAskExchange"=>$highAskExchange,"html"=>$html));
+
+	}				
+
 ?>
 
 <!--CSSSSS-->

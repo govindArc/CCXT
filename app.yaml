@@ -7,8 +7,6 @@ handlers:
 
 - url: /js
   static_dir: www/js
-
- 
-
+  
 - url: /.*
   script: index.php

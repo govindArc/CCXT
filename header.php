@@ -1,13 +1,6 @@
-
 <?php
-/*(\ccxt\Exchange::$exchanges); */
-
-ini_set('max_execution_time', 300);
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 include 'ccxt.php';
+
 $huobiObj   	= new \ccxt\huobi(); // BTC/CNY , LTC/CNY
 $okexObj   		= new \ccxt\okex(); // DASH/BTC ,LTC/BTC
 $liquiObj   	= new \ccxt\liqui(); // 1ST/BTC 1ST/ETH LTC/BTC DASH/BTC STEEM/BTC
