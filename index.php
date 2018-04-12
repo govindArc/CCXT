@@ -2,7 +2,7 @@
 	include 'header.php';
 
 
-	if(isset($_POST["data"])){
+	if(isset($_GET["DATA"])){
 			$pair	 = "BTC/USDT";
 			$html 	 = "<tr>
 				         <th colspan="2">Latest BTC/USDT Price Spreads</th>
@@ -134,16 +134,19 @@
 			    });
 			//"ordering": false,
 			$.ajax({
-			    type: "POST",
+			    type: 'POST',
 			    dataType: "json",
-			    url: "getHigherUsdt.php",
-			    data: {
-			        data: "send"
-			    },
+			    url: "index.php",
+			    data: "DATA=AJAX",
 			    success: function (data) {
 			        alert(data);
 			    }
 			});
+
+
+			  
+
+
 		});
 </script>  
 </head>
