@@ -128,9 +128,9 @@
 		});  
 
 		$(document).ready(function(){
-			console.log("this calls");
-
-
+			$("#higerUsdt").hide();
+			$("#highPriceTable").hide();
+			$("#highBidTable").hide();
 			$.ajax({
 			    type: 'POST',
 			    dataType: "json",
@@ -146,24 +146,20 @@
 			         var highBidAsk 		=  myObj.highBidAsk;
 			         var highAskExchange 	=  myObj.highAskExchange;
 					 var tableHtml 			=  myObj.html;
-					 
+
 			        $("#higerUsdt > tbody").html("");
 			        $("#higerUsdt > tbody").html(tableHtml);
-
 			        $("#lowerExchangeCurrency").html("");	
 			        $("#highExchangeCurrency").html("");	
-
 			        $("#lowerExchangeCurrency").html(lowerCurrency);	
 			        $("#highExchangeCurrency").html(higherCurrency);	
-
 			        $("#higherBidCurrency").html("");	
 			        $("#higherBidPrice").html("");
-
 			        $("#higherBidCurrency").html(highAskExchange);	
 			        $("#higherBidPrice").html(highBidAsk);
-
-	
-
+			        $("#higerUsdt").show();
+					$("#highPriceTable").show();
+					$("#highBidTable").show();
 			    }
 			});
 		});
@@ -188,7 +184,7 @@
 				  </div>
 
 				  <div class="col-md-4">
-				  			<table id="datatables" class="table table-striped table-bordered" >
+				  			<table id="highPriceTable" class="table table-striped table-bordered" >
 						        <tr>
 						          <th colspan="2">High Price Spread</th>
 						        </tr>
@@ -211,7 +207,7 @@
 
 				  <div class="col-md-4">
 
-				  			<table id="datatables" class="table table-striped table-bordered" >
+				  			<table id="highBidTable" class="table table-striped table-bordered" >
 						        <tr>
 						          <th>High Bid Ask Spread</th>
 						        </tr>
