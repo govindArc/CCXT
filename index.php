@@ -7,41 +7,42 @@
 <html>
 <head>
 	<title>CCXT CURRENCY EXCAHNGE</title>
-
-
-	<script type="text/javascript" href="/css/bootstrap.css"> </script>
-	<script type="text/javascript" href="/css/bootstrap.min.css"> </script>
-
+	<script type="text/javascript" href="/css/bootstrap.css"></script>
+	<script type="text/javascript" href="/css/bootstrap.min.css"></script>
 	<link href='/css/core.css' media='screen' rel='stylesheet' type='text/css'>
     <link href='/css/fonts.css' media='screen' rel='stylesheet' type='text/css'>
     <link href='/css/responsive.css' media='screen' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href='/css/jquery.dataTables.min.css' media='screen' rel='stylesheet' type='text/css' >
+    <link href='/css/jquery.dataTables.min.css' media='screen' rel='stylesheet' type='text/css'>
     <script src="/js/jquery-1.9.1.min.js"></script>
     <script src="/js/jquery.dataTables.min.js"></script>
     <script src="/js/dataTables.bootstrap.min.js"></script>
     <script src="/js/app.js"></script>
 	<script type="text/javascript" language="javascript">  
-		
-
 		$(window).load(function() {
 			$('.userDate').innerHTML = Date();
 			setInterval(function(){
 				location.reload();
 			 }, 60000);
 		});  
-
-
 		$(document).ready(function(){
 			 $('#datatables').DataTable( {
 			        "paging":   false,
 			        "ordering": true,
 			    });
-			//"ordering": false,		
+			//"ordering": false,
+			$.ajax({
+			    type: "POST",
+			    url: "getHigherUsdt.php",
+			    data: {
+			        data: "send"
+			    },
+			    success: function (data) {
+			        alert(data);
+			    }
+			});
 		});
-</script>   
-
-
+</script>  
 </head>
 
 <body>
@@ -63,12 +64,11 @@
 				       <tr>
 				         <th colspan="2"><p id="userDate" class="userDate"></p></th>
 				       </tr>
-
-				       
 				       <tr>
 				            <td>kucoin</td>
 				            <td><?php echo getLastPriceOfExchage('kucoin','BTC/USDT');?></td>
 				       </tr>
+
 				       <tr>          
 				      		<td>bittrex</td> 
 				      		<td><?php echo getLastPriceOfExchage('bittrex','BTC/USDT');?></td>

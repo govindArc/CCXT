@@ -13,6 +13,7 @@ $okexObj   		= new \ccxt\okex(); // DASH/BTC ,LTC/BTC
 $liquiObj   	= new \ccxt\liqui(); // 1ST/BTC 1ST/ETH LTC/BTC DASH/BTC STEEM/BTC
 $hitbtcObj  	= new \ccxt\hitbtc(); // 1ST/BTC 1ST/ETH LTC/BTC DASH/BTC STEEM/BTC
 $binanceObj   	= new \ccxt\binance(); // LTC/BTC STEEM/BTC DASH/BTC
+
 /*top spreads*/
 //BTC/USD
 //$poloniexObj   	= new \ccxt\poloniex();  not free
@@ -22,8 +23,11 @@ $zbObj   		= new \ccxt\zb();           // BTC/USDTx
 $gateioObj   	= new \ccxt\gateio();   // BTC/USDT  
 $tidexObj   	= new \ccxt\tidex();    // BTC/USDT  
 $cryptopiaObj 	= new \ccxt\cryptopia();  // BTC/USDT  
-$exmoObj   		= new \ccxt\exmo();    		// BTC/USDT  
+//$exmoObj   		= new \ccxt\exmo();    		// BTC/USDT  
 $bittrexObj  	= new \ccxt\bittrex(); 	// BTC/USDT  
+
+
+
 $higherExchange = 0;
 $lowerExchange  = 999999999999;
 $higherCurrency = '';
@@ -142,13 +146,15 @@ function getOrderBook($exchnage,$exchangePair){
 		}elseif($exchnage == 'cryptopia'){	
 			$finalData = $cryptopiaObj->fetch_order_book($exchangePair, $limit);
 		}elseif($exchnage == 'exmo'){	
-			$finalData = $exmoObj->fetch_order_book($exchangePair, $limit);
+		//	$finalData = $exmoObj->fetch_order_book($exchangePair, $limit);
+			$finalData = $bittrexObj->fetch_order_book($exchangePair, $limit);	
 		}else{
 			$finalData = $bittrexObj->fetch_order_book($exchangePair, $limit);
 		}
 
 		return $finalData;
 } 
+
 
 
 
@@ -188,15 +194,7 @@ function getSpreadPercentage($ExchangeOne,$ExchangeTwo){
 		$totalCoinsB = ($totalCoins * $ExchangeTwo)-0.003;
 		$profit 	 =	 $totalCoinsB - $assets;
 		return ($profit /  $assets);
-}
-
-
-
-
-
-
- 
-
+} 
  
 
 function getLastPriceOfExchage($exchange,$pair){
@@ -260,8 +258,12 @@ function getLastPriceOfExchage($exchange,$pair){
 			setHigherLower($Tickers,'zb');
 		}
 		else if($exchange == 'exmo'){
-			$Tickers = $exmoObj->fetch_ticker($pair);
-			setHigherLower($Tickers,'exmo');
+
+			$Tickers = $zbObj->fetch_ticker($pair);
+			setHigherLower($Tickers,'zb');
+			
+		//	$Tickers = $exmoObj->fetch_ticker($pair);
+		//	setHigherLower($Tickers,'exmo');
 		}
 		else{
 			$Tickers = $binanceObj->fetch_ticker($pair);
