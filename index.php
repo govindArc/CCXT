@@ -100,6 +100,8 @@
 
 					echo json_encode(array("higherExchange"=>$higherExchange,"higherExchange"=>$higherCurrency,"lowerExchange"=>$lowerExchange,"lowerCurrency"=>$lowerCurrency,"highBidAsk"=>$highBidAsk,"highAskExchange"=>$highAskExchange,"html"=>$html));
 
+					die;
+
 	}				
 
 ?>
@@ -131,7 +133,7 @@
 		$(document).ready(function(){
 			console.log("this calls");
 
-			
+
 			$.ajax({
 			    type: 'POST',
 			    dataType: "json",
@@ -141,11 +143,6 @@
 			        alert(data);
 			    }
 			});
-
-
-			  
-
-
 		});
 </script>  
 </head>
