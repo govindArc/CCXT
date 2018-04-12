@@ -130,11 +130,9 @@
 		});  
 
 		$(document).ready(function(){
-			 $('#datatables').DataTable( {
-			        "paging":   false,
-			        "ordering": true,
-			    });
-			//"ordering": false,
+			console.log("this calls");
+
+			
 			$.ajax({
 			    type: 'POST',
 			    dataType: "json",
