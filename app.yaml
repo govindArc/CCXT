@@ -8,9 +8,7 @@ handlers:
 - url: /js
   static_dir: www/js
 
-- url: /getHigherUsdt.php
-  static_dir: getHigherUsdt.php
-  
+ 
 
 - url: /.*
   script: index.php
