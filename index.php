@@ -235,7 +235,7 @@
 
 
 
-		$(document).ready(function(){
+		$(window).load(function(){
 
 		/*this is another*/	
 			$.ajax({
