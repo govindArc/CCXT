@@ -352,8 +352,10 @@
  
  
 
+ 					
+var loader = "<tr><th style='align-items: center;text-align: center;''  colspan='11'><div class='loader'></div></th></tr>";	
 
-			var loader = '<tr><th style="align-items: center;text-align: center;" colspan='11'><div class="loader"></div></th></tr>';	
+
 			$("#DASHBTC > tbody").html(loader);
 			$("#LTCBTC > tbody").html(loader);
 
