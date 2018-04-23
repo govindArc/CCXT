@@ -1,6 +1,9 @@
 <?php
 	include 'header.php';
-	if(isset($_POST["DATA"])){
+
+
+
+	if(isset($_POST["DATA"]) && $_POST["DATA"] == "AJAX"){
 			$pair	 = "BTC/USDT";
 			$html 	 = "<tr>
 				         <th colspan='2'>Latest BTC/USDT Price Spreads</th>
@@ -99,7 +102,82 @@
 
 					die;
 
-	}				
+	}
+
+
+
+/*LTC BTC*/
+	if(isset($_POST["DATA"]) && $_POST["DATA"] == "LTCBTC"){
+
+
+		$exhageCurrency  = "LTC/BTC";
+		$exchanegArrayA =  ["liqui","liqui","liqui","hitbtc"];
+		$exchanegArrayB =  ["hitbtc","okax","binance","liqui"];
+		
+
+		$html =  "";	
+		for($i=0;$i>count($exchanegArrayA);$i++){
+
+			$lastExchangeA =  getLastPriceOfExchage($exchanegArrayA[$i],$exhageCurrency);
+			$lastExchangeB = getLastPriceOfExchage($exchanegArrayB[$i],$exhageCurrency);
+			
+			$spreadPercentage = getSpreadPercentage($lastExchangeA,$lastExchangeB);
+
+			$USDTArray = calculateUSDT($exchanegArrayA[$i],$exchanegArrayB[$i],$exhageCurrency);
+
+
+			$USDT_1000 = "not found";
+			$USDT_2000 = "not found";
+			$USDT_3000 = "not found";	
+			$USDT_4000 = "not found";
+			$USDT_5000 = "not found";
+
+			if(isset($USDTArray[0])){
+				$USDT_1000 = $USDTArray[0];
+			}
+			if(isset($USDTArray[1])){
+				$USDT_2000 = $USDTArray[1];
+			}
+			if(isset($USDTArray[2])){
+				$USDT_3000 = $USDTArray[2];
+			}
+			if(isset($USDTArray[3])){
+				$USDT_4000 = $USDTArray[3];
+			}
+			if(isset($USDTArray[4])){
+				$USDT_5000 = $USDTArray[5];
+			}
+
+
+			$html = $html."<tr>
+								<td>".$exhageCurrency."</td>
+								<td>".$exchanegArrayA[$i]."</td>
+								<td>".$exchanegArrayB[$i]."</td>
+								<td>".$lastExchangeA."</td>	
+								<td>".$lastExchangeB."</td>
+								<td>".$spreadPercentage."</td>
+								<td>".$USDT_1000."</td>
+								<td>".$USDT_2000."</td>
+								<td>".$USDT_3000."</td>
+								<td>".$USDT_4000."</td>
+								<td>".$USDT_5000."</td>
+						   <tr>"
+
+			}
+
+		 echo json_encode(array("LTCBTC"=>$html));
+		 die;
+
+	}
+
+
+
+
+
+
+
+
+
 
 ?>
 
@@ -137,7 +215,6 @@
 			    url: "index.php",
 			    data: "DATA=AJAX",
 			    success: function (data) {
-			    	
 			         var myObj = data;
 			         var higherExchange 	=  myObj.higherExchange;
 			         var higherCurrency 	=  myObj.higherCurrency;
@@ -146,6 +223,11 @@
 			         var highBidAsk 		=  myObj.highBidAsk;
 			         var highAskExchange 	=  myObj.highAskExchange;
 					 var tableHtml 			=  myObj.html;
+					
+					 var currintDate  = new Date().toLocaleString();
+					 $(".userDate").html("");	
+					 $(".userDate").html(currintDate);
+
 
 			        $("#higerUsdt > tbody").html("");
 			        $("#higerUsdt > tbody").html(tableHtml);
@@ -162,6 +244,26 @@
 					$("#highBidTable").show();
 			    }
 			});
+
+
+			/*this is another*/	
+
+			$.ajax({
+			    type: 'POST',
+			    dataType: "json",
+			    url: "index.php",
+			    data: "DATA=LTCBTC",
+			    success: function (data) {
+			         var myObj = data;
+
+			         alert(myObj);
+
+			    }
+			});
+
+
+
+
 		});
 </script>  
 </head>
@@ -227,18 +329,8 @@
 
 						      		</tr>
 						    </table>
-
 				  </div>
-
-
-
-
-				  
-
-
 		</div>
-
-
 			<div class="col-xs-12">	
 				<h1><i class="material-icons">tune</i> Exchange Spreads</h1>
 			</div>

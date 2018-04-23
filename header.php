@@ -1,12 +1,10 @@
 <?php
 include 'ccxt.php';
-
 $huobiObj   	= new \ccxt\huobi(); // BTC/CNY , LTC/CNY
 $okexObj   		= new \ccxt\okex(); // DASH/BTC ,LTC/BTC
 $liquiObj   	= new \ccxt\liqui(); // 1ST/BTC 1ST/ETH LTC/BTC DASH/BTC STEEM/BTC
 $hitbtcObj  	= new \ccxt\hitbtc(); // 1ST/BTC 1ST/ETH LTC/BTC DASH/BTC STEEM/BTC
 $binanceObj   	= new \ccxt\binance(); // LTC/BTC STEEM/BTC DASH/BTC
-
 /*top spreads*/
 //BTC/USD
 //$poloniexObj   	= new \ccxt\poloniex();  not free
@@ -18,16 +16,12 @@ $tidexObj   	= new \ccxt\tidex();    // BTC/USDT
 $cryptopiaObj 	= new \ccxt\cryptopia();  // BTC/USDT  
 //$exmoObj   		= new \ccxt\exmo();    		// BTC/USDT  
 $bittrexObj  	= new \ccxt\bittrex(); 	// BTC/USDT  
-
-
-
 $higherExchange = 0;
 $lowerExchange  = 999999999999;
 $higherCurrency = '';
 $lowerCurrency  = '';
 $highBidAsk 	= 0; 
 $highAskExchange = '';
- //$binanceObj->
 
 
 
@@ -35,27 +29,29 @@ function calculateUSDT($exchnageA,$exchnageB,$exchangePair){
 		$orderBookAExchange =  getOrderBook($exchnageA,$exchangePair);
 		$orderBookBExchange =  getOrderBook($exchnageB,$exchangePair);
 		if(count($orderBookAExchange)>0 && count($orderBookBExchange)>0){
+				
+
 				$BuyArray = $orderBookAExchange['bids'];
 				$SellArray = $orderBookBExchange['asks'];
 				$buyerArray 	=   array();
 				$sellerArray  	=   array();
-
+			
+			//	$BuyArray 	= 	[[0.01600002,0.4375],[0.016,0.38240984],[0.01599905,4.3753],[0.01599902,52.8948],[0.01599899,0.25238835]];
+			//	$SellArray 	= [[0.01609,7],[0.0161,16.3],[0.01611,16.1],[0.01612,129.6],[0.01613,25.2]];
+			//	echo 'buyer '.json_encode($BuyArray).'</br>';
+			//	echo 'selller '.json_encode($SellArray);
 				foreach ($BuyArray as $value) {
 							array_push($buyerArray,($value[0] * $value[1]));
 				} 
 
 				foreach ($SellArray as $value) {
 							array_push($sellerArray,($value[0] * $value[1]));
-				} 	
-
-
+				} 
 				//991  calculation
-
 				$arraySpreadPercent = array();
 				$USDTvalue = 0;
 
 				for ($i=0;$i<5;$i++){
-						
 						if($i == 0){
 							$USDTvalue = 1000;
 						}else if($i == 1){
@@ -91,7 +87,9 @@ function calculateUSDT($exchnageA,$exchnageB,$exchangePair){
 						array_push($arraySpreadPercent, $finalPercent);
 				}
 
-				return  $arraySpreadPercent;		
+				return  $arraySpreadPercent;
+
+				die;	
 		}else{
 
 				return  array();
@@ -193,6 +191,80 @@ function getSpreadPercentage($ExchangeOne,$ExchangeTwo){
 		$profit 	 =	 $totalCoinsB - $assets;
 		return ($profit /  $assets);
 } 
+
+
+
+
+/*here we get the ltcbtc pair */
+function getpairsOfLTCBTC($exchanegArrayA,$exchanegArrayB,$exhageCurrency){
+		
+		$exhageCurrency  = "LTC/BTC";
+		$exchanegArrayA =  ["liqui","liqui","liqui","hitbtc"];
+		$exchanegArrayB =  ["hitbtc","okax","binance","liqui"];
+		 
+		$html =  "";	
+		for($i=0;$i>count($exchanegArrayA);$i++){
+
+			$lastExchangeA =  getLastPriceOfExchage($exchanegArrayA[$i],$exhageCurrency);
+			$lastExchangeB = getLastPriceOfExchage($exchanegArrayB[$i],$exhageCurrency);
+			
+			$spreadPercentage = getSpreadPercentage($lastExchangeA,$lastExchangeB);
+
+			$USDTArray = calculateUSDT($exchanegArrayA[$i],$exchanegArrayB[$i],$exhageCurrency);
+
+
+			$USDT_1000 = "not found";
+			$USDT_2000 = "not found";
+			$USDT_3000 = "not found";	
+			$USDT_4000 = "not found";
+			$USDT_5000 = "not found";
+
+			if(isset($USDTArray[0])){
+				$USDT_1000 = $USDTArray[0];
+			}
+			if(isset($USDTArray[1])){
+				$USDT_2000 = $USDTArray[1];
+			}
+			if(isset($USDTArray[2])){
+				$USDT_3000 = $USDTArray[2];
+			}
+			if(isset($USDTArray[3])){
+				$USDT_4000 = $USDTArray[3];
+			}
+			if(isset($USDTArray[4])){
+				$USDT_5000 = $USDTArray[5];
+			}
+
+
+			$html = $html."<tr>
+								<td>".$exhageCurrency."</td>
+								<td>".$exchanegArrayA[$i]."</td>
+								<td>".$exchanegArrayB[$i]."</td>
+								<td>".$lastExchangeA."</td>	
+								<td>".$lastExchangeB."</td>
+								<td>".$spreadPercentage."</td>
+								<td>".$USDT_1000."</td>
+								<td>".$USDT_2000."</td>
+								<td>".$USDT_3000."</td>
+								<td>".$USDT_4000."</td>
+								<td>".$USDT_5000."</td>
+						   <tr>"
+
+		} 
+
+
+		echo json_encode($html);
+
+		
+
+
+}
+
+
+
+
+
+
  
 
 function getLastPriceOfExchage($exchange,$pair){
@@ -213,14 +285,21 @@ function getLastPriceOfExchage($exchange,$pair){
 
 		if($exchange == 'huobi'){
 			$Tickers = $huobiObj->fetch_ticker($pair);
+
 		}else if($exchange == 'okex'){
+
 			$Tickers = $okexObj->fetch_ticker($pair);
+
 		}else if($exchange == 'liqui'){
+
 			$Tickers = $liquiObj->fetch_ticker($pair);
 
 		}else if($exchange == 'hitbtc'){
+
 			$Tickers = $hitbtcObj->fetch_ticker($pair);
+
 		}else if($exchange == 'bitmex'){
+			
 			$Tickers = $bitmexObj->fetch_ticker($pair);
 		}
 
@@ -267,15 +346,7 @@ function getLastPriceOfExchage($exchange,$pair){
 			$Tickers = $binanceObj->fetch_ticker($pair);
 		}
 
-
-
-
-
-
 		$lastPrice = number_format($Tickers['last'], 10, '.', '');
-
-
-
 		return $lastPrice;
 }
 
