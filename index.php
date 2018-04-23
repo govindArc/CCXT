@@ -218,7 +218,7 @@
 					 <th>&nbsp;</th>
 				</tr>
 				<tr> 
-						<th colspan='11'><p class="timedate"></p></th>
+						<th colspan='11'><p class='timedate'></p></th>
 				</tr>
 				<tr>       
 					 <th>Currency Pair</th> 
