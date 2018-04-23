@@ -327,8 +327,10 @@
 			    width: 60px;
 			    height: 60px;
 			    animation: spin 2s linear infinite;
+			    margin-left: auto;
+				margin-right: auto;
 			}
-			
+
 
 			@keyframes spin {
 			    0% { transform: rotate(0deg); }
@@ -354,7 +356,7 @@
  
 
  					
-			var loader = "<tr><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th><div class='loader'></div></th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th></tr>";	
+			var loader = "<tr><th colspan='11'><div class='loader'></div></th></tr>";	
 
 
 
