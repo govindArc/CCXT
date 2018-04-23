@@ -116,7 +116,7 @@
 		
 
 		$html =  "";	
-		for($i=0;$i>count($exchanegArrayA);$i++){
+		for($i=0;$i<count($exchanegArrayA);$i++){
 
 			$lastExchangeA =  getLastPriceOfExchage($exchanegArrayA[$i],$exhageCurrency);
 			$lastExchangeB = getLastPriceOfExchage($exchanegArrayB[$i],$exhageCurrency);
