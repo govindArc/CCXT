@@ -324,10 +324,11 @@
 			    border: 16px solid #f3f3f3; /* Light grey */
 			    border-top: 16px solid #3498db; /* Blue */
 			    border-radius: 50%;
-			    width: 120px;
-			    height: 120px;
+			    width: 60px;
+			    height: 60px;
 			    animation: spin 2s linear infinite;
 			}
+			
 
 			@keyframes spin {
 			    0% { transform: rotate(0deg); }
@@ -353,7 +354,8 @@
  
 
  					
-var loader = "<tr><th style='align-items: center;text-align: center;''  colspan='11'><div class='loader'></div></th></tr>";	
+			var loader = "<tr><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th><div class='loader'></div></th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th></tr>";	
+
 
 
 			$("#DASHBTC > tbody").html(loader);
