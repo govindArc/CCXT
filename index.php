@@ -129,20 +129,20 @@
 					 <th>&nbsp;</th>
 				</tr>
 				<tr> 
-						<th colspan="11"><p class="timedate"></p></th>
+						<th colspan='11'><p class='timedate'></p></th>
 				</tr>
 				<tr>       
 					 <th>Currency Pair</th> 
-					 <th class="mobile-d-all">Exchange A</th> 
-					 <th class="mobile-d-all">Exchange B</th> 
-					 <th class="mobile-d-all">Last Price (Exchange A)</th> 
-					 <th class="mobile-d-all">Last Price (Exchange B)</th> 
-					 <th class="mobile-d-all">Spread %</th>
-					 <th class="mobile-d-all">Spread(1000 USDT)</th>
-					 <th class="mobile-d-all">Spread(2000 USDT)</th>
-					 <th class="mobile-d-all">Spread(3000 USDT)</th>
-					 <th class="mobile-d-all">Spread(4000 USDT)</th>
-					 <th class="mobile-d-all">Spread(5000 USDT)</th>
+					 <th class='mobile-d-all'>Exchange A</th> 
+					 <th class='mobile-d-all'>Exchange B</th> 
+					 <th class='mobile-d-all'>Last Price (Exchange A)</th> 
+					 <th class='mobile-d-all'>Last Price (Exchange B)</th> 
+					 <th class='mobile-d-all'>Spread %</th>
+					 <th class='mobile-d-all'>Spread(1000 USDT)</th>
+					 <th class='mobile-d-all'>Spread(2000 USDT)</th>
+					 <th class='mobile-d-all'>Spread(3000 USDT)</th>
+					 <th class='mobile-d-all'>Spread(4000 USDT)</th>
+					 <th class='mobile-d-all'>Spread(5000 USDT)</th>
 				</tr>";	
 
 
@@ -218,20 +218,20 @@
 					 <th>&nbsp;</th>
 				</tr>
 				<tr> 
-						<th colspan="11"><p class="timedate"></p></th>
+						<th colspan='11'><p class="timedate"></p></th>
 				</tr>
 				<tr>       
 					 <th>Currency Pair</th> 
-					 <th class="mobile-d-all">Exchange A</th> 
-					 <th class="mobile-d-all">Exchange B</th> 
-					 <th class="mobile-d-all">Last Price (Exchange A)</th> 
-					 <th class="mobile-d-all">Last Price (Exchange B)</th> 
-					 <th class="mobile-d-all">Spread %</th>
-					 <th class="mobile-d-all">Spread(1000 USDT)</th>
-					 <th class="mobile-d-all">Spread(2000 USDT)</th>
-					 <th class="mobile-d-all">Spread(3000 USDT)</th>
-					 <th class="mobile-d-all">Spread(4000 USDT)</th>
-					 <th class="mobile-d-all">Spread(5000 USDT)</th>
+					 <th class='mobile-d-all'>Exchange A</th> 
+					 <th class='mobile-d-all'>Exchange B</th> 
+					 <th class='mobile-d-all'>Last Price (Exchange A)</th> 
+					 <th class='mobile-d-all'>Last Price (Exchange B)</th> 
+					 <th class='mobile-d-all'>Spread %</th>
+					 <th class='mobile-d-all'>Spread(1000 USDT)</th>
+					 <th class='mobile-d-all'>Spread(2000 USDT)</th>
+					 <th class='mobile-d-all'>Spread(3000 USDT)</th>
+					 <th class='mobile-d-all'>Spread(4000 USDT)</th>
+					 <th class='mobile-d-all'>Spread(5000 USDT)</th>
 				</tr>";	
 
 
