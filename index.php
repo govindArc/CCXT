@@ -161,24 +161,11 @@
 								<td>".$USDT_3000."</td>
 								<td>".$USDT_4000."</td>
 								<td>".$USDT_5000."</td>
-						   <tr>"
-
+						   <tr>";
 			}
-
 		 echo json_encode(array("LTCBTC"=>$html));
 		 die;
-
 	}
-
-
-
-
-
-
-
-
-
-
 ?>
 
 <!--CSSSSS-->
@@ -244,10 +231,13 @@
 					$("#highBidTable").show();
 			    }
 			});
+		});
 
 
-			/*this is another*/	
 
+		$(document).ready(function(){
+
+		/*this is another*/	
 			$.ajax({
 			    type: 'POST',
 			    dataType: "json",
@@ -260,10 +250,6 @@
 
 			    }
 			});
-
-
-
-
 		});
 </script>  
 </head>
