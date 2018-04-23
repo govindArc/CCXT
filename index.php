@@ -107,7 +107,7 @@
 
 
 /*LTC BTC*/
-	if(isset($_POST["DATA"]) && $_POST["DATA"] == "LTC/BTC"){
+	if(isset($_POST["DATA"]) && $_POST["DATA"] == "LTCBTC"){
 
 		$exhageCurrency  = "LTC/BTC";
 		$exchanegArrayA =  ["liqui","liqui","liqui","hitbtc","hitbtc","hitbtc","okax","okax","okax"];
@@ -192,6 +192,7 @@
 		 echo json_encode(array("LTCBTC"=>$html));
 		 die;
 	}
+
 
 
 
@@ -297,13 +298,46 @@
 	<script type="text/javascript" href="/css/bootstrap.min.css"></script>
 	<link href='/css/core.css' media='screen' rel='stylesheet' type='text/css'>
     <link href='/css/fonts.css' media='screen' rel='stylesheet' type='text/css'>
+
+
+
     <link href='/css/responsive.css' media='screen' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href='/css/jquery.dataTables.min.css' media='screen' rel='stylesheet' type='text/css'>
+
+
+	 
+
+    
+
+
+
     <script src="/js/jquery-1.9.1.min.js"></script>
     <script src="/js/jquery.dataTables.min.js"></script>
     <script src="/js/dataTables.bootstrap.min.js"></script>
     <script src="/js/app.js"></script>
+
+
+    <style type="text/css">
+    
+			.loader {
+			    border: 16px solid #f3f3f3; /* Light grey */
+			    border-top: 16px solid #3498db; /* Blue */
+			    border-radius: 50%;
+			    width: 120px;
+			    height: 120px;
+			    animation: spin 2s linear infinite;
+			}
+
+			@keyframes spin {
+			    0% { transform: rotate(0deg); }
+			    100% { transform: rotate(360deg); }
+			}
+
+    </style>
+
+
+
 	<script type="text/javascript" language="javascript">  
 		$(window).load(function() {
 			$('.userDate').innerHTML = Date();
@@ -313,6 +347,17 @@
 		});  
 
 		$(document).ready(function(){
+
+
+ 
+ 
+
+
+			var loader = '<tr><th style="align-items: center;text-align: center;" colspan='11'><div class="loader"></div></th></tr>';	
+			$("#DASHBTC > tbody").html(loader);
+			$("#LTCBTC > tbody").html(loader);
+
+
 			$("#higerUsdt").hide();
 			$("#highPriceTable").hide();
 			$("#highBidTable").hide();
@@ -332,10 +377,8 @@
 					 var tableHtml 			=  myObj.html;
 					
 					 var currintDate  = new Date().toLocaleString();
-					 $(".userDate").html("");	
-					 $(".userDate").html(currintDate);
-
-
+					$(".userDate").html("");	
+					$(".userDate").html(currintDate);
 			        $("#higerUsdt > tbody").html("");
 			        $("#higerUsdt > tbody").html(tableHtml);
 			        $("#lowerExchangeCurrency").html("");	
@@ -356,6 +399,7 @@
 
 			/*this is LTC BTC*/
 
+
 			$.ajax({
 			    type: 'POST',
 			    dataType: "json",
@@ -373,8 +417,6 @@
 					 $(".timedate").html(currintDate); 	
 			    }
 			});
-
-
 
 
 			$.ajax({
@@ -414,7 +456,9 @@
 				<h4 align="center">crypto Spread Monitoring And Alerts</h4>
 		
 		<div class="col-xs-12">	
+
 				<h1><i class="material-icons">Top</i>Top Spreads</h1>
+
 		</div>
 
 		<div class="col-md-12">	
