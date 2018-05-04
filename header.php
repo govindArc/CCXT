@@ -1,5 +1,11 @@
 <?php
+date_default_timezone_set('UTC');
 include 'ccxt.php';
+
+
+
+
+
 $huobiObj   	= new \ccxt\huobi(); // BTC/CNY , LTC/CNY
 $okexObj   		= new \ccxt\okex(); // DASH/BTC ,LTC/BTC
 $liquiObj   	= new \ccxt\liqui(); // 1ST/BTC 1ST/ETH LTC/BTC DASH/BTC STEEM/BTC
@@ -22,6 +28,16 @@ $higherCurrency = '';
 $lowerCurrency  = '';
 $highBidAsk 	= 0; 
 $highAskExchange = '';
+
+
+
+
+$pair = "LTC/BTC";
+$Tickers = $liquiObj->fetch_ticker($pair);
+$Tickers1 = $hitbtcObj->fetch_ticker($pair);
+
+
+
 
 
 
@@ -52,6 +68,7 @@ function calculateUSDT($exchnageA,$exchnageB,$exchangePair){
 				$USDTvalue = 0;
 
 				for ($i=0;$i<5;$i++){
+					
 						if($i == 0){
 							$USDTvalue = 1000;
 						}else if($i == 1){
@@ -160,7 +177,6 @@ function setHigherLower($Tickers,$currency){
 		global $lowerExchange;
 		global $higherCurrency;
 		global $lowerCurrency;
-
 		global $highBidAsk;
 		global $highAskExchange;
 			 
@@ -185,11 +201,14 @@ function setHigherLower($Tickers,$currency){
 
 
 function getSpreadPercentage($ExchangeOne,$ExchangeTwo){
+	return (($ExchangeOne-$ExchangeTwo)/$ExchangeOne)*100;
+	/*	
 		$assets      = 10000;
 		$totalCoins  =  ($assets / $ExchangeOne)-0.003;
 		$totalCoinsB = ($totalCoins * $ExchangeTwo)-0.003;
 		$profit 	 =	 $totalCoinsB - $assets;
 		return ($profit /  $assets);
+	*/
 } 
  
 
@@ -208,6 +227,9 @@ function getLastPriceOfExchage($exchange,$pair){
 		global $cryptopiaObj;
 		global $zbObj;
 		global $exmoObj;
+
+
+
 
 		if($exchange == 'huobi'){
 			$Tickers = $huobiObj->fetch_ticker($pair);

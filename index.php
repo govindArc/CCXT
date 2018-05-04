@@ -304,22 +304,12 @@
     <link href='/css/responsive.css' media='screen' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href='/css/jquery.dataTables.min.css' media='screen' rel='stylesheet' type='text/css'>
-
-
-	 
-
-    
-
-
-
     <script src="/js/jquery-1.9.1.min.js"></script>
     <script src="/js/jquery.dataTables.min.js"></script>
     <script src="/js/dataTables.bootstrap.min.js"></script>
     <script src="/js/app.js"></script>
 
-
     <style type="text/css">
-    
 			.loader {
 			    border: 16px solid #f3f3f3; /* Light grey */
 			    border-top: 16px solid #3498db; /* Blue */
@@ -330,13 +320,10 @@
 			    margin-left: auto;
 				margin-right: auto;
 			}
-
-
 			@keyframes spin {
 			    0% { transform: rotate(0deg); }
 			    100% { transform: rotate(360deg); }
 			}
-
     </style>
 
 
