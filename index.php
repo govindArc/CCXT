@@ -281,9 +281,9 @@
 if(isset($_POST["DATA"]) && $_POST["DATA"] == "BTCUSDT"){
 	   // BTC/USDT kucoin gateio tidex  bittrex cryptopia
 		$exhageCurrency  = "BTC/USDT";
-		$exchanegArrayA =  ["kucoin","kucoin","kucoin","kucoin","gateio","gateio","gateio","gateio","tidex","tidex","tidex","tidex","bittrex","bittrex","bittrex","bittrex","cryptopia","cryptopia","cryptopia","cryptopia"];
+		$exchanegArrayA =  [,"kucoin","kucoin","gateio","gateio","tidex","tidex","bittrex","bittrex","cryptopia","cryptopia"];
 
-		$exchanegArrayB =  ["gateio","tidex","bittrex","cryptopia","kucoin","tidex","bittrex","cryptopia","gateio","kucoin","bittrex","cryptopia","gateio","kucoin","tidex","cryptopia","gateio","kucoin","tidex","bittrex"];
+		$exchanegArrayB =  ["bittrex","cryptopia","bittrex","cryptopia","bittrex","cryptopia","tidex","cryptopia","tidex","bittrex"];
 
 
 		 
@@ -621,9 +621,18 @@ $(document).ready(function(){
 
 				<div class="col-xs-12">	
 						<div class="col-xs-6" style="float: right">	
-							<button class="col-xs-4 btn btn-primary" id="btn-usdt">USDT</button>
-							<button class="col-xs-4 btn btn-primary" id="btn-btc">BTC</button>
-							<button class="col-xs-4 btn btn-primary" id="btn-etc">ETH</button>	
+							<div class="row">
+								<div class="col-xs-4">
+										<button class="btn btn-info" id="btn-usdt">USDT</button>
+								</div>	
+								<div class="col-xs-4">
+										<button class="btn btn-info" id="btn-usdt">BTC</button>
+								</div>	
+								<div class="col-xs-4">
+										<button class="btn btn-info" id="btn-usdt">ETH</button>
+								</div>
+							</div>	
+							 	
 						</div>
 				</div>
 
