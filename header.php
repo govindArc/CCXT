@@ -2,26 +2,28 @@
 date_default_timezone_set('UTC');
 include 'ccxt.php';
 
-
-
-
-
 $huobiObj   	= new \ccxt\huobi(); // BTC/CNY , LTC/CNY
+
 $okexObj   		= new \ccxt\okex(); // DASH/BTC ,LTC/BTC
 $liquiObj   	= new \ccxt\liqui(); // 1ST/BTC 1ST/ETH LTC/BTC DASH/BTC STEEM/BTC
 $hitbtcObj  	= new \ccxt\hitbtc(); // 1ST/BTC 1ST/ETH LTC/BTC DASH/BTC STEEM/BTC
 $binanceObj   	= new \ccxt\binance(); // LTC/BTC STEEM/BTC DASH/BTC
 /*top spreads*/
+
+
 //BTC/USD
 //$poloniexObj   	= new \ccxt\poloniex();  not free
 //$biboxObj   	= new \ccxt\bibox();   not free
-$kucoinObj   	= new \ccxt\kucoin();   // BTC/USDT
+
 $zbObj   		= new \ccxt\zb();           // BTC/USDTx
+$kucoinObj   	= new \ccxt\kucoin();   // BTC/USDT
 $gateioObj   	= new \ccxt\gateio();   // BTC/USDT  
-$tidexObj   	= new \ccxt\tidex();    // BTC/USDT  
+$tidexObj   	= new \ccxt\tidex();    	// BTC/USDT  
 $cryptopiaObj 	= new \ccxt\cryptopia();  // BTC/USDT  
-//$exmoObj   		= new \ccxt\exmo();    		// BTC/USDT  
+//$exmoObj   		= new \ccxt\exmo();  // BTC/USDT  
 $bittrexObj  	= new \ccxt\bittrex(); 	// BTC/USDT  
+
+
 $higherExchange = 0;
 $lowerExchange  = 999999999999;
 $higherCurrency = '';

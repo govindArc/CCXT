@@ -15,34 +15,25 @@
 						$Tickers 		= $kucoinObj->fetch_ticker($pair);	
 						$currencySymbol = "kucoin";
 					}else if($i==1){
-
 						$Tickers 		= $zbObj->fetch_ticker($pair);	
 						$currencySymbol = "zb";	
-
 					}else if($i==2){
-
 						$Tickers 		= $gateioObj->fetch_ticker($pair);	
 						$currencySymbol = "gateio";	
-
 					}else if($i==3){
 						$Tickers 		= $tidexObj->fetch_ticker($pair);	
-						$currencySymbol = "tidex";	
-
+						$currencySymbol = "tidex";
 					}else if($i==4){
 						$Tickers 		= $cryptopiaObj->fetch_ticker($pair);	
 						$currencySymbol = "cryptopia";	
-
 					}
-
 					/*	
 					else if($i==5){
 						$Tickers 		= $exmoObj->fetch_ticker($pair);	
 						$currencySymbol = "exmo";
 					}
 					*/
-
 					else{
-
 						$Tickers 		= $bittrexObj->fetch_ticker($pair);	
 						$currencySymbol = "bittrex";
 					}
@@ -286,6 +277,96 @@
 
 
 
+
+if(isset($_POST["DATA"]) && $_POST["DATA"] == "BTCUSDT"){
+	   // BTC/USDT kucoin gateio tidex  bittrex cryptopia
+		$exhageCurrency  = "BTC/USDT";
+		$exchanegArrayA =  ["kucoin","kucoin","kucoin","kucoin","gateio","gateio","gateio","gateio","tidex","tidex","tidex","tidex","bittrex","bittrex","bittrex","bittrex","cryptopia","cryptopia","cryptopia","cryptopia"];
+
+		$exchanegArrayB =  ["gateio","tidex","bittrex","cryptopia","kucoin","tidex","bittrex","cryptopia","gateio","kucoin","bittrex","cryptopia","gateio","kucoin","tidex","cryptopia","gateio","kucoin","tidex","bittrex"];
+
+
+		 
+		$html =  "<tr>       
+					 <th>".$exhageCurrency."</th> 
+					 <th>&nbsp;</th> 
+					 <th>&nbsp;</th> 
+					 <th>&nbsp;</th> 
+					 <th>&nbsp;</th> 
+					 <th>&nbsp;</th> 
+					 <th>&nbsp;</th>
+					 <th>&nbsp;</th>
+					 <th>&nbsp;</th>
+					 <th>&nbsp;</th>
+					 <th>&nbsp;</th>
+				</tr>
+				<tr> 
+						<th colspan='11'><p class='timedate'></p></th>
+				</tr>
+				<tr>       
+					 <th>Currency Pair</th> 
+					 <th class='mobile-d-all'>Exchange A</th> 
+					 <th class='mobile-d-all'>Exchange B</th> 
+					 <th class='mobile-d-all'>Last Price (Exchange A)</th> 
+					 <th class='mobile-d-all'>Last Price (Exchange B)</th> 
+					 <th class='mobile-d-all'>Spread %</th>
+					 <th class='mobile-d-all'>Spread(1000 USDT)</th>
+					 <th class='mobile-d-all'>Spread(2000 USDT)</th>
+					 <th class='mobile-d-all'>Spread(3000 USDT)</th>
+					 <th class='mobile-d-all'>Spread(4000 USDT)</th>
+					 <th class='mobile-d-all'>Spread(5000 USDT)</th>
+				</tr>";	
+
+
+
+		for($i=0;$i<count($exchanegArrayA);$i++){
+			$lastExchangeA =  getLastPriceOfExchage($exchanegArrayA[$i],$exhageCurrency);
+			$lastExchangeB = getLastPriceOfExchage($exchanegArrayB[$i],$exhageCurrency);
+			$spreadPercentage = getSpreadPercentage($lastExchangeA,$lastExchangeB);
+			$USDTArray = calculateUSDT($exchanegArrayA[$i],$exchanegArrayB[$i],$exhageCurrency);
+
+			$USDT_1000 = "not found";
+			$USDT_2000 = "not found";
+			$USDT_3000 = "not found";	
+			$USDT_4000 = "not found";
+			$USDT_5000 = "not found";
+
+			if(isset($USDTArray[0])){
+				$USDT_1000 = $USDTArray[0];
+			}
+			if(isset($USDTArray[1])){
+				$USDT_2000 = $USDTArray[1];
+			}
+			if(isset($USDTArray[2])){
+				$USDT_3000 = $USDTArray[2];
+			}
+			if(isset($USDTArray[3])){
+				$USDT_4000 = $USDTArray[3];
+			}
+			if(isset($USDTArray[4])){
+				$USDT_5000 = $USDTArray[5];
+			}
+
+			$html = $html."<tr>
+								<td>".$exhageCurrency."</td>
+								<td>".$exchanegArrayA[$i]."</td>
+								<td>".$exchanegArrayB[$i]."</td>
+								<td>".$lastExchangeA."</td>	
+								<td>".$lastExchangeB."</td>
+								<td>".$spreadPercentage."</td>
+								<td>".$USDT_1000."</td>
+								<td>".$USDT_2000."</td>
+								<td>".$USDT_3000."</td>
+								<td>".$USDT_4000."</td>
+								<td>".$USDT_5000."</td>
+						   <tr>";
+			}
+		 echo json_encode(array("BTCUSDT"=>$html));
+		 die;
+	}
+
+
+
 	
 ?>
 
@@ -327,30 +408,32 @@
     </style>
 
 
+    <script type="text/javascript">
+		//	btn-usdt,btn-etc,btn-etc
+
+
+    </script>
+
+
+
+
 
 	<script type="text/javascript" language="javascript">  
+		
+		/*
 		$(window).load(function() {
 			$('.userDate').innerHTML = Date();
 			setInterval(function(){
 				location.reload();
 			 }, 120000);
 		});  
-
-		$(document).ready(function(){
-
-
- 
- 
-
- 					
-			var loader = "<tr><th colspan='11'><div class='loader'></div></th></tr>";	
+		*/
 
 
-
+$(document).ready(function(){
+	var loader = "<tr><th colspan='11'><div class='loader'></div></th></tr>";
 			$("#DASHBTC > tbody").html(loader);
 			$("#LTCBTC > tbody").html(loader);
-
-
 			$("#higerUsdt").hide();
 			$("#highPriceTable").hide();
 			$("#highBidTable").hide();
@@ -368,8 +451,8 @@
 			         var highBidAsk 		=  myObj.highBidAsk;
 			         var highAskExchange 	=  myObj.highAskExchange;
 					 var tableHtml 			=  myObj.html;
-					
 					 var currintDate  = new Date().toLocaleString();
+
 					$(".userDate").html("");	
 					$(".userDate").html(currintDate);
 			        $("#higerUsdt > tbody").html("");
@@ -427,6 +510,28 @@
 					 $(".timedate").html(currintDate); 	
 			    }
 			});
+
+
+			$.ajax({
+			    type: 'POST',
+			    dataType: "json",
+			    url: "index.php",
+			    data: "DATA=BTCUSDT",
+			    success: function (data) {
+			         var myObj 		= data;
+			         var BTCUSDT 	= myObj.BTCUSDT;
+			         $("#BTCUSDT > tbody").html("");
+			         $("#BTCUSDT > tbody").html(BTCUSDT);
+			         var currintDate  = new Date().toLocaleString();
+			         $(".timedate").html("");	
+					 $(".timedate").html(currintDate); 	
+			    }
+			});
+
+
+
+
+			
 
 
 
@@ -511,6 +616,39 @@
 				<div class="col-xs-12">	
 					<h1><i class="material-icons">tune</i> Exchange Spreads</h1>
 				</div>
+
+
+
+				<div class="col-xs-12">	
+						<div class="col-xs-6" style="float: right">	
+							<button class="col-xs-4 btn btn-primary" id="btn-usdt">USDT</button>
+							<button class="col-xs-4 btn btn-primary" id="btn-btc">BTC</button>
+							<button class="col-xs-4 btn btn-primary" id="btn-etc">ETH</button>	
+						</div>
+				</div>
+
+
+
+
+
+				<table id="USDT" class="table table-striped table-bordered" >
+						<tbody></tbody>
+				</table>
+
+
+				<table id="BTCUSDT" class="table table-striped table-bordered" >
+						<tbody></tbody>
+				</table>
+
+				<table id="ETH" class="table table-striped table-bordered" >
+						<tbody></tbody>
+				</table>	
+
+
+
+
+
+
 				<table id="LTCBTC" class="table table-striped table-bordered" >
 						<tbody></tbody>
 				</table>
