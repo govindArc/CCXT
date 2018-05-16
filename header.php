@@ -3,7 +3,6 @@ date_default_timezone_set('UTC');
 include 'ccxt.php';
 
 $huobiObj   	= new \ccxt\huobi(); // BTC/CNY , LTC/CNY
-
 $okexObj   		= new \ccxt\okex(); // DASH/BTC ,LTC/BTC
 $liquiObj   	= new \ccxt\liqui(); // 1ST/BTC 1ST/ETH LTC/BTC DASH/BTC STEEM/BTC
 $hitbtcObj  	= new \ccxt\hitbtc(); // 1ST/BTC 1ST/ETH LTC/BTC DASH/BTC STEEM/BTC
@@ -23,15 +22,12 @@ $cryptopiaObj 	= new \ccxt\cryptopia();  // BTC/USDT
 $bittrexObj  	= new \ccxt\bittrex(); 	// BTC/USDT  
 
 
-$higherExchange = 0;
-$lowerExchange  = 999999999999;
-$higherCurrency = '';
-$lowerCurrency  = '';
-$highBidAsk 	= 0; 
-$highAskExchange = '';
-
-
-
+$higherExchange 	= 0;
+$lowerExchange  	= 999999999999;
+$higherCurrency 	= '';
+$lowerCurrency 	 	= '';
+$highBidAsk 		= 0; 
+$highAskExchange 	= '';
 
 $pair = "LTC/BTC";
 $Tickers = $liquiObj->fetch_ticker($pair);

@@ -282,13 +282,10 @@ if(isset($_POST["DATA"]) && $_POST["DATA"] == "BTCUSDT"){
 	   // BTC/USDT kucoin gateio tidex  bittrex cryptopia
 		$exhageCurrency  = "BTC/USDT";
 
-		
 		$exchanegArrayA =  ["kucoin","kucoin","gateio","gateio","tidex","tidex","bittrex","bittrex","cryptopia","cryptopia"];
-
 		$exchanegArrayB =  ["bittrex","cryptopia","bittrex","cryptopia","bittrex","cryptopia","tidex","cryptopia","tidex","bittrex"];
-
-
 		 
+
 		$html =  "<tr>       
 					 <th>".$exhageCurrency."</th> 
 					 <th>&nbsp;</th> 
@@ -322,10 +319,12 @@ if(isset($_POST["DATA"]) && $_POST["DATA"] == "BTCUSDT"){
 
 
 		for($i=0;$i<count($exchanegArrayA);$i++){
+
 			$lastExchangeA =  getLastPriceOfExchage($exchanegArrayA[$i],$exhageCurrency);
 			$lastExchangeB = getLastPriceOfExchage($exchanegArrayB[$i],$exhageCurrency);
 			$spreadPercentage = getSpreadPercentage($lastExchangeA,$lastExchangeB);
 			$USDTArray = calculateUSDT($exchanegArrayA[$i],$exchanegArrayB[$i],$exhageCurrency);
+
 
 			$USDT_1000 = "not found";
 			$USDT_2000 = "not found";
@@ -407,6 +406,37 @@ if(isset($_POST["DATA"]) && $_POST["DATA"] == "BTCUSDT"){
 			    0% { transform: rotate(0deg); }
 			    100% { transform: rotate(360deg); }
 			}
+
+
+			.customBtn {
+				width: 80%;
+				color: #fff;
+				background-color: #5bc0de;
+				border-color: #46b8da;
+				display: inline-block;
+				padding: 6px 12px;
+				margin-bottom: 0;
+				font-size: 14px;
+				font-weight: 400;
+				line-height: 1.42857143;
+				text-align: center;
+				white-space: nowrap;
+				vertical-align: middle;
+				-ms-touch-action: manipulation;
+				touch-action: manipulation;
+				cursor: pointer;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				background-image: none;
+				border: 1px solid transparent;
+				border-radius: 4px;
+
+			}	
+
+
+
     </style>
 
 
@@ -607,13 +637,13 @@ $(document).ready(function(){
 						<div class="col-xs-6" style="float: right">	
 							<div class="row">
 								<div class="col-xs-4">
-										<button class="btn btn-info" id="btn-usdt">USDT</button>
+										<button class="btn customBtn" id="btn-usdt">USDT</button>
 								</div>	
 								<div class="col-xs-4">
-										<button class="btn btn-info" id="btn-usdt">BTC</button>
+										<button class="btn customBtn" id="btn-usdt">BTC</button>
 								</div>	
 								<div class="col-xs-4">
-										<button class="btn btn-info" id="btn-usdt">ETH</button>
+										<button class="btn customBtn" id="btn-usdt">ETH</button>
 								</div>
 							</div>	
 							 	
