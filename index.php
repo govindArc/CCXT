@@ -104,7 +104,7 @@
 		$exchanegArrayA =  ["liqui","liqui","liqui","hitbtc","hitbtc","hitbtc","okax","okax","okax"];
 		$exchanegArrayB =  ["hitbtc","okax","binance","liqui","binance","okax","liqui","binance","hitbtc"];
  		
- 		echo getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"LTCBTC");
+ 		getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"LTCBTC");
 		die;
 	}
 
@@ -120,7 +120,7 @@
 
 
 		 
-		echo getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"DASHBTC");
+		getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"DASHBTC");
 		die;
 
 	}
@@ -139,7 +139,7 @@ if(isset($_POST["DATA"]) && $_POST["DATA"] == "ETH"){
 	$exchanegArrayB = ["gateio","kucoin","kucoin","kucoin","kucoin"]; 
 
 
-	echo getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"ETH");
+	getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"ETH");
 	die;
 
 
@@ -162,7 +162,7 @@ if(isset($_POST["DATA"]) && $_POST["DATA"] == "BTCUSDT"){
 		$exchanegArrayB =  ["bittrex","cryptopia","bittrex","cryptopia","bittrex","cryptopia","tidex","cryptopia","tidex","bittrex"];
 
 
-		echo getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"BTCUSDT");
+		getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"BTCUSDT");
 		die;
 
 		 
@@ -250,7 +250,8 @@ function getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,$key){
 								<td>".$USDT_5000."</td>
 						   <tr>";
 			}
-		 return json_encode(array($key=>$html));
+
+		 echo json_encode(array($key=>$html));
 		 
 }
 
