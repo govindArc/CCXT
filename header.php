@@ -3,39 +3,51 @@ date_default_timezone_set('UTC');
 include 'ccxt.php';
 
 $huobiObj   	= new \ccxt\huobi(); // BTC/CNY , LTC/CNY
-$okexObj   		= new \ccxt\okex(); // DASH/BTC ,LTC/BTC
+
+
+$okexObj   		= new \ccxt\okex(); // DASH/BTC ,LTC/BTC  
+									// ETH/USDT ETH/USD
 $liquiObj   	= new \ccxt\liqui(); // 1ST/BTC 1ST/ETH LTC/BTC DASH/BTC STEEM/BTC
-$hitbtcObj  	= new \ccxt\hitbtc(); // 1ST/BTC 1ST/ETH LTC/BTC DASH/BTC STEEM/BTC
-$binanceObj   	= new \ccxt\binance(); // LTC/BTC STEEM/BTC DASH/BTC
+									//	BTC/USDT,
+										//ETH/USDT,ETH/BTC
+
+$hitbtcObj  	= new \ccxt\hitbtc(); // 1ST/BTC 1ST/ETH LTC/BTC DASH/BTC STEEM/BTC 										 ETH/BTC,ETH/USDT
+
+
+$binanceObj   	= new \ccxt\binance(); // LTC/BTC STEEM/BTC DASH/btc
+										//ETH/BTC  ETH/USDT 	
 /*top spreads*/
-
-
 //BTC/USD
 //$poloniexObj   	= new \ccxt\poloniex();  not free
 //$biboxObj   	= new \ccxt\bibox();   not free
 $zbObj   		= new \ccxt\zb();           // BTC/USDTx
+				// BTC/USDT,BTC/QC // ETH/BTC,ETH/QC,ETH/USDT // USDT/QC
 $kucoinObj   	= new \ccxt\kucoin();   	// BTC/USDT
+				//BTC/USDT, ETH/USDT, ETH/BTC
+
 $gateioObj   	= new \ccxt\gateio();  		// BTC/USDT  
+				//BTC/USDT,ETH/BTC,ETH/USDT
+
 $tidexObj   	= new \ccxt\tidex();     // BTC/USDT  
+				//BTC/USDT,BTC/WEUR,BTC/WUSD,ETH/BTC,ETH/USDT,ETH/WAVES,ETH/WEUR,ETH/WUSD
+
+
 $cryptopiaObj 	= new \ccxt\cryptopia();  // BTC/USDT  
+				//	BTC/USDT,BTC/NZDT  ETH/BTC,ETH/USDT,ETH/DOGE,ETH/LTC,ETH/NZDT
+
+
 //$exmoObj   		= new \ccxt\exmo();  // BTC/USDT  
 $bittrexObj  	= new \ccxt\bittrex(); 	// BTC/USDT  
-
-
+				//BTC/USDT,ETH/BTC/ETH/USDT,	
 $higherExchange 	= 0;
 $lowerExchange  	= 999999999999;
 $higherCurrency 	= '';
 $lowerCurrency 	 	= '';
 $highBidAsk 		= 0; 
 $highAskExchange 	= '';
-
 $pair = "LTC/BTC";
 $Tickers = $liquiObj->fetch_ticker($pair);
 $Tickers1 = $hitbtcObj->fetch_ticker($pair);
-
-
-
-
 
 
 function calculateUSDT($exchnageA,$exchnageB,$exchangePair){

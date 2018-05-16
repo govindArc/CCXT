@@ -103,85 +103,9 @@
 		$exhageCurrency  = "LTC/BTC";
 		$exchanegArrayA =  ["liqui","liqui","liqui","hitbtc","hitbtc","hitbtc","okax","okax","okax"];
 		$exchanegArrayB =  ["hitbtc","okax","binance","liqui","binance","okax","liqui","binance","hitbtc"];
-
-
-		 
-		$html =  "<tr>       
-					 <th>".$exhageCurrency."</th> 
-					 <th>&nbsp;</th> 
-					 <th>&nbsp;</th> 
-					 <th>&nbsp;</th> 
-					 <th>&nbsp;</th> 
-					 <th>&nbsp;</th> 
-					 <th>&nbsp;</th>
-					 <th>&nbsp;</th>
-					 <th>&nbsp;</th>
-					 <th>&nbsp;</th>
-					 <th>&nbsp;</th>
-				</tr>
-				<tr> 
-						<th colspan='11'><p class='timedate'></p></th>
-				</tr>
-				<tr>       
-					 <th>Currency Pair</th> 
-					 <th class='mobile-d-all'>Exchange A</th> 
-					 <th class='mobile-d-all'>Exchange B</th> 
-					 <th class='mobile-d-all'>Last Price (Exchange A)</th> 
-					 <th class='mobile-d-all'>Last Price (Exchange B)</th> 
-					 <th class='mobile-d-all'>Spread %</th>
-					 <th class='mobile-d-all'>Spread(1000 USDT)</th>
-					 <th class='mobile-d-all'>Spread(2000 USDT)</th>
-					 <th class='mobile-d-all'>Spread(3000 USDT)</th>
-					 <th class='mobile-d-all'>Spread(4000 USDT)</th>
-					 <th class='mobile-d-all'>Spread(5000 USDT)</th>
-				</tr>";	
-
-
-
-		for($i=0;$i<count($exchanegArrayA);$i++){
-			$lastExchangeA =  getLastPriceOfExchage($exchanegArrayA[$i],$exhageCurrency);
-			$lastExchangeB = getLastPriceOfExchage($exchanegArrayB[$i],$exhageCurrency);
-			$spreadPercentage = getSpreadPercentage($lastExchangeA,$lastExchangeB);
-			$USDTArray = calculateUSDT($exchanegArrayA[$i],$exchanegArrayB[$i],$exhageCurrency);
-
-			$USDT_1000 = "not found";
-			$USDT_2000 = "not found";
-			$USDT_3000 = "not found";	
-			$USDT_4000 = "not found";
-			$USDT_5000 = "not found";
-
-			if(isset($USDTArray[0])){
-				$USDT_1000 = $USDTArray[0];
-			}
-			if(isset($USDTArray[1])){
-				$USDT_2000 = $USDTArray[1];
-			}
-			if(isset($USDTArray[2])){
-				$USDT_3000 = $USDTArray[2];
-			}
-			if(isset($USDTArray[3])){
-				$USDT_4000 = $USDTArray[3];
-			}
-			if(isset($USDTArray[4])){
-				$USDT_5000 = $USDTArray[5];
-			}
-
-			$html = $html."<tr>
-								<td>".$exhageCurrency."</td>
-								<td>".$exchanegArrayA[$i]."</td>
-								<td>".$exchanegArrayB[$i]."</td>
-								<td>".$lastExchangeA."</td>	
-								<td>".$lastExchangeB."</td>
-								<td>".$spreadPercentage."</td>
-								<td>".$USDT_1000."</td>
-								<td>".$USDT_2000."</td>
-								<td>".$USDT_3000."</td>
-								<td>".$USDT_4000."</td>
-								<td>".$USDT_5000."</td>
-						   <tr>";
-			}
-		 echo json_encode(array("LTCBTC"=>$html));
-		 die;
+ 		
+ 		echo getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"LTCBTC");
+		die;
 	}
 
 
@@ -196,85 +120,37 @@
 
 
 		 
-		$html =  "<tr>       
-					 <th>".$exhageCurrency."</th> 
-					 <th>&nbsp;</th> 
-					 <th>&nbsp;</th> 
-					 <th>&nbsp;</th> 
-					 <th>&nbsp;</th> 
-					 <th>&nbsp;</th> 
-					 <th>&nbsp;</th>
-					 <th>&nbsp;</th>
-					 <th>&nbsp;</th>
-					 <th>&nbsp;</th>
-					 <th>&nbsp;</th>
-				</tr>
-				<tr> 
-						<th colspan='11'><p class='timedate'></p></th>
-				</tr>
-				<tr>       
-					 <th>Currency Pair</th> 
-					 <th class='mobile-d-all'>Exchange A</th> 
-					 <th class='mobile-d-all'>Exchange B</th> 
-					 <th class='mobile-d-all'>Last Price (Exchange A)</th> 
-					 <th class='mobile-d-all'>Last Price (Exchange B)</th> 
-					 <th class='mobile-d-all'>Spread %</th>
-					 <th class='mobile-d-all'>Spread(1000 USDT)</th>
-					 <th class='mobile-d-all'>Spread(2000 USDT)</th>
-					 <th class='mobile-d-all'>Spread(3000 USDT)</th>
-					 <th class='mobile-d-all'>Spread(4000 USDT)</th>
-					 <th class='mobile-d-all'>Spread(5000 USDT)</th>
-				</tr>";	
+		echo getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"DASHBTC");
+		die;
 
-
-
-		for($i=0;$i<count($exchanegArrayA);$i++){
-			$lastExchangeA =  getLastPriceOfExchage($exchanegArrayA[$i],$exhageCurrency);
-			$lastExchangeB = getLastPriceOfExchage($exchanegArrayB[$i],$exhageCurrency);
-			$spreadPercentage = getSpreadPercentage($lastExchangeA,$lastExchangeB);
-			$USDTArray = calculateUSDT($exchanegArrayA[$i],$exchanegArrayB[$i],$exhageCurrency);
-
-			$USDT_1000 = "not found";
-			$USDT_2000 = "not found";
-			$USDT_3000 = "not found";	
-			$USDT_4000 = "not found";
-			$USDT_5000 = "not found";
-
-			if(isset($USDTArray[0])){
-				$USDT_1000 = $USDTArray[0];
-			}
-			if(isset($USDTArray[1])){
-				$USDT_2000 = $USDTArray[1];
-			}
-			if(isset($USDTArray[2])){
-				$USDT_3000 = $USDTArray[2];
-			}
-			if(isset($USDTArray[3])){
-				$USDT_4000 = $USDTArray[3];
-			}
-			if(isset($USDTArray[4])){
-				$USDT_5000 = $USDTArray[5];
-			}
-
-			$html = $html."<tr>
-								<td>".$exhageCurrency."</td>
-								<td>".$exchanegArrayA[$i]."</td>
-								<td>".$exchanegArrayB[$i]."</td>
-								<td>".$lastExchangeA."</td>	
-								<td>".$lastExchangeB."</td>
-								<td>".$spreadPercentage."</td>
-								<td>".$USDT_1000."</td>
-								<td>".$USDT_2000."</td>
-								<td>".$USDT_3000."</td>
-								<td>".$USDT_4000."</td>
-								<td>".$USDT_5000."</td>
-						   <tr>";
-			}
-		 echo json_encode(array("DASHBTC"=>$html));
-		 die;
 	}
 
 
+
+
+
+
+//bittrexObj,cryptopiaObj,tidexObj,gateioObj,kucoinObj,zbObj,binanceObj,hitbtcObj,liquiObj,okexObj[ETH/USDT],
+
+if(isset($_POST["DATA"]) && $_POST["DATA"] == "ETH"){
+	//ETH/BTC	
+	$exhageCurrency  = "ETH/BTC";
+	$exchanegArrayA = ["kucoin","gateio","tidex","cryptopia","bittrex"]; 
+	$exchanegArrayB = ["gateio","kucoin","kucoin","kucoin","kucoin"]; 
+
+
+	echo getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"ETH");
+	die;
+
+
+
+
+
+
+
+
+
+}	 
 
 
 
@@ -284,9 +160,21 @@ if(isset($_POST["DATA"]) && $_POST["DATA"] == "BTCUSDT"){
 
 		$exchanegArrayA =  ["kucoin","kucoin","gateio","gateio","tidex","tidex","bittrex","bittrex","cryptopia","cryptopia"];
 		$exchanegArrayB =  ["bittrex","cryptopia","bittrex","cryptopia","bittrex","cryptopia","tidex","cryptopia","tidex","bittrex"];
-		 
 
-		$html =  "<tr>       
+
+		echo getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"BTCUSDT");
+		die;
+
+		 
+	}
+
+
+
+	
+
+function getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,$key){
+
+	$html =  "<tr>       
 					 <th>".$exhageCurrency."</th> 
 					 <th>&nbsp;</th> 
 					 <th>&nbsp;</th> 
@@ -362,13 +250,10 @@ if(isset($_POST["DATA"]) && $_POST["DATA"] == "BTCUSDT"){
 								<td>".$USDT_5000."</td>
 						   <tr>";
 			}
-		 echo json_encode(array("BTCUSDT"=>$html));
-		 die;
-	}
+		 return json_encode(array($key=>$html));
+		 
+}
 
-
-
-	
 ?>
 
 <!--CSSSSS-->
@@ -413,6 +298,33 @@ if(isset($_POST["DATA"]) && $_POST["DATA"] == "BTCUSDT"){
 				color: #fff;
 				background-color: #5bc0de;
 				border-color: #46b8da;
+				display: inline-block;
+				padding: 6px 12px;
+				margin-bottom: 0;
+				font-size: 14px;
+				font-weight: 400;
+				line-height: 1.42857143;
+				text-align: center;
+				white-space: nowrap;
+				vertical-align: middle;
+				-ms-touch-action: manipulation;
+				touch-action: manipulation;
+				cursor: pointer;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				background-image: none;
+				border: 1px solid transparent;
+				border-radius: 4px;
+			}
+
+
+			.activeBtn {
+				width: 80%;
+				color: #fff;
+				background-color: #337ab7;
+				border-color: #2e6da4;
 				display: inline-block;
 				padding: 6px 12px;
 				margin-bottom: 0;
@@ -651,33 +563,35 @@ $(document).ready(function(){
 				</div>
 
 
+<!--
+	usdt/btc/eth
+-->
 
-
-
-				<table id="USDT" class="table table-striped table-bordered" >
+				<div class="table-responsive">
+					<table id="USDT" class="table table-striped table-bordered" >
 						<tbody></tbody>
-				</table>
-
-
-				<table id="BTCUSDT" class="table table-striped table-bordered" >
+					</table>		
+				</div>	
+				<div class="table-responsive">
+						<table id="ETH" class="table table-striped table-bordered" >
+							<tbody></tbody>
+						</table>	
+				</div>
+				<div class="table-responsive">
+					<table id="BTCUSDT" class="table table-striped table-bordered" >
 						<tbody></tbody>
-				</table>
-
-				<table id="ETH" class="table table-striped table-bordered" >
+					</table>	
+				</div>
+				<div class="table-responsive">
+					<table id="LTCBTC" class="table table-striped table-bordered" >
 						<tbody></tbody>
-				</table>	
-
-
-
-
-
-
-				<table id="LTCBTC" class="table table-striped table-bordered" >
+					</table>	
+				</div>
+				<div class="table-responsive">
+					<table id="DASHBTC" class="table table-striped table-bordered" >
 						<tbody></tbody>
-				</table>
-				<table id="DASHBTC" class="table table-striped table-bordered" >
-						<tbody></tbody>
-				</table>
+					</table>
+				</div>
 		</div>
 </body>
 </html>
