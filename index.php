@@ -385,8 +385,8 @@ function onClickBtn(btn_id){
 
 function activeBtnBtc(){
 	$("#USDT").hide();
-	$("#BTCUSDT").hide();
-	$("#ETH").show();
+	$("#ETH").hide();
+	$("#BTCUSDT").show();
 	document.getElementById("btn-btc").classList.add('activeBtn');
 	document.getElementById("btn-btc").classList.remove('customBtn');
 }
@@ -404,7 +404,7 @@ $(document).ready(function(){
 			$("#LTCBTC > tbody").html(loader);
 			$("#BTCUSDT > tbody").html(loader);
 			$("#ETH > tbody").html(loader);
-			
+
 
 			
 
@@ -601,7 +601,8 @@ $(document).ready(function(){
 				<div class="col-xs-12">	
 					<h1><i class="material-icons">tune</i> Exchange Spreads</h1>
 				</div>
-				<div class="col-xs-12">	
+				
+				<div class="col-xs-12" style="margin-bottom: 15px;">	
 						<div class="col-xs-6" style="float: right">	
 							<div class="row">
 									
