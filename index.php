@@ -137,8 +137,6 @@ if(isset($_POST["DATA"]) && $_POST["DATA"] == "ETH"){
 	$exhageCurrency  = "ETH/BTC";
 	$exchanegArrayA = ["kucoin","gateio","tidex","cryptopia","bittrex"]; 
 	$exchanegArrayB = ["gateio","kucoin","kucoin","kucoin","kucoin"]; 
-
-
 	getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"ETH");
 	die;
 }	 
@@ -151,13 +149,13 @@ if(isset($_POST["DATA"]) && $_POST["DATA"] == "BTCUSDT"){
 
 		$exchanegArrayA =  ["kucoin","kucoin","gateio","gateio","tidex","tidex","bittrex","bittrex","cryptopia","cryptopia"];
 		$exchanegArrayB =  ["bittrex","cryptopia","bittrex","cryptopia","bittrex","cryptopia","tidex","cryptopia","tidex","bittrex"];
-
-
 		getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"BTCUSDT");
 		die;
+}
 
-		 
-	}
+
+
+
 
 
 
@@ -338,33 +336,54 @@ function getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,$key){
 				border-radius: 4px;
 
 			}	
-
-
-
     </style>
-
-
     <script type="text/javascript">
 		//	btn-usdt,btn-etc,btn-etc
     </script>
+<script type="text/javascript" language="javascript">  
 
 
 
+ 
 
-
-	<script type="text/javascript" language="javascript">  
+function onClickBtn(btn_id){
+	if(btn_id == "btn-usdt"){
 		
-		/*
-		$(window).load(function() {
-			$('.userDate').innerHTML = Date();
-			setInterval(function(){
-				location.reload();
-			 }, 120000);
-		});  
-		*/
+		$("#USDT").show();
+		$("#ETH").hide();
+		$("#BTCUSDT").hide();
+
+	}else if(btn_id == "btn-eth"){
+		
+		$("#USDT").hide();
+		$("#BTCUSDT").hide();
+		$("#ETH").show();
+
+	}else {
+		// btn-btc
+		$("#USDT").hide();
+		$("#ETH").hide();
+		$("#BTCUSDT").show();
+	}
+	document.getElementById(btn_id).classList.add('activeBtn');
+	document.getElementById(btn_id).classList.remove('customBtn');
+}
+
+
+
+
+
+
+
 
 
 $(document).ready(function(){
+
+		$("#USDT").hide();
+		$("#ETH").hide();
+		$("#BTCUSDT").show();
+
+
 	var loader = "<tr><th colspan='11'><div class='loader'></div></th></tr>";
 			$("#DASHBTC > tbody").html(loader);
 			$("#LTCBTC > tbody").html(loader);
@@ -454,8 +473,7 @@ $(document).ready(function(){
 			    success: function (data) {
 			         var myObj 		= data;
 			         var BTCUSDT 	= myObj.BTCUSDT;
-			         console.log("here comes data "+BTCUSDT);	
-
+			         
 			         $("#BTCUSDT > tbody").html("");
 			         $("#BTCUSDT > tbody").html(BTCUSDT);
 			         var currintDate  = new Date().toLocaleString();
@@ -463,6 +481,31 @@ $(document).ready(function(){
 					 $(".timedate").html(currintDate); 	
 			    }
 			});
+
+
+			$.ajax({
+			    type: 'POST',
+			    dataType: "json",
+			    url: "index.php",
+			    data: "DATA=ETH",
+			    success: function (data) {
+			         var myObj 	= data;
+			         var ETH 	= myObj.ETH;
+			        
+			         $("#ETH > tbody").html("");
+			         $("#ETH > tbody").html(ETH);
+			         var currintDate  = new Date().toLocaleString();
+			         $(".timedate").html("");	
+					 $(".timedate").html(currintDate); 	
+			    }
+			});
+
+
+
+
+		//ETH
+
+
 		});
 </script>  
 </head>
@@ -540,19 +583,23 @@ $(document).ready(function(){
 				<div class="col-xs-12">	
 						<div class="col-xs-6" style="float: right">	
 							<div class="row">
+									
 								<div class="col-xs-4">
-										<button class="btn customBtn" id="btn-usdt">USDT</button>
+										<button onclick="onClickBtn(this.id)" class="btn customBtn" id="btn-btc">BTC</button>
 								</div>	
 								<div class="col-xs-4">
-										<button class="btn customBtn" id="btn-usdt">BTC</button>
-								</div>	
-								<div class="col-xs-4">
-										<button class="btn customBtn" id="btn-usdt">ETH</button>
+										<button class="btn customBtn" onclick="onClickBtn(this.id)" id="btn-eth">ETH</button>
 								</div>
+
+								<div class="col-xs-4">
+										<button class="btn customBtn" onclick="onClickBtn(this.id)" id="btn-usdt">USDT</button>
+								</div>
+
 							</div>	
 							 	
 						</div>
 				</div>
+
 
 
 <!--
