@@ -396,11 +396,14 @@ function activeBtnBtc(){
 
 
 $(document).ready(function(){
+	
 	activeBtnBtc();
 
-	var loader = "<tr><th colspan='11'><div class='loader'></div></th></tr>";
+		var loader = "<tr><th colspan='11'><div class='loader'></div></th></tr>";
 			$("#DASHBTC > tbody").html(loader);
 			$("#LTCBTC > tbody").html(loader);
+			$("#BTCUSDT > tbody").html(loader);
+
 			$("#higerUsdt").hide();
 			$("#highPriceTable").hide();
 			$("#highBidTable").hide();
@@ -614,41 +617,22 @@ $(document).ready(function(){
 						</div>
 				</div>
 
-
-
-<!--
-	usdt/btc/eth
--->
-
-				 
-				<table id="USDT" class="table table-striped table-bordered table-responsive" >
+ 				<table id="USDT" class="table table-striped table-bordered table-responsive" >
 						<tbody></tbody>
-				</table>		
-				 
-
-
+				</table>	
 				 
 				<table id="ETH" class="table table-striped table-bordered table-responsive" >
 					<tbody></tbody>
 				</table>	
 				 
-
-
-				 
 				<table id="BTCUSDT" class="table table-striped table-bordered table-responsive">
 					<tbody></tbody>
 				</table>	
 				 
-
-
-				 
 				<table id="LTCBTC" class="table table-striped table-bordered table-responsive" >
 					<tbody></tbody>
-				</table>	
-				 
+				</table>
 
-
-				 
 				<table id="DASHBTC" class="table table-striped table-bordered table-responsive" >
 						<tbody></tbody>
 				</table>
