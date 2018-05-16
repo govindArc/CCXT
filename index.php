@@ -464,7 +464,12 @@ $(document).ready(function(){
 			    data: "DATA=BTCUSDT",
 			    success: function (data) {
 			         var myObj 		= data;
+
 			         var BTCUSDT 	= myObj.BTCUSDT;
+
+			         
+			         alert(BTCUSDT);
+
 			         $("#BTCUSDT > tbody").html("");
 			         $("#BTCUSDT > tbody").html(BTCUSDT);
 			         var currintDate  = new Date().toLocaleString();
