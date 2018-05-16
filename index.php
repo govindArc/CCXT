@@ -141,15 +141,6 @@ if(isset($_POST["DATA"]) && $_POST["DATA"] == "ETH"){
 
 	getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"ETH");
 	die;
-
-
-
-
-
-
-
-
-
 }	 
 
 
@@ -355,8 +346,6 @@ function getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,$key){
 
     <script type="text/javascript">
 		//	btn-usdt,btn-etc,btn-etc
-
-
     </script>
 
 
@@ -464,11 +453,8 @@ $(document).ready(function(){
 			    data: "DATA=BTCUSDT",
 			    success: function (data) {
 			         var myObj 		= data;
-
 			         var BTCUSDT 	= myObj.BTCUSDT;
-
-			         
-			         alert(BTCUSDT);
+			         console.log("here comes data "+BTCUSDT);	
 
 			         $("#BTCUSDT > tbody").html("");
 			         $("#BTCUSDT > tbody").html(BTCUSDT);
@@ -573,31 +559,39 @@ $(document).ready(function(){
 	usdt/btc/eth
 -->
 
-				<div class="table-responsive">
-					<table id="USDT" class="table table-striped table-bordered" >
+				 
+				<table id="USDT" class="table table-striped table-bordered table-responsive" >
 						<tbody></tbody>
-					</table>		
-				</div>	
-				<div class="table-responsive">
-						<table id="ETH" class="table table-striped table-bordered" >
-							<tbody></tbody>
-						</table>	
-				</div>
-				<div class="table-responsive">
-					<table id="BTCUSDT" class="table table-striped table-bordered" >
+				</table>		
+				 
+
+
+				 
+				<table id="ETH" class="table table-striped table-bordered table-responsive" >
+					<tbody></tbody>
+				</table>	
+				 
+
+
+				 
+				<table id="BTCUSDT" class="table table-striped table-bordered table-responsive">
+					<tbody></tbody>
+				</table>	
+				 
+
+
+				 
+				<table id="LTCBTC" class="table table-striped table-bordered table-responsive" >
+					<tbody></tbody>
+				</table>	
+				 
+
+
+				 
+				<table id="DASHBTC" class="table table-striped table-bordered table-responsive" >
 						<tbody></tbody>
-					</table>	
-				</div>
-				<div class="table-responsive">
-					<table id="LTCBTC" class="table table-striped table-bordered" >
-						<tbody></tbody>
-					</table>	
-				</div>
-				<div class="table-responsive">
-					<table id="DASHBTC" class="table table-striped table-bordered" >
-						<tbody></tbody>
-					</table>
-				</div>
+				</table>
+				 
 		</div>
 </body>
 </html>
