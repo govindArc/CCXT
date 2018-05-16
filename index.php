@@ -348,23 +348,34 @@ function getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,$key){
 
 function onClickBtn(btn_id){
 	if(btn_id == "btn-usdt"){
-		
 		$("#USDT").show();
 		$("#ETH").hide();
 		$("#BTCUSDT").hide();
+		document.getElementById("btn-btc").classList.remove('activeBtn');
+		document.getElementById("btn-btc").classList.remove('customBtn');
+		document.getElementById("btn-eth").classList.remove('activeBtn');
+		document.getElementById("btn-eth").classList.remove('customBtn');
 
 	}else if(btn_id == "btn-eth"){
-		
 		$("#USDT").hide();
 		$("#BTCUSDT").hide();
 		$("#ETH").show();
+		document.getElementById("btn-btc").classList.remove('activeBtn');
+		document.getElementById("btn-btc").classList.remove('customBtn');
+		document.getElementById("btn-usdt").classList.remove('activeBtn');
+		document.getElementById("btn-usdt").classList.remove('customBtn');
 
 	}else {
 		// btn-btc
 		$("#USDT").hide();
 		$("#ETH").hide();
 		$("#BTCUSDT").show();
+		document.getElementById("btn-eth").classList.remove('activeBtn');
+		document.getElementById("btn-eth").classList.remove('customBtn');
+		document.getElementById("btn-usdt").classList.remove('activeBtn');
+		document.getElementById("btn-usdt").classList.remove('customBtn');
 	}
+
 	document.getElementById(btn_id).classList.add('activeBtn');
 	document.getElementById(btn_id).classList.remove('customBtn');
 }
@@ -372,18 +383,21 @@ function onClickBtn(btn_id){
 
 
 
+function activeBtnBtc(){
+	$("#USDT").hide();
+	$("#BTCUSDT").hide();
+	$("#ETH").show();
+	document.getElementById("btn-btc").classList.remove('activeBtn');
+	document.getElementById("btn-btc").classList.remove('customBtn');
+}
 
 
 
 
 
 $(document).ready(function(){
-
-		$("#USDT").hide();
-		$("#ETH").hide();
-		$("#BTCUSDT").show();
-
-
+	activeBtnBtc();
+	
 	var loader = "<tr><th colspan='11'><div class='loader'></div></th></tr>";
 			$("#DASHBTC > tbody").html(loader);
 			$("#LTCBTC > tbody").html(loader);
