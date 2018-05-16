@@ -403,6 +403,10 @@ $(document).ready(function(){
 			$("#DASHBTC > tbody").html(loader);
 			$("#LTCBTC > tbody").html(loader);
 			$("#BTCUSDT > tbody").html(loader);
+			$("#ETH > tbody").html(loader);
+			
+
+			
 
 			$("#higerUsdt").hide();
 			$("#highPriceTable").hide();
