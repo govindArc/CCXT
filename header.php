@@ -14,11 +14,10 @@ $binanceObj   	= new \ccxt\binance(); // LTC/BTC STEEM/BTC DASH/BTC
 //BTC/USD
 //$poloniexObj   	= new \ccxt\poloniex();  not free
 //$biboxObj   	= new \ccxt\bibox();   not free
-
 $zbObj   		= new \ccxt\zb();           // BTC/USDTx
-$kucoinObj   	= new \ccxt\kucoin();   // BTC/USDT
-$gateioObj   	= new \ccxt\gateio();   // BTC/USDT  
-$tidexObj   	= new \ccxt\tidex();    	// BTC/USDT  
+$kucoinObj   	= new \ccxt\kucoin();   	// BTC/USDT
+$gateioObj   	= new \ccxt\gateio();  		// BTC/USDT  
+$tidexObj   	= new \ccxt\tidex();     // BTC/USDT  
 $cryptopiaObj 	= new \ccxt\cryptopia();  // BTC/USDT  
 //$exmoObj   		= new \ccxt\exmo();  // BTC/USDT  
 $bittrexObj  	= new \ccxt\bittrex(); 	// BTC/USDT  

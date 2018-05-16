@@ -281,7 +281,9 @@
 if(isset($_POST["DATA"]) && $_POST["DATA"] == "BTCUSDT"){
 	   // BTC/USDT kucoin gateio tidex  bittrex cryptopia
 		$exhageCurrency  = "BTC/USDT";
-		$exchanegArrayA =  [,"kucoin","kucoin","gateio","gateio","tidex","tidex","bittrex","bittrex","cryptopia","cryptopia"];
+
+		
+		$exchanegArrayA =  ["kucoin","kucoin","gateio","gateio","tidex","tidex","bittrex","bittrex","cryptopia","cryptopia"];
 
 		$exchanegArrayB =  ["bittrex","cryptopia","bittrex","cryptopia","bittrex","cryptopia","tidex","cryptopia","tidex","bittrex"];
 
@@ -527,24 +529,7 @@ $(document).ready(function(){
 					 $(".timedate").html(currintDate); 	
 			    }
 			});
-
-
-
-
-			
-
-
-
-
-
-
-			
-
-
 		});
-
-
- 
 </script>  
 </head>
 
@@ -613,12 +598,11 @@ $(document).ready(function(){
 						    </table>
 				  </div>
 		</div>
+
+		
 				<div class="col-xs-12">	
 					<h1><i class="material-icons">tune</i> Exchange Spreads</h1>
 				</div>
-
-
-
 				<div class="col-xs-12">	
 						<div class="col-xs-6" style="float: right">	
 							<div class="row">
