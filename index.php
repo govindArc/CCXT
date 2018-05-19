@@ -48,6 +48,8 @@ $ExchangeB = constant("binance");
 //$binanceObj->
 $pair = "ETH/BTC";
 
+echo "<h2 align='center'>[TYPE A TO A CALCULATION ]</h2>";
+echo '<br>';
 echo "<h2 align='center'>Exchange A Is [liqui hence we get to use buy object] and exchange b is [tidex use ask sell object] </h2>";
 echo '<br>';
 echo '<br>';
@@ -812,10 +814,8 @@ function getLastPriceOfExchage($exchnage,$pair){
     return $lastPrice;
 }
 
- ?>
-/*
-
-	include 'header.php';
+ 
+/*	include 'header.php';
 
 
 
@@ -1467,11 +1467,6 @@ $(document).ready(function(){
 		</div>
 </body>
 </html>
-
 */
-
-
-
-
-
+?>
  
