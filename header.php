@@ -47,18 +47,8 @@ $higherCurrency 	= '';
 $lowerCurrency 	 	= '';
 $highBidAsk 		= 0; 
 $highAskExchange 	= '';
+
 //$liquiObj,$binanceObj
-
-
-
-
-
-
-
-
-
-
-
 
 function calculateUSDT($exchnageA,$exchnageB,$exchangePair){
 		$orderBookAExchange =  getOrderBook($exchnageA,$exchangePair);

@@ -35,33 +35,40 @@ $tidexObj   	= new \ccxt\tidex();     // BTC/USDT
 $cryptopiaObj 	= new \ccxt\cryptopia();  // BTC/USDT  
 				//	BTC/USDT,BTC/NZDT  ETH/BTC,ETH/USDT,ETH/DOGE,ETH/LTC,ETH/NZDT
 $exmoObj   		= new \ccxt\exmo();  // BTC/USDT  
-$bittrexObj  	= new \ccxt\bittrex(); 	// BTC/USDT  
- 
+$bittrexObj  	= new \ccxt\bittrex(); 	// BTC/USDT
 //$liquiObj,$binanceObj;
 // ETH/BTC
 $ExchangeA = constant("liqui");
 $ExchangeB = constant("binance"); 
 //$binanceObj->
 $pair = "ETH/BTC";
+
 echo "<h2 align='center'>[TYPE A TO A CALCULATION ]</h2>";
 echo '<br>';
 echo "<h2 align='center'>Exchange A Is [liqui hence we get to use buy object] and exchange b is [tidex use ask sell object] </h2>";
 echo '<br>';
 echo '<br>';
+
+
+
 echo "liqui last price";
 echo getLastPriceOfExchage(constant("liqui"),$pair);
 echo "<br>";
 echo "<br>";
 echo "binance last price";
 echo getLastPriceOfExchage(constant("tidex"),$pair);
+
 echo "<br>";
 echo "<br>";
 echo "here order book liqui IN ACTUAL ORDER ";
 echo json_encode(getOrderBook(constant("liqui"),$pair,"exchangeB"));
+
 echo "<br>";
 echo "<br>";
 echo "here order book liqui IN REVERSE FOR BUYING POWER ";
 echo json_encode(getOrderBook(constant("liqui"),$pair,"exchangeA"));
+
+
 echo "<br>";
 echo "<br>";
 echo "here order book tidex";
@@ -72,7 +79,11 @@ echo "<br>";
 GetTypeAExchangeBUY(getOrderBook(constant("liqui"),$pair,"exchangeA"),"ETH");
 //exchange A sell exchange b buy 
 /// data array price/value  type // USDT,ETH,BTC //  
+
+
+
 function GetTypeAExchangeSELLbyAssets($dataArray,$calulationFor,$finalBuyValue,$i){
+
     $firstValue1 = 0;
     $firstValue2 = 0;
     $firstValue3 = 0;
@@ -81,23 +92,31 @@ function GetTypeAExchangeSELLbyAssets($dataArray,$calulationFor,$finalBuyValue,$
     $secondValue = 0;
     $thirdValue  = 0;
     $finalValue  = 0;
+
     $secondColumn1 = 0;
     $secondColumn2 = 0;
     $secondColumn3 = 0;
     $secondColumn4 = 0;
     $secondColumn5 = 0;
     $spreadMarginPercent = 0;
+
     global $accodendeAssetsUSDT,$accodendeAssetsETH,$accodendeAssetsBTC;
     $flagValue = "BTC";
+
+
+
         if($calulationFor == "USDT"){
             $accodendeAssets =   $accodendeAssetsUSDT;
             $flagValue = "USDT";
+
         }else if ($calulationFor == "ETH"){
             $accodendeAssets =   $accodendeAssetsETH;
             $flagValue = "ETH";
+
         }else{
             $accodendeAssets =   $accodendeAssetsBTC;
         }
+
         // get five price volume pair
         $priceVolumePair1 = $dataArray[0];
         $priceVolumePair2 = $dataArray[1];
@@ -116,12 +135,18 @@ function GetTypeAExchangeSELLbyAssets($dataArray,$calulationFor,$finalBuyValue,$
         $volume3           = $priceVolumePair3[1];
         $volume4          = $priceVolumePair4[1];
         $volume5          = $priceVolumePair5[1];
+
+
         $responseArray = [];
+
         /// loop
       //  for ($i=0; $i < 5; $i++) {
+
+
             $secondValue    = 0;
             $thirdValue     = 0;
             $calualteAssets =    $accodendeAssets[$i];
+
             
             /// all calculation of first value
             $firstValue1 = $volume1 / $price1;
@@ -135,48 +160,58 @@ function GetTypeAExchangeSELLbyAssets($dataArray,$calulationFor,$finalBuyValue,$
             $secondColumn3 = $secondColumn2 - $firstValue3;
             $secondColumn4 = $secondColumn3 - $firstValue4;
             $secondColumn5 = $secondColumn4 - $firstValue5;
+
             ///  check positive buying power 
             if(($secondColumn1 > 0  && $secondColumn2 > 0 && $secondColumn3 > 0 && $secondColumn4 > 0 && $secondColumn5 > 0) || ($secondColumn1 < 0  && $secondColumn2 < 0 && $secondColumn3 < 0 && $secondColumn4 < 0 && $secondColumn5 < 0)){
                  /// all positive and all negative
                  $secondValue = $finalBuyValue / $price1;
-            }else{
-                $secondValue = $volume1 / $price1;
-			}
-			
 
-			if (($secondColumn1 < 0)){
+            }else if (($secondColumn1 < 0)){
                 // if first value is negative
                 $thirdValue = $firstValue1 / $price1;
+            }else{
+                $secondValue = $volume1 / $price1;
             }
             
             
             $finalValue  = $secondValue + $thirdValue;
+
             // ACCORDANCE ASSET * 100
             $spreadMarginPercent =  (($finalValue - $calualteAssets)/$calualteAssets * 100);
+
+
+
             $responseArray["fvalue1"] = $firstValue1;
             $responseArray["fvalue2"] = $firstValue2;
             $responseArray["fvalue3"] = $firstValue3;
             $responseArray["fvalue4"] = $firstValue4;
             $responseArray["fvalue5"] = $firstValue5;
+
             $responseArray["svalue1"] = $secondColumn1;
             $responseArray["svalue2"] = $secondColumn2;
             $responseArray["svalue3"] = $secondColumn3;
             $responseArray["svalue4"] = $secondColumn4;
             $responseArray["svalue5"] = $secondColumn5;
+
+
             $responseArray["secondValue"] = $secondValue;
             $responseArray["thirdValue"] = $thirdValue;
             $responseArray["finalValue"] = $finalValue;
             $responseArray["spreadMarginPercent"] = $spreadMarginPercent;
+
             $finalArray[$flagValue." ".$calualteAssets] = $responseArray;
       //  }
+
         echo "this is it sell power tidex result set </br>";
         echo json_encode($finalArray);
-}
+} 
+
 
 
 
 
 function GetTypeAExchangeSELL($dataArray,$calulationFor,$finalBuyValue){
+
     $firstValue1 = 0;
     $firstValue2 = 0;
     $firstValue3 = 0;
@@ -185,23 +220,31 @@ function GetTypeAExchangeSELL($dataArray,$calulationFor,$finalBuyValue){
     $secondValue = 0;
     $thirdValue  = 0;
     $finalValue  = 0;
+
     $secondColumn1 = 0;
     $secondColumn2 = 0;
     $secondColumn3 = 0;
     $secondColumn4 = 0;
     $secondColumn5 = 0;
     $spreadMarginPercent = 0;
+
     global $accodendeAssetsUSDT,$accodendeAssetsETH,$accodendeAssetsBTC;
     $flagValue = "BTC";
+
+
+
         if($calulationFor == "USDT"){
             $accodendeAssets =   $accodendeAssetsUSDT;
             $flagValue = "USDT";
+
         }else if ($calulationFor == "ETH"){
             $accodendeAssets =   $accodendeAssetsETH;
             $flagValue = "ETH";
+
         }else{
             $accodendeAssets =   $accodendeAssetsBTC;
         }
+
         // get five price volume pair
         $priceVolumePair1 = $dataArray[0];
         $priceVolumePair2 = $dataArray[1];
@@ -220,28 +263,35 @@ function GetTypeAExchangeSELL($dataArray,$calulationFor,$finalBuyValue){
         $volume3           = $priceVolumePair3[1];
         $volume4          = $priceVolumePair4[1];
         $volume5          = $priceVolumePair5[1];
+
+
         $responseArray = [];
+
         /// loop
         for ($i=0; $i < 5; $i++) {
             $secondValue    = 0;
             $thirdValue     = 0;
-            $calualteAssets =    $accodendeAssets[$i];
-            
+            $calualteAssets = $accodendeAssets[$i];
             /// all calculation of first value
             $firstValue1 = $volume1 / $price1;
             $firstValue2 = $volume2 / $price2;
             $firstValue3 = $volume3 / $price3;
             $firstValue4 = $volume4 / $price4;
             $firstValue5 = $volume5 / $price5;
+
+
             $secondColumn1 = $finalBuyValue - $firstValue1;
             $secondColumn2 = $secondColumn1 - $firstValue2;
             $secondColumn3 = $secondColumn2 - $firstValue3;
             $secondColumn4 = $secondColumn3 - $firstValue4;
-            $secondColumn5 = $secondColumn4 - $firstValue5;
+			$secondColumn5 = $secondColumn4 - $firstValue5;
+			
+
             ///  check positive buying power 
             if(($secondColumn1 > 0  && $secondColumn2 > 0 && $secondColumn3 > 0 && $secondColumn4 > 0 && $secondColumn5 > 0) || ($secondColumn1 < 0  && $secondColumn2 < 0 && $secondColumn3 < 0 && $secondColumn4 < 0 && $secondColumn5 < 0)){
                  /// all positive and all negative
                  $secondValue = $finalBuyValue / $price1;
+
             }else if (($secondColumn1 < 0)){
                 // if first value is negative
                 $thirdValue = $firstValue1 / $price1;
@@ -251,19 +301,137 @@ function GetTypeAExchangeSELL($dataArray,$calulationFor,$finalBuyValue){
             $finalValue  = $secondValue + $thirdValue;
             // ACCORDANCE ASSET * 100
             $spreadMarginPercent =  (($finalValue - $calualteAssets)/$calualteAssets * 100);
-          
             $responseArray["secondValue"] = $secondValue;
             $responseArray["thirdValue"] = $thirdValue;
             $responseArray["finalValue"] = $finalValue;
             $responseArray["spreadMarginPercent"] = $spreadMarginPercent;
+
             $finalArray[$flagValue." ".$calualteAssets] = $responseArray;
         
         }
+
+
         echo '<br>';
         echo "this is it sell power tidex result set </br>";
         echo json_encode($finalArray);
         echo '<br>';
 } 
+
+ 
+
+
+
+function CalulationFora2aExchange2($dataArray,$calulationFor,$finalBuyValue,$i){
+
+
+	
+
+
+
+
+
+}
+
+
+
+function CalulationFora2aExchange1($dataArray,$calulationFor){
+	$firstValue1 = 0;
+    $firstValue2 = 0;
+    $firstValue3 = 0;
+    $firstValue4 = 0;
+    $firstValue5 = 0;
+    $secondValue = 0;
+    $thirdValue  = 0;
+    $finalValue  = 0;
+	global $accodendeAssetsUSDT,$accodendeAssetsETH,$accodendeAssetsBTC;
+	$flagValue = "BTC";
+
+	if($calulationFor == "USDT"){
+		$accodendeAssets =   $accodendeAssetsUSDT;
+		$flagValue = "USDT";
+	}else if ($calulationFor == "ETH"){
+		$accodendeAssets =   $accodendeAssetsETH;
+		$flagValue = "ETH";
+	}else{
+		$accodendeAssets =   $accodendeAssetsBTC;
+	}
+
+	$priceVolumePair1 = $dataArray[0];
+	$priceVolumePair2 = $dataArray[1];
+	$priceVolumePair3 = $dataArray[2];
+	$priceVolumePair4 = $dataArray[3];
+	$priceVolumePair5 = $dataArray[4];
+
+
+		//excel yellow 
+        $price1           = $priceVolumePair1[0];
+        $price2           = $priceVolumePair2[0];
+        $price3           = $priceVolumePair3[0];
+        $price4           = $priceVolumePair4[0];
+        $price5           = $priceVolumePair5[0];
+        //excel green 
+        $volume1           = $priceVolumePair1[1];
+        $volume2           = $priceVolumePair2[1];
+        $volume3           = $priceVolumePair3[1];
+        $volume4          = $priceVolumePair4[1];
+		$volume5          = $priceVolumePair5[1];
+		
+		$responseArray = [];
+
+
+		for ($i=0; $i < 5; $i++) { 
+            $secondValue    = 0;
+            $thirdValue     = 0;
+
+            $calualteAssets =    $accodendeAssets[$i];
+            
+            $firstValue1 = $calualteAssets - $volume1;
+            $firstValue2 = $firstValue1 - $volume2;
+            $firstValue3 = $firstValue2 - $volume3;
+            $firstValue4 = $firstValue3 - $volume4;
+            $firstValue5 = $firstValue4 - $volume5;
+
+
+            ///  check positive buying power 
+            if(($firstValue1 > 0  && $firstValue2 > 0 && $firstValue3 > 0 && $firstValue4 > 0 && $firstValue5 > 0) || ($firstValue1 < 0  && $firstValue2 < 0 && $firstValue3 < 0 && $firstValue4 < 0 && $firstValue5 < 0)){
+                 /// all positive and all negative
+                 $secondValue = $calualteAssets * $price1;
+
+
+                 
+            }else if (($firstValue1 < 0)){
+                // if first value is negative
+                $thirdValue = $firstValue1 / $price2;
+            }else{
+                $secondValue = $volume1 / $price1;
+            } 
+            
+            $finalValue = $thirdValue + $secondValue;
+
+
+            $responseArray["fvalue1"] = $firstValue1;
+            $responseArray["fvalue2"] = $firstValue2;
+            $responseArray["fvalue3"] = $firstValue3;
+            $responseArray["fvalue4"] = $firstValue4;
+            $responseArray["fvalue5"] = $firstValue5;
+            $responseArray["secondValue"] = $secondValue;
+            $responseArray["thirdValue"] = $thirdValue;
+			$responseArray["finalValue"] = $finalValue;
+
+
+           $finalArray["data"] = $responseArray;
+           echo '<br>';
+           echo "this is buying power of liqui  ".$flagValue." ".$calualteAssets;
+           echo json_encode($finalArray);
+           echo '<br>';
+		   $pair = "ETH/BTC";
+		   
+           GetTypeAExchangeSELLbyAssets(getOrderBook(constant("tidex"),$pair,"exchangeB"),"ETH",$finalValue,$i);
+           echo '<br>'; 
+		}
+}
+
+
 function GetTypeAExchangeBUY($dataArray,$calulationFor){
     $firstValue1 = 0;
     $firstValue2 = 0;
@@ -274,7 +442,7 @@ function GetTypeAExchangeBUY($dataArray,$calulationFor){
     $thirdValue  = 0;
     $finalValue  = 0;
     global $accodendeAssetsUSDT,$accodendeAssetsETH,$accodendeAssetsBTC;
-    $flagValue = "BTC";
+    	$flagValue = "BTC";
         if($calulationFor == "USDT"){
             $accodendeAssets =   $accodendeAssetsUSDT;
             $flagValue = "USDT";
@@ -284,12 +452,6 @@ function GetTypeAExchangeBUY($dataArray,$calulationFor){
         }else{
             $accodendeAssets =   $accodendeAssetsBTC;
         }
-        // $assets1              =   $accodendeAssets[0];
-        // $assets2              =   $accodendeAssets[1];
-        // $assets3              =   $accodendeAssets[2];
-        // $assets4              =   $accodendeAssets[3];
-        // $assets5              =   $accodendeAssets[4];
-      
         // get five price volume pair
         $priceVolumePair1 = $dataArray[0];
         $priceVolumePair2 = $dataArray[1];
@@ -308,11 +470,15 @@ function GetTypeAExchangeBUY($dataArray,$calulationFor){
         $volume3           = $priceVolumePair3[1];
         $volume4          = $priceVolumePair4[1];
         $volume5          = $priceVolumePair5[1];
+
+
         $responseArray = [];
+
         
         for ($i=0; $i < 5; $i++) { 
             $secondValue    = 0;
             $thirdValue     = 0;
+
             $calualteAssets =    $accodendeAssets[$i];
             
             $firstValue1 = $calualteAssets - $volume1;
@@ -320,20 +486,25 @@ function GetTypeAExchangeBUY($dataArray,$calulationFor){
             $firstValue3 = $firstValue2 - $volume3;
             $firstValue4 = $firstValue3 - $volume4;
             $firstValue5 = $firstValue4 - $volume5;
+
+
             ///  check positive buying power 
             if(($firstValue1 > 0  && $firstValue2 > 0 && $firstValue3 > 0 && $firstValue4 > 0 && $firstValue5 > 0) || ($firstValue1 < 0  && $firstValue2 < 0 && $firstValue3 < 0 && $firstValue4 < 0 && $firstValue5 < 0)){
                  /// all positive and all negative
                  $secondValue = $calualteAssets * $price1;
-            }else{
-                $secondValue = $volume1 / $price1;
-			} 
-			
-			if (($firstValue1 < 0)){
+
+
+                 
+            }else if (($firstValue1 < 0)){
                 // if first value is negative
                 $thirdValue = $firstValue1 / $price2;
-            }
+            }else{
+                $secondValue = $volume1 / $price1;
+            } 
             
             $finalValue = $thirdValue + $secondValue;
+
+
             $responseArray["fvalue1"] = $firstValue1;
             $responseArray["fvalue2"] = $firstValue2;
             $responseArray["fvalue3"] = $firstValue3;
@@ -342,23 +513,38 @@ function GetTypeAExchangeBUY($dataArray,$calulationFor){
             $responseArray["secondValue"] = $secondValue;
             $responseArray["thirdValue"] = $thirdValue;
 			$responseArray["finalValue"] = $finalValue;
+
+
            $finalArray["data"] = $responseArray;
            echo '<br>';
            echo "this is buying power of liqui  ".$flagValue." ".$calualteAssets;
            echo json_encode($finalArray);
            echo '<br>';
            $pair = "ETH/BTC";
+
            
            GetTypeAExchangeSELLbyAssets(getOrderBook(constant("tidex"),$pair,"exchangeB"),"ETH",$finalValue,$i);
            echo '<br>'; 
         }
+
        // echo "this is it buying power liqui result set </br>";
       //  echo json_encode($finalArray);
-       
-        
- 
-     
 }
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
 // function typeAExchangeBuy($dataArray,$calulationFor){
    
 //     global $accodendeAssetsUSDT,$accodendeAssetsETH,$accodendeAssetsBTC;
@@ -369,6 +555,9 @@ function GetTypeAExchangeBUY($dataArray,$calulationFor){
 //     }else{
 //         $accodendeAssets =   $accodendeAssetsBTC;
 //     } 
+
+
+
 //     $cnt = 1;
 //     $fvalue1 = "";
 //     $fvalue2 = "";
@@ -382,9 +571,13 @@ function GetTypeAExchangeBUY($dataArray,$calulationFor){
 //     $flagNegative =  false;
 //     $Price1       = "";
 //     $Price2       = "";
+
 //     $data = [];
+
+
 //     for ($j=0; $j < count($accodendeAssest); $j++) { 
 //         // accodendeAssets value 
+
 //             for ($i=0; $i < 5; $i++) { 
 //                 $priceVolumePair =  $dataArray[$i];
 //                 $price      = $priceVolumePair[0];
@@ -424,10 +617,27 @@ function GetTypeAExchangeBUY($dataArray,$calulationFor){
 //                 $finalValue  = $secondValue+$thirdValue;
         
 //             }
+
+
+
+
+
+
 //     }
 // }
+
+
+
+
+
+
+
+
+
+
 function getTypeACalculation($dataArray,$calulationFor){
     global $accodendeAssetsUSDT,$accodendeAssetsETH,$accodendeAssetsBTC;
+
     if($calulationFor == "USDT"){
         $accodendeAssets =   $accodendeAssetsUSDT;
     }else if ($calulationFor == "ETH"){
@@ -449,20 +659,27 @@ function getTypeACalculation($dataArray,$calulationFor){
     $flagNegative =  false;
     $Price1       = "";
     $Price2       = "";
+
+
+
     for ($i=0; $i < 5; $i++) { 
         $priceVolumePair =  $dataArray[$i];
         $price      = $priceVolumePair[0];
         $volume     = $priceVolumePair[1];
+
         if($cnt  == 1){
             $fvalue1  = $accodendeAssets[0] - $volume; 
             $Price1   = $price;
             //$flagNegative
+
             if($fvalue1 < 0){
                 $flagNegative = true; 
             }
+
         }else if($cnt == 2){
             $fvalue2 =  $fvalue1 - $volume;
             $Price2  = $price;
+
         }else if ($cnt == 3){
             $fvalue3 =  $fvalue2 - $volume;
         }else if ($cnt == 4){
@@ -472,23 +689,37 @@ function getTypeACalculation($dataArray,$calulationFor){
         }
         $cnt++;
     }
+
     if($flagNegative == false){
          /// checks all positive and all negative 
         if(($fvalue1 > 0 && $fvalue2 > 0 && $fvalue3  > 0 && $fvalue4  > 0 && $fvalue5  > 0) || ($fvalue1 < 0 && $fvalue2 < 0 && $fvalue3  < 0 && $fvalue4  < 0 && $fvalue5  < 0)){
             $secondValue = $accodendeAssets[0] * $Price1;
         } 
     }else{
+
         $thirdValue  =  $fvalue1/$Price2;
         $finalValue  = $secondValue+$thirdValue;
+
     }
+
     
+
+
+
+
+
     echo "fvalue one ".$fvalue1."</br>";
     echo "fvalue two ".$fvalue2."</br>";
     echo "fvalue three ".$fvalue3."</br>";
     echo "fvalue four ".$fvalue4."</br>";
     echo "fvalue five ".$fvalue5."</br>";
     die;
+
 }
+
+
+
+
 // function typeAcalculation($dataArray,$type,$conversioType){
 //     $finalArray = [];
 //     // volume price  calculation
@@ -500,25 +731,39 @@ function getTypeACalculation($dataArray,$calulationFor){
 //     }else{
 //         $accodendeAssets =   $accodendeAssetsBTC;
 //     }
+
+
 //     // here we check conversion type 
 //     if($conversioType = "TYPEA"){
+
 //             for ($i=0; $i < $accodendeAssets.count; $i++) { 
 //                 echo $accodendeAssets[$i];
                
 //             }
+
 //     }else if ($conversioType = "TYPEB"){
+
 //     }else if ($conversioType = "TYPEC"){
+
 //     }else{
 //            // TYPE D
 //     }
 // }
+
+
 // here 
 function getValuePair($dataArray,$accodendeAssest){
+
 }
+
+
+
 function getSpreadPercentage($ExchangeOne,$ExchangeTwo) {
 	return (($ExchangeOne-$ExchangeTwo)/$ExchangeOne)*100;
 } 
+
 function getOrderBook($exchnage,$exchangePair,$type){
+
     $limit = 5;
     global  $huobiObj;    
     global  $okexObj;  	 
@@ -532,31 +777,45 @@ function getOrderBook($exchnage,$exchangePair,$type){
     global  $cryptopiaObj; 
     global  $exmoObj;   	 
     global  $bittrexObj; 
+
     if($exchnage == constant("huobi")){
         $finalData = $huobiObj->fetch_order_book($exchangePair, $limit);
     }elseif($exchnage == constant("okex")){
+
         $finalData = $okexObj->fetch_order_book($exchangePair, $limit);
+
     }elseif($exchnage == constant("liqui")){
+
         $finalData = $liquiObj->fetch_order_book($exchangePair, $limit);
     }elseif($exchnage == constant("hitbtc")){
+
         $finalData = $hitbtcObj->fetch_order_book($exchangePair, $limit);
     }elseif($exchnage == constant("binance")){
+
         $finalData = $binanceObj->fetch_order_book($exchangePair, $limit);
+
     }elseif($exchnage == constant("kucoin")){
+
         $finalData = $kucoinObj->fetch_order_book($exchangePair, $limit);
     }elseif($exchnage == constant("zb")){	
+
         $finalData = $zbObj->fetch_order_book($exchangePair, $limit);
+
     }elseif($exchnage == constant("gateio")){		
+
         $finalData = $gateioObj->fetch_order_book($exchangePair, $limit);
     }elseif($exchnage == constant("tidex")){		
         $finalData = $tidexObj->fetch_order_book($exchangePair, $limit);
+
     }elseif($exchnage == constant("cryptopia")){	
         $finalData = $cryptopiaObj->fetch_order_book($exchangePair, $limit);
     }
     else if($exchnage == constant("bittrex")){
         $finalData = $bittrexObj->fetch_order_book($exchangePair, $limit);
     } 
+
     $priceVolumePair = "";
+
     if($type  == "exchangeA"){
         $priceVolumePair = array_reverse($finalData["bids"]);
     }else{
@@ -565,6 +824,10 @@ function getOrderBook($exchnage,$exchangePair,$type){
     return $priceVolumePair ;
      
 }
+
+
+
+
 function getLastPriceOfExchage($exchnage,$pair){
     global $huobiObj;
     global $okexObj;
@@ -581,24 +844,36 @@ function getLastPriceOfExchage($exchnage,$pair){
     global $cryptopiaObj;
     global $zbObj;
     global $exmoObj;
+
     if($exchnage == constant("huobi")){
         $finalData = $huobiObj->fetch_ticker($pair);
     }elseif($exchnage == constant("okex")){
+
         $finalData = $okexObj->fetch_ticker($pair);
+
     }elseif($exchnage == constant("liqui")){
+
         $finalData = $liquiObj->fetch_ticker($pair);
     }elseif($exchnage == constant("hitbtc")){
+
         $finalData = $hitbtcObj->fetch_ticker($pair);
     }elseif($exchnage == constant("binance")){
+
         $finalData = $binanceObj->fetch_ticker($pair);
+
     }elseif($exchnage == constant("kucoin")){
+
         $finalData = $kucoinObj->fetch_ticker($pair);
     }elseif($exchnage == constant("zb")){	
+
         $finalData = $zbObj->fetch_ticker($pair);
+
     }elseif($exchnage == constant("gateio")){		
+
         $finalData = $gateioObj->fetch_ticker($pair);
     }elseif($exchnage == constant("tidex")){		
         $finalData = $tidexObj->fetch_ticker($pair);
+
     }elseif($exchnage == constant("cryptopia")){	
         $finalData = $cryptopiaObj->fetch_ticker($pair);
     }
@@ -608,8 +883,12 @@ function getLastPriceOfExchage($exchnage,$pair){
     $lastPrice = number_format($finalData['last'], 10, '.', '');
     return $lastPrice;
 }
+
  
 /*	include 'header.php';
+
+
+
 	if(isset($_POST["DATA"]) && $_POST["DATA"] == "AJAX"){
 			$pair	 = "BTC/USDT";
 			$html 	 = "<tr>
@@ -644,46 +923,69 @@ function getLastPriceOfExchage($exchnage,$pair){
 						$Tickers 		= $bittrexObj->fetch_ticker($pair);	
 						$currencySymbol = "bittrex";
 					}
+
+
 					$askRate 	= number_format($Tickers['ask'], 10, '.', '');
 					$lastRate	= number_format($Tickers['last'], 10, '.', '');
 					$fineArray 	=	 [$currencySymbol,$askRate,$lastRate];
+
+
 					array_push($allPiceArray, $fineArray);
+
 					$content = "<tr>
 				            		<td>".$currencySymbol."</td>
 				            		<td>".$lastRate."</td>
 				       			</tr>";
+
 					$html = $html.$content;
 			}
+
 					
+
 					$cnt = 0;
+
 					$higherExchange = 0;
 					$lowerExchange  = 999999999999;
 					$higherCurrency = '';
 					$lowerCurrency  = '';
 					$highBidAsk 	= 0; 
 					$highAskExchange = '';
+
+
 					foreach ($allPiceArray as $result) {
 							$currency = $result[0];
 							$ask 	  = $result[1];
 							$last 	  = $result[2];
+
+
+
 							if($higherExchange < $last){
 								$higherExchange = $last; 
 								$higherCurrency = $currency;
 							}
+
 							if($lowerExchange > $last){
 								$lowerExchange 	= $last; 
 								$lowerCurrency 	= $currency;
 							}
+
 							if($highBidAsk < $ask){
 								$highBidAsk = $ask; 
 								$highAskExchange = $currency;
 							}
 					}
+
 					echo json_encode(array("higherExchange"=>$higherExchange,"higherCurrency"=>$higherCurrency,"lowerExchange"=>$lowerExchange,"lowerCurrency"=>$lowerCurrency,"highBidAsk"=>$highBidAsk,"highAskExchange"=>$highAskExchange,"html"=>$html));
+
 					die;
+
 	}
+
+
+
 //LTC BTC
 	if(isset($_POST["DATA"]) && $_POST["DATA"] == "LTCBTC"){
+
 		$exhageCurrency  = "LTC/BTC";
 		$exchanegArrayA =  ["liqui","liqui","liqui","hitbtc","hitbtc","hitbtc","okax","okax","okax"];
 		$exchanegArrayB =  ["hitbtc","okax","binance","liqui","binance","okax","liqui","binance","hitbtc"];
@@ -691,15 +993,31 @@ function getLastPriceOfExchage($exchnage,$pair){
  		getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"LTCBTC");
 		die;
 	}
+
+
+
+
+
 	if(isset($_POST["DATA"]) && $_POST["DATA"] == "DASHBTC"){
+
 		$exhageCurrency  = "DASH/BTC";
 		$exchanegArrayA =  ["liqui","liqui","liqui","hitbtc","hitbtc","hitbtc","okax","okax","okax"];
 		$exchanegArrayB =  ["hitbtc","okax","binance","liqui","binance","okax","liqui","binance","hitbtc"];
+
+
 		 
 		getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"DASHBTC");
 		die;
+
 	}
+
+
+
+
+
+
 //bittrexObj,cryptopiaObj,tidexObj,gateioObj,kucoinObj,zbObj,binanceObj,hitbtcObj,liquiObj,okexObj[ETH/USDT],
+
 if(isset($_POST["DATA"]) && $_POST["DATA"] == "ETH"){
 	//ETH/BTC	
 	$exhageCurrency  = "ETH/BTC";
@@ -708,26 +1026,36 @@ if(isset($_POST["DATA"]) && $_POST["DATA"] == "ETH"){
 	getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"ETH");
 	die;
 }	 
+
+
+
 if(isset($_POST["DATA"]) && $_POST["DATA"] == "BTCUSDT"){
 	   // BTC/USDT kucoin gateio tidex  bittrex cryptopia
 		$exhageCurrency  = "BTC/USDT";
+
 		$exchanegArrayA =  ["kucoin","kucoin","gateio","gateio","tidex","tidex","bittrex","bittrex","cryptopia","cryptopia"];
 		$exchanegArrayB =  ["bittrex","cryptopia","bittrex","cryptopia","bittrex","cryptopia","tidex","cryptopia","tidex","bittrex"];
 		getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,"BTCUSDT");
 		die;
 }
+
+
 function getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,$key){
+
 	 
 	// so for BTC all the accordance asset is 0.1 BTC, 0.2 BTC, 0.3 BTC
 	// and for ETH: 1ETH, 2 ETH, 3 ETH
 	// and for USDT: 1000 USDT, 2000USDT, 3000USDT
 	
+
 	$defaultAssest1 = "1000 USDT";
 	$defaultAssest2 = "2000 USDT";
 	$defaultAssest3 = "3000 USDT";
 	$defaultAssest4 = "4000 USDT";
 	$defaultAssest5 = "5000 USDT";
 	
+
+
 	if($key == "ETH"){
 		$defaultAssest1 = "1 ETH";
 		$defaultAssest2 = "2 ETH";
@@ -742,6 +1070,7 @@ function getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,$key){
 		$defaultAssest4 = "0.4 BTC";
 		$defaultAssest5 = "0.5 BTC";
 	} 
+
 	
 	$html =  "<tr>       
 					 <th>".$exhageCurrency."</th> 
@@ -772,16 +1101,23 @@ function getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,$key){
 					 <th class='mobile-d-all'>Spread(".$defaultAssest4.")</th>
 					 <th class='mobile-d-all'>Spread(".$defaultAssest5.")</th>
 				</tr>";	
+
+
+
 		for($i=0;$i<count($exchanegArrayA);$i++){
+
 			$lastExchangeA =  getLastPriceOfExchage($exchanegArrayA[$i],$exhageCurrency);
 			$lastExchangeB = getLastPriceOfExchage($exchanegArrayB[$i],$exhageCurrency);
 			$spreadPercentage = getSpreadPercentage($lastExchangeA,$lastExchangeB);
 			$USDTArray = calculateUSDT($exchanegArrayA[$i],$exchanegArrayB[$i],$exhageCurrency);
+
+
 			$USDT_1000 = "not found";
 			$USDT_2000 = "not found";
 			$USDT_3000 = "not found";	
 			$USDT_4000 = "not found";
 			$USDT_5000 = "not found";
+
 			if(isset($USDTArray[0])){
 				$USDT_1000 = $USDTArray[0];
 			}
@@ -797,6 +1133,7 @@ function getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,$key){
 			if(isset($USDTArray[4])){
 				$USDT_5000 = $USDTArray[5];
 			}
+
 			$html = $html."<tr>
 								<td>".$exhageCurrency."</td>
 								<td>".$exchanegArrayA[$i]."</td>
@@ -811,10 +1148,13 @@ function getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,$key){
 								<td>".$USDT_5000."</td>
 						   <tr>";
 			}
+
 		 echo json_encode(array($key=>$html));
 		 
 }
+
 ?>
+
 <!--CSSSSS-->
 <!DOCTYPE html>
 <html>
@@ -831,6 +1171,7 @@ function getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,$key){
     <script src="/js/jquery.dataTables.min.js"></script>
     <script src="/js/dataTables.bootstrap.min.js"></script>
     <script src="/js/app.js"></script>
+
     <style type="text/css">
 			.loader {
 			    border: 16px solid #f3f3f3; 
@@ -846,6 +1187,8 @@ function getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,$key){
 			    0% { transform: rotate(0deg); }
 			    100% { transform: rotate(360deg); }
 			}
+
+
 			.customBtn {
 				width: 80%;
 				color: #fff;
@@ -871,6 +1214,7 @@ function getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,$key){
 				border: 1px solid transparent;
 				border-radius: 4px;
 			}
+
 			.activeBtn {
 				width: 80%;
 				color: #fff;
@@ -895,13 +1239,18 @@ function getResultSet($exchanegArrayA,$exchanegArrayB,$exhageCurrency,$key){
 				background-image: none;
 				border: 1px solid transparent;
 				border-radius: 4px;
+
 			}	
     </style>
     <script type="text/javascript">
 		//	btn-usdt,btn-etc,btn-etc
     </script>
 <script type="text/javascript" language="javascript">  
+
+
+
  
+
 function onClickBtn(btn_id){
 	if(btn_id == "btn-usdt"){
 		$("#USDT").show();
@@ -911,6 +1260,7 @@ function onClickBtn(btn_id){
 		document.getElementById("btn-btc").classList.add('customBtn');
 		document.getElementById("btn-eth").classList.remove('activeBtn');
 		document.getElementById("btn-eth").classList.add('customBtn');
+
 	}else if(btn_id == "btn-eth"){
 		$("#USDT").hide();
 		$("#BTCUSDT").hide();
@@ -919,6 +1269,7 @@ function onClickBtn(btn_id){
 		document.getElementById("btn-btc").classList.add('customBtn');
 		document.getElementById("btn-usdt").classList.remove('activeBtn');
 		document.getElementById("btn-usdt").classList.add('customBtn');
+
 	}else {
 		// btn-btc
 		$("#USDT").hide();
@@ -929,9 +1280,14 @@ function onClickBtn(btn_id){
 		document.getElementById("btn-usdt").classList.remove('activeBtn');
 		document.getElementById("btn-usdt").classList.add('customBtn');
 	}
+
 	document.getElementById(btn_id).classList.add('activeBtn');
 	document.getElementById(btn_id).classList.remove('customBtn');
 }
+
+
+
+
 function activeBtnBtc(){
 	$("#USDT").hide();
 	$("#ETH").hide();
@@ -939,6 +1295,11 @@ function activeBtnBtc(){
 	document.getElementById("btn-btc").classList.add('activeBtn');
 	document.getElementById("btn-btc").classList.remove('customBtn');
 }
+
+
+
+
+
 $(document).ready(function(){
 		 // default active button
 		activeBtnBtc();
@@ -947,6 +1308,7 @@ $(document).ready(function(){
 			$("#LTCBTC > tbody").html(loader);
 			$("#BTCUSDT > tbody").html(loader);
 			$("#ETH > tbody").html(loader);
+
 			$("#higerUsdt").hide();
 			$("#highPriceTable").hide();
 			$("#highBidTable").hide();
@@ -965,6 +1327,7 @@ $(document).ready(function(){
 			         var highAskExchange 	=  myObj.highAskExchange;
 					 var tableHtml 			=  myObj.html;
 					 var currintDate  = new Date().toLocaleString();
+
 					$(".userDate").html("");	
 					$(".userDate").html(currintDate);
 			        $("#higerUsdt > tbody").html("");
@@ -982,7 +1345,12 @@ $(document).ready(function(){
 					$("#highBidTable").show();
 			    }
 			});
+
+
+
 		// this is LTC BTC
+
+
 			$.ajax({
 			    type: 'POST',
 			    dataType: "json",
@@ -991,6 +1359,7 @@ $(document).ready(function(){
 			    success: function (data) {
 			         var myObj 		= data;
 			         var LTCBTC 	= myObj.LTCBTC;
+
 			         $("#LTCBTC > tbody").html("");
 			         $("#LTCBTC > tbody").html(LTCBTC);
 			         
@@ -999,6 +1368,8 @@ $(document).ready(function(){
 					 $(".timedate").html(currintDate); 	
 			    }
 			});
+
+
 			$.ajax({
 			    type: 'POST',
 			    dataType: "json",
@@ -1014,6 +1385,8 @@ $(document).ready(function(){
 					 $(".timedate").html(currintDate); 	
 			    }
 			});
+
+
 			$.ajax({
 			    type: 'POST',
 			    dataType: "json",
@@ -1030,6 +1403,8 @@ $(document).ready(function(){
 					 $(".timedate").html(currintDate); 	
 			    }
 			});
+
+
 			$.ajax({
 			    type: 'POST',
 			    dataType: "json",
@@ -1046,18 +1421,28 @@ $(document).ready(function(){
 					 $(".timedate").html(currintDate); 	
 			    }
 			});
+
+
+
+
 		//ETH
+
+
 		});
 </script>  
 </head>
+
 <body>
 		<div class="container">
 				<h2 align="center">Token Spreads</h2>
 				<h4 align="center">crypto Spread Monitoring And Alerts</h4>
 		
 		<div class="col-xs-12">	
+
 				<h1><i class="material-icons">Top</i>Top Spreads</h1>
+
 		</div>
+
 		<div class="col-md-12">	
 				<div class="col-md-4">
 				    <table id="higerUsdt" class="table table-striped table-bordered">
@@ -1065,6 +1450,7 @@ $(document).ready(function(){
   						</tbody>
 				    </table>
 				  </div>
+
 				  <div class="col-md-4">
 				  			<table id="highPriceTable" class="table table-striped table-bordered" >
 						        <tr>
@@ -1081,12 +1467,19 @@ $(document).ready(function(){
 						      			</td>
 						      		</tr>
 						    </table>
+
 				  </div>
+
+
+
+
 				  <div class="col-md-4">
+
 				  			<table id="highBidTable" class="table table-striped table-bordered" >
 						        <tr>
 						          <th>High Bid Ask Spread</th>
 						        </tr>
+
 						        <tr>
 						          <th><p id="userDate" class="userDate"></p></th>
 						      	</tr>
@@ -1099,14 +1492,17 @@ $(document).ready(function(){
 						      				High Exchange Bid Ask: <strong id="higherBidPrice"></strong>
 						      				</span>      
 						      	</td>
+
 						      		</tr>
 						    </table>
 				  </div>
 		</div>
+
 		
 				<div class="col-xs-12">	
 					<h1><i class="material-icons">tune</i> Exchange Spreads</h1>
 				</div>
+
 				<div class="col-xs-12" style="margin-bottom: 15px;">	
 						<div class="col-xs-6" style="float: right">	
 							<div class="row">
@@ -1122,6 +1518,7 @@ $(document).ready(function(){
 							</div>	
 						</div>
 				</div>
+
  				<table id="USDT" class="table table-striped table-bordered table-responsive" >
 						<tbody></tbody>
 				</table>	
@@ -1142,3 +1539,4 @@ $(document).ready(function(){
 </html>
 */
 ?>
+ 
