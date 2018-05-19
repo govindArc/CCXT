@@ -438,15 +438,14 @@ function GetTypeAExchangeBUY($dataArray,$calulationFor){
             $responseArray["fvalue3"] = $firstValue3;
             $responseArray["fvalue4"] = $firstValue4;
             $responseArray["fvalue5"] = $firstValue5;
-
-
             $responseArray["secondValue"] = $secondValue;
             $responseArray["thirdValue"] = $thirdValue;
-            $responseArray["finalValue"] = $finalValue;
-            $finalArray[$flagValue." ".$calualteAssets] = $responseArray;
+			$responseArray["finalValue"] = $finalValue;
 
+
+           $finalArray["data"] = $responseArray;
            echo '<br>';
-           echo "this is buying power of liqui";
+           echo "this is buying power of liqui  ".$flagValue." ".$calualteAssets;
            echo json_encode($finalArray);
            echo '<br>';
            $pair = "ETH/BTC";
