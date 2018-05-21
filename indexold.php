@@ -41,7 +41,10 @@ $bittrexObj  	= new \ccxt\bittrex(); 	// BTC/USDT
 // ETH/BTC
 $ExchangeA = constant("liqui");
 $ExchangeB = constant("binance"); 
+
+
 //$binanceObj->
+
 $pair = "ETH/BTC";
 echo "<h2 align='center'>[TYPE A TO A CALCULATION ]</h2>";
 echo '<br>';
@@ -57,11 +60,11 @@ echo getLastPriceOfExchage(constant("tidex"),$pair);
 echo "<br>";
 echo "<br>";
 echo "here order book liqui IN ACTUAL ORDER ";
-echo json_encode(getOrderBook(constant("liqui"),$pair,"exchangeA"));
+echo json_encode(getOrderBook(constant("liqui"),$pair,"exchangeB"));
 echo "<br>";
 echo "<br>";
 echo "here order book liqui IN REVERSE FOR BUYING POWER ";
-echo json_encode(array_reverse(getOrderBook(constant("liqui"),$pair,"exchangeA")));
+echo json_encode(getOrderBook(constant("liqui"),$pair,"exchangeA"));
 echo "<br>";
 echo "<br>";
 echo "here order book tidex";
@@ -87,7 +90,8 @@ function GetTypeAExchangeSELLbyAssets($dataArray,$calulationFor,$finalBuyValue,$
     $secondColumn4 = 0;
     $secondColumn5 = 0;
     $spreadMarginPercent = 0;
-    global $accodendeAssetsUSDT,$accodendeAssetsETH,$accodendeAssetsBTC;
+	global $accodendeAssetsUSDT,$accodendeAssetsETH,$accodendeAssetsBTC;
+	
     $flagValue = "BTC";
         if($calulationFor == "USDT"){
             $accodendeAssets =   $accodendeAssetsUSDT;
@@ -143,6 +147,7 @@ function GetTypeAExchangeSELLbyAssets($dataArray,$calulationFor,$finalBuyValue,$
                 $secondValue = $volume1 / $price1;
 			}
 			
+
 			if (($secondColumn1 < 0)){
                 // if first value is negative
                 $thirdValue = $firstValue1 / $price1;
@@ -171,6 +176,10 @@ function GetTypeAExchangeSELLbyAssets($dataArray,$calulationFor,$finalBuyValue,$
         echo "this is it sell power tidex result set </br>";
         echo json_encode($finalArray);
 }
+
+
+
+
 function GetTypeAExchangeSELL($dataArray,$calulationFor,$finalBuyValue){
     $firstValue1 = 0;
     $firstValue2 = 0;
@@ -553,10 +562,7 @@ function getOrderBook($exchnage,$exchangePair,$type){
     } 
     $priceVolumePair = "";
     if($type  == "exchangeA"){
-
-
-		$priceVolumePair = $finalData["bids"];
-		
+        $priceVolumePair = array_reverse($finalData["bids"]);
     }else{
         $priceVolumePair =  $finalData["asks"];
     }
